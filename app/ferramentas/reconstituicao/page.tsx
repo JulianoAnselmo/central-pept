@@ -1,0 +1,74 @@
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import ReconstitutionCalculator from '@/components/calculator/ReconstitutionCalculator';
+import { getPeptides } from '@/lib/peptides';
+import MedicalDisclaimer from '@/components/ui/MedicalDisclaimer';
+import FAQ, { type FAQItem } from '@/components/ui/FAQ';
+
+const FAQ_ITEMS: FAQItem[] = [
+  {
+    q: 'O que é água bacteriostática e por que usá-la?',
+    a: 'Água bacteriostática é água estéril contendo álcool benzílico (0,9%) como conservante, que inibe o crescimento bacteriano. É o diluente indicado para reconstituir peptídeos que serão usados em múltiplas aplicações ao longo de dias ou semanas, pois permite que o frasco seja perfurado várias vezes sem contaminação. Para aplicação única, pode-se usar água estéril para injeção (sem conservante).',
+  },
+  {
+    q: 'Qual a diferença entre "unidades" e "ml"?',
+    a: 'Em seringas de insulina, 1 ml = 100 unidades (U). Ou seja, 10 U equivalem a 0,1 ml. A calculadora usa unidades porque seringas de insulina (as usadas para aplicação subcutânea de peptídeos) são marcadas em U, que é uma escala mais precisa para volumes pequenos.',
+  },
+  {
+    q: 'Quantos mg vai dar cada dose se eu usar mais ou menos água?',
+    a: 'A quantidade de peptídeo por dose é decidida por você (ex.: 250 mcg de BPC-157 por aplicação). O que muda com a quantidade de água é a concentração (mg/ml) e portanto quantas unidades da seringa você precisa puxar. Mais água = menor concentração = mais unidades por dose (mais fácil de medir). Menos água = maior concentração = menos unidades por dose.',
+  },
+  {
+    q: 'Por que a calculadora alerta quando passo de 50 unidades?',
+    a: 'A maioria das seringas de insulina tem 30, 50 ou 100 unidades de capacidade. Se sua dose exige mais unidades do que a seringa comporta, você vai precisar aplicar duas vezes ou escolher uma seringa maior. A calculadora alerta para evitar esse erro e sugere valores na faixa ideal (10-50 U), que é a mais fácil de medir com precisão.',
+  },
+  {
+    q: 'Posso guardar o frasco reconstituído? Por quanto tempo?',
+    a: 'Depende do peptídeo e do diluente. Em geral, frascos reconstituídos com água bacteriostática devem ser mantidos na geladeira (2-8°C) e usados em até 28 dias. Peptídeos como BPC-157, semaglutida e tirzepatida costumam manter estabilidade por esse período refrigerados. Não congele — o congelamento pode degradar o peptídeo.',
+  },
+  {
+    q: 'O site serve como receita médica?',
+    a: 'Não. Este site é uma ferramenta de cálculo e uma fonte de informação educativa. As doses típicas listadas são baseadas em literatura científica pública (estudos clínicos, bulas FDA) e não substituem orientação médica. Qualquer uso de peptídeos deve ser discutido com profissional de saúde habilitado.',
+  },
+];
+
+export const metadata: Metadata = {
+  title: 'Calculadora de Reconstituição',
+  description:
+    'Calcule a proporção ideal de reconstituição de peptídeos: concentração, unidades por dose e doses por frasco. Resultado em tempo real, 21 peptídeos catalogados.',
+  openGraph: {
+    title: 'Calculadora de Reconstituição de Peptídeos',
+    description:
+      'Calcule concentração, unidades por dose e doses por frasco em tempo real.',
+  },
+};
+
+export default function ReconstitucaoPage() {
+  const peptides = getPeptides();
+
+  return (
+    <div className="max-w-6xl mx-auto px-4 md:px-6 py-6 md:py-10">
+      <nav className="text-sm text-ink-3 mb-4 flex items-center gap-1.5 no-print">
+        <Link href="/ferramentas" className="hover:text-teal-700">Ferramentas</Link>
+        <span>/</span>
+        <span className="text-ink-2">Reconstituição</span>
+      </nav>
+
+      <header className="mb-8 no-print">
+        <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight">
+          Calculadora de Reconstituição
+        </h1>
+        <p className="mt-2 text-ink-2 max-w-2xl text-base md:text-lg">
+          Escolha o peptídeo, informe quantidade e volume de água — a calculadora
+          mostra quantas unidades puxar na seringa em tempo real.
+        </p>
+      </header>
+
+      <ReconstitutionCalculator peptides={peptides} />
+
+      <FAQ items={FAQ_ITEMS} />
+
+      <MedicalDisclaimer variant="prominent" />
+    </div>
+  );
+}
