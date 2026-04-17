@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import type { Peptide } from '@/lib/peptides';
+import { EbookStickyCTA } from '@/components/ebook/EbookCTA';
 
 type Row = {
   id: string;
@@ -340,6 +341,7 @@ export default function MixCalculator({ peptides }: Props) {
               </div>
             </div>
           )}
+          <EbookStickyCTA />
         </div>
       </div>
     </div>

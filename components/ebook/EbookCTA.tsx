@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import type { Ebook } from '@/lib/ebooks';
+import { EBOOKS } from '@/lib/ebooks';
 
 type Props = {
   ebook: Ebook;
@@ -163,7 +164,7 @@ export default function EbookCTA({ ebook, variant = 'inline', source }: Props) {
  * CTA compacto para caber dentro do card sticky de resultado de calculadora.
  * Fica visível enquanto o usuário mexe nos inputs.
  */
-export function EbookStickyCTA({ ebook, source }: { ebook: Ebook; source?: string }) {
+export function EbookStickyCTA({ ebook = EBOOKS[0], source }: { ebook?: Ebook; source?: string }) {
   return (
     <Link
       href={`/ebook/${ebook.slug}`}

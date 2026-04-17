@@ -2,6 +2,7 @@
 
 import { useMemo, useState, useEffect, useRef } from 'react';
 import type { Peptide, DoseUnit } from '@/lib/peptides';
+import { EbookStickyCTA } from '@/components/ebook/EbookCTA';
 import {
   doseToMg,
   calcByVolume,
@@ -781,6 +782,7 @@ export default function ReconstitutionCalculator({ peptides }: Props) {
               )}
             </div>
           )}
+          <EbookStickyCTA />
         </div>
       </div>
 

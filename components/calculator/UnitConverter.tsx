@@ -2,6 +2,7 @@
 
 import { useMemo, useState, useEffect } from 'react';
 import type { Peptide, DoseUnit } from '@/lib/peptides';
+import { EbookStickyCTA } from '@/components/ebook/EbookCTA';
 
 type Props = { peptides: Peptide[] };
 
@@ -165,6 +166,7 @@ export default function UnitConverter({ peptides }: Props) {
               </div>
             </div>
           )}
+          <EbookStickyCTA />
         </div>
       </div>
     </div>

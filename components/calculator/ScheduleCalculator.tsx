@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from 'react';
 import type { Peptide } from '@/lib/peptides';
+import { EbookStickyCTA } from '@/components/ebook/EbookCTA';
 
 type Props = { peptides: Peptide[] };
 
@@ -285,6 +286,7 @@ export default function ScheduleCalculator({ peptides }: Props) {
             </ul>
           </div>
         )}
+        <EbookStickyCTA />
       </div>
     </div>
   );

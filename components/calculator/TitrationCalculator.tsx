@@ -1,6 +1,7 @@
 'use client';
 
 import { useMemo, useState } from 'react';
+import { EbookStickyCTA } from '@/components/ebook/EbookCTA';
 
 type Scheme = {
   id: string;
@@ -278,6 +279,7 @@ export default function TitrationCalculator() {
               💡 Se aparecerem efeitos intensos (náusea, vômito), não avance para a próxima dose — repita a etapa atual por mais algumas semanas antes de subir.
             </p>
           </div>
+          <EbookStickyCTA />
         </div>
       </div>
     </div>
