@@ -73,28 +73,6 @@ export default function FerramentasPage() {
       </section>
 
       <div className="max-w-6xl mx-auto px-4 md:px-6 py-10 md:py-14">
-        {ebooks.length > 0 && (
-          <div className="mb-8 space-y-3">
-            <div className="grid gap-3 md:grid-cols-2">
-              {ebooks.map((e) => (
-                <EbookCTA
-                  key={e.slug}
-                  ebook={e}
-                  variant="banner"
-                  source={`ferramentas-hub-${e.slug}`}
-                />
-              ))}
-            </div>
-            {bundle && bundleEbooks && (
-              <BundleBanner
-                bundle={bundle}
-                ebooks={bundleEbooks}
-                source="ferramentas-hub-bundle"
-              />
-            )}
-          </div>
-        )}
-
         <div className="grid gap-4 md:gap-6 sm:grid-cols-2">
           {TOOLS.map((t) => {
             const active = t.status === 'ativa';
@@ -133,6 +111,28 @@ export default function FerramentasPage() {
             );
           })}
         </div>
+
+        {ebooks.length > 0 && (
+          <div className="mt-10 md:mt-14 space-y-3">
+            <div className="grid gap-3 md:grid-cols-2">
+              {ebooks.map((e) => (
+                <EbookCTA
+                  key={e.slug}
+                  ebook={e}
+                  variant="banner"
+                  source={`ferramentas-hub-${e.slug}`}
+                />
+              ))}
+            </div>
+            {bundle && bundleEbooks && (
+              <BundleBanner
+                bundle={bundle}
+                ebooks={bundleEbooks}
+                source="ferramentas-hub-bundle"
+              />
+            )}
+          </div>
+        )}
       </div>
     </>
   );
