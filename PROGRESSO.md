@@ -1,6 +1,6 @@
 # Central Peptídeos — Registro de Progresso
 
-> Última atualização: 16 de abril de 2026
+> Última atualização: 17 de abril de 2026
 > Repositório: https://github.com/JulianoAnselmo/central-pept.git
 
 ---
@@ -313,25 +313,78 @@ trailingSlash: true,
 
 ---
 
+## Deploy — Vercel
+
+Migrado de GitHub Pages para **Vercel** em 16/04/2026.
+
+### Mudanças realizadas
+- `next.config.mjs`: removido `output: 'export'`, `basePath`, `assetPrefix`, `images: { unoptimized: true }`
+- `app/feed.xml/route.ts`, `app/robots.ts`, `app/sitemap.ts`: removido `PAGES_BASE`, fallback de `SITE_URL` atualizado para `centralpeptideos.com.br`
+- `.github/workflows/deploy.yml`: removido (Vercel assume o deploy)
+
+### URLs
+- **Produção**: `https://central-pept.vercel.app/`
+- **Ebook**: `https://central-pept.vercel.app/ebook/retatrutida-estrategias`
+- **Domínio customizado**: pendente (quando comprar, apontar em Settings → Domains na Vercel)
+
+### Env vars configuradas na Vercel
+| Var | Valor |
+|---|---|
+| `NEXT_PUBLIC_KIWIFY_RETATRUTIDA` | `https://pay.kiwify.com.br/jIRe8SF` |
+
+---
+
+## Kiwify — Produto configurado
+
+- **Produto**: Retatrutida: Estratégias para Maximizar Resultados
+- **Preço**: R$ 29,90 (âncora R$ 49,90)
+- **Checkout URL**: `https://pay.kiwify.com.br/jIRe8SF`
+- **Status**: Ativo
+- **Imagem**: upload feito (capa com gradiente teal/laranja, caneta injetora)
+- **Pendente**: upload do PDF na área de membros para entrega automática
+
+---
+
+## Sessão 16-17/04/2026 — O que foi feito
+
+### Commits enviados ao GitHub
+| Hash | Descrição |
+|---|---|
+| `f9450ad` | feat: ebook Retatrutida — landing page, CTAs, infra |
+| `3744812` | feat: EbookStickyCTA nas 5 calculadoras |
+| `f251ae2` | feat: ebook indexado na busca global |
+| `258f1f2` | feat: CTAs na página de reconstituição |
+| `1865fb0` | chore: migração para Vercel |
+| `3b251ff` | fix: renomeia env var para NEXT_PUBLIC_KIWIFY_RETATRUTIDA |
+
+### Técnico concluído
+- EbookStickyCTA inserido nos painéis sticky de 5 calculadoras
+- `EbookCTA.tsx`: prop `ebook` agora opcional (default `EBOOKS[0]`)
+- Ebooks indexados na busca global com badge roxo
+- CTAs (banner topo + inline rodapé) na página de reconstituição
+- Env var renomeada de `NEXT_PUBLIC_EBOOK_CHECKOUT_RETATRUTIDA` → `NEXT_PUBLIC_KIWIFY_RETATRUTIDA`
+
+### Verificação ao vivo (17/04/2026)
+- ✅ Home: CTA do ebook visível com preço correto
+- ✅ Landing page: checkout Kiwify real, UTM tracking ativo nos 3 botões
+- ✅ Calculadora Reconstituição: 2 banners funcionando
+
+---
+
 ## Pendências
 
 ### Crítico
-- [ ] **Commitar e fazer push** de todas as mudanças do ebook (o commit inicial só tem o site base, não tem o ebook)
-- [ ] **Configurar Kiwify**: fazer upload do PDF e copiar URL do checkout
-- [ ] **Adicionar o secret** `NEXT_PUBLIC_EBOOK_CHECKOUT_RETATRUTIDA` no GitHub
+- [ ] **Upload do PDF na Kiwify** — área de membros → adicionar `Retatrutida-Estrategias-para-Maximizar-Resultados.pdf` para entrega automática após pagamento
 
-### Técnico
-- [ ] **EbookStickyCTA nas calculadoras**: inserir dentro do `div.lg:sticky.lg:top-20` de cada calculadora (para que o usuário veja o anúncio enquanto usa a ferramenta)
-  - `components/calculator/ReconstitutionCalculator.tsx` (linha ~650)
-  - `components/calculator/MixCalculator.tsx`
-  - `components/calculator/UnitConverter.tsx`
-  - `components/calculator/ScheduleCalculator.tsx`
-  - `components/calculator/TitrationCalculator.tsx`
-- [ ] **Busca global**: adicionar ebook ao `lib/search-index.ts`
-- [ ] **Ferramenta Reconstituição**: finalizar renderização do CTA na página
+### SEO
+- [ ] **Google Search Console** — submeter `https://central-pept.vercel.app/sitemap.xml` para indexação
+
+### Técnico (futuro)
+- [ ] **Domínio customizado** — comprar e apontar na Vercel (Settings → Domains)
+- [ ] **Analytics** — adicionar Vercel Analytics ou Google Analytics
+- [ ] **Página /obrigado** — redirecionar comprador após checkout Kiwify
 
 ### Conteúdo (futuro)
-- [ ] Subir ebook na Kiwify com descrição e cover
 - [ ] Criar mais ebooks para outros peptídeos
 - [ ] Supabase (Fase 2): migrar dados para DB, habilitar edição via Supabase Studio
 
