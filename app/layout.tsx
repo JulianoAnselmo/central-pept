@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
 import Script from 'next/script';
+import { Analytics } from '@vercel/analytics/next';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import './globals.css';
@@ -140,6 +141,7 @@ export default function RootLayout({
         <Header />
         <main id="main" tabIndex={-1} className="flex-1 outline-none">{children}</main>
         <Footer />
+        <Analytics />
       </body>
     </html>
   );
