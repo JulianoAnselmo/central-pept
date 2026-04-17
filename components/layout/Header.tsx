@@ -25,7 +25,7 @@ export default function Header() {
             height={256}
             priority
             sizes="(max-width: 768px) 140px, 200px"
-            className="h-10 md:h-14 w-auto dark:bg-white dark:rounded-md dark:p-1 transition-transform group-hover:scale-[1.02]"
+            className="h-10 md:h-14 w-auto dark:bg-white keep-white dark:rounded-md dark:p-1 transition-transform group-hover:scale-[1.02]"
           />
         </Link>
 

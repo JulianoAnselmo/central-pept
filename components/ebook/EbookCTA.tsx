@@ -34,11 +34,7 @@ export default function EbookCTA({ ebook, variant = 'inline', source }: Props) {
     return (
       <Link
         href={landing}
-        className="group relative block overflow-hidden rounded-xl border border-teal-200 p-3 md:p-4 shadow-sm transition-all hover:shadow-md hover:border-teal hover:-translate-y-0.5"
-        style={{
-          background:
-            'linear-gradient(120deg, rgba(253,186,116,0.18) 0%, rgba(94,234,212,0.15) 50%, rgba(147,197,253,0.18) 100%), #ffffff',
-        }}
+        className="cta-ebook-soft cta-border-teal-soft group relative block overflow-hidden rounded-xl border border-teal-200 p-3 md:p-4 shadow-sm transition-all hover:shadow-md hover:border-teal hover:-translate-y-0.5"
       >
         <div className="flex items-center gap-3 md:gap-4">
           {/* Mini cover */}
@@ -138,11 +134,7 @@ export default function EbookCTA({ ebook, variant = 'inline', source }: Props) {
     <div className="not-prose my-6">
       <Link
         href={landing}
-        className="group block overflow-hidden rounded-xl border border-teal-200 p-4 md:p-5 shadow-sm transition-all hover:shadow-md hover:border-teal hover:-translate-y-0.5"
-        style={{
-          background:
-            'linear-gradient(120deg, rgba(253,186,116,0.18) 0%, rgba(94,234,212,0.15) 50%, rgba(147,197,253,0.18) 100%), #ffffff',
-        }}
+        className="cta-ebook-soft cta-border-teal-soft group block overflow-hidden rounded-xl border border-teal-200 p-4 md:p-5 shadow-sm transition-all hover:shadow-md hover:border-teal hover:-translate-y-0.5"
       >
         <div className="flex items-center gap-4">
           {ebook.coverImage ? (
@@ -164,7 +156,7 @@ export default function EbookCTA({ ebook, variant = 'inline', source }: Props) {
             </div>
           )}
           <div className="flex-1 min-w-0">
-            <span className="inline-block text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-orange-100 text-orange-700 border border-orange-200 mb-1.5">
+            <span className="pill-orange mb-1.5">
               📘 Material complementar
             </span>
             <h3 className="font-extrabold text-ink text-base md:text-lg leading-tight line-clamp-2 group-hover:text-teal-700 transition-colors">
@@ -197,11 +189,7 @@ export function EbookStickyCTA({ ebook = EBOOKS[0], source }: { ebook?: Ebook; s
   return (
     <Link
       href={`/ebook/${ebook.slug}`}
-      className="group block mt-4 overflow-hidden rounded-xl border-2 border-teal p-3 transition-all hover:shadow-lg hover:-translate-y-0.5"
-      style={{
-        background:
-          'linear-gradient(120deg, rgba(253,186,116,0.25) 0%, rgba(94,234,212,0.22) 50%, rgba(147,197,253,0.25) 100%), #ffffff',
-      }}
+      className="cta-ebook-sticky group block mt-4 overflow-hidden rounded-xl border-2 border-teal p-3 transition-all hover:shadow-lg hover:-translate-y-0.5"
       data-source={source}
     >
       <div className="flex items-center gap-3">
@@ -227,7 +215,7 @@ export function EbookStickyCTA({ ebook = EBOOKS[0], source }: { ebook?: Ebook; s
           <div className="flex items-center gap-1.5 mb-0.5">
             <span className="text-[9px] font-bold uppercase tracking-wider text-orange-600">📘 Material</span>
             {ebook.priceFrom && (
-              <span className="text-[9px] font-bold text-orange-700 bg-orange-100 px-1.5 py-0.5 rounded-full border border-orange-200">
+              <span className="pill-orange !text-[9px]">
                 -{Math.round((1 - ebook.price / ebook.priceFrom) * 100)}%
               </span>
             )}
@@ -275,11 +263,7 @@ export function BundleStickyCTA({ source }: { source?: string }) {
       href={href}
       target="_blank"
       rel="noreferrer noopener"
-      className="group block mt-3 overflow-hidden rounded-xl border-2 border-orange-300 p-3 transition-all hover:shadow-lg hover:-translate-y-0.5"
-      style={{
-        background:
-          'linear-gradient(120deg, rgba(253,186,116,0.35) 0%, rgba(254,240,138,0.3) 50%, rgba(94,234,212,0.25) 100%), #ffffff',
-      }}
+      className="cta-bundle-sticky cta-border-orange group block mt-3 overflow-hidden rounded-xl border-2 border-orange-300 p-3 transition-all hover:shadow-lg hover:-translate-y-0.5"
     >
       <div className="flex items-center gap-3">
         {bundle.coverImage ? (
@@ -306,7 +290,7 @@ export function BundleStickyCTA({ source }: { source?: string }) {
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-1.5 mb-0.5">
             <span className="text-[9px] font-bold uppercase tracking-wider text-orange-700">🔥 Combo</span>
-            <span className="text-[9px] font-bold text-orange-700 bg-orange-100 px-1.5 py-0.5 rounded-full border border-orange-200">
+            <span className="pill-orange !text-[9px]">
               -R$ {fmt(saved)}
             </span>
           </div>

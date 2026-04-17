@@ -138,7 +138,7 @@ export default async function EbookLanding({
                   href={ebook.checkoutUrl + (ebook.checkoutUrl.includes('?') ? '&' : '?') + 'utm_source=site&utm_medium=landing-hero'}
                   target="_blank"
                   rel="noreferrer noopener"
-                  className="inline-flex items-center justify-center gap-2 px-8 h-14 rounded-xl font-extrabold text-base text-ink bg-white hover:bg-yellow-50 transition-all shadow-2xl hover:shadow-[0_20px_60px_rgba(0,0,0,0.4)] hover:-translate-y-0.5"
+                  className="inline-flex items-center justify-center gap-2 px-8 h-14 rounded-xl font-extrabold text-base text-slate-900 bg-white keep-white hover:bg-yellow-50 transition-all shadow-2xl hover:shadow-[0_20px_60px_rgba(0,0,0,0.4)] hover:-translate-y-0.5"
                 >
                   Comprar por R$ {ebook.price}
                   <svg viewBox="0 0 20 20" width={18} height={18} fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M4 10h12M10 4l6 6-6 6" /></svg>

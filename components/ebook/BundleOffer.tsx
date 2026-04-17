@@ -32,11 +32,7 @@ export default function BundleOffer({ bundle, current, other, source }: Props) {
   return (
     <section className="max-w-4xl mx-auto px-4 md:px-6 py-10 md:py-14">
       <div
-        className="relative overflow-hidden rounded-2xl border-2 border-orange-300 shadow-xl"
-        style={{
-          background:
-            'linear-gradient(135deg, #fef3c7 0%, #fff7ed 45%, #ecfeff 100%)',
-        }}
+        className="cta-bundle-section cta-border-orange relative overflow-hidden rounded-2xl border-2 border-orange-300 shadow-xl"
       >
         {/* Glow decorativo */}
         <div
@@ -177,11 +173,7 @@ export function BundleBanner({
       href={href}
       target="_blank"
       rel="noreferrer noopener"
-      className="group relative block overflow-hidden rounded-xl border-2 border-orange-300 shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5"
-      style={{
-        background:
-          'linear-gradient(120deg, #fff7ed 0%, #fef3c7 40%, #ecfeff 100%)',
-      }}
+      className="cta-bundle-banner cta-border-orange group relative block overflow-hidden rounded-xl border-2 border-orange-300 shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5"
     >
       <div className="relative p-3 md:p-4 flex items-center gap-3 md:gap-4">
         {/* Imagem do combo (ou mockups como fallback) */}

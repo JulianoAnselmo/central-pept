@@ -182,7 +182,7 @@ export default function TitrationCalculator() {
                 <span className={`mt-0.5 w-4 h-4 rounded-full border-2 flex items-center justify-center flex-shrink-0 ${
                   schemeId === s.id ? 'border-teal bg-teal' : 'border-border-2'
                 }`}>
-                  {schemeId === s.id && <span className="w-1.5 h-1.5 rounded-full bg-white" />}
+                  {schemeId === s.id && <span className="w-1.5 h-1.5 rounded-full bg-white keep-white" />}
                 </span>
                 <div className="min-w-0">
                   <div className="font-semibold text-sm text-ink">{s.name}</div>

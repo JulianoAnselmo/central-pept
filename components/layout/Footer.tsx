@@ -13,7 +13,7 @@ export default function Footer() {
             height={256}
             sizes="180px"
             loading="lazy"
-            className="h-10 w-auto dark:bg-white dark:rounded-md dark:p-1 mb-3"
+            className="h-10 w-auto dark:bg-white keep-white dark:rounded-md dark:p-1 mb-3"
           />
           <p className="text-ink-2 leading-relaxed max-w-md">
             Central brasileira de informação sobre peptídeos. Calculadoras,
