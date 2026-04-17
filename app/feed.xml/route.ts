@@ -2,8 +2,7 @@ import { getArticles } from '@/lib/articles';
 
 export const dynamic = 'force-static';
 
-const SITE_URL = process.env.SITE_URL || 'https://calcular-peps.example.com';
-const BASE = process.env.PAGES_BASE || '';
+const SITE_URL = process.env.SITE_URL || 'https://centralpeptideos.com.br';
 
 function escape(s: string): string {
   return s
@@ -19,7 +18,7 @@ export async function GET() {
   const updated = articles[0]?.updatedAt || articles[0]?.publishedAt || new Date().toISOString();
 
   const items = articles.map((a) => {
-    const url = `${SITE_URL}${BASE}/blog/${a.slug}/`;
+    const url = `${SITE_URL}/blog/${a.slug}/`;
     return `
     <item>
       <title>${escape(a.title)}</title>
@@ -35,8 +34,8 @@ export async function GET() {
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Central Peptídeos — Blog</title>
-    <link>${SITE_URL}${BASE}/blog/</link>
-    <atom:link href="${SITE_URL}${BASE}/feed.xml" rel="self" type="application/rss+xml" />
+    <link>${SITE_URL}/blog/</link>
+    <atom:link href="${SITE_URL}/feed.xml" rel="self" type="application/rss+xml" />
     <description>Artigos, guias e comparativos sobre peptídeos: reconstituição, dosagem, efeitos e regulação.</description>
     <language>pt-BR</language>
     <lastBuildDate>${new Date(updated).toUTCString()}</lastBuildDate>

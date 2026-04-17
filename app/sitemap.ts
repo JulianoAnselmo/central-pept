@@ -5,11 +5,10 @@ import { getEbookSlugs } from '@/lib/ebooks';
 
 export const dynamic = 'force-static';
 
-const SITE = process.env.SITE_URL || 'https://calcular-peps.example.com';
-const BASE = process.env.PAGES_BASE || '';
+const SITE = process.env.SITE_URL || 'https://centralpeptideos.com.br';
 
 function url(path: string): string {
-  return `${SITE}${BASE}${path}`;
+  return `${SITE}${path}`;
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
