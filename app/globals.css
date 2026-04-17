@@ -35,17 +35,24 @@ html.dark {
 @layer base {
   html, body {
     height: 100%;
+  }
+  html {
     /* Evita scroll horizontal acidental no mobile (blobs decorativos,
-       shadows, textos em nowrap, etc.) — clip mantém sticky funcionando. */
+       shadows, etc.) — clip preserva sticky positioning. */
     overflow-x: clip;
   }
   body {
     @apply bg-bg text-ink antialiased;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
-    max-width: 100vw;
   }
   /* Safeguard: SVGs sem width/height não viram gigantes */
   svg { flex-shrink: 0; }
+  /* Safeguard: inputs/selects não têm min-width implícito que estoure grids/flex.
+     Sem isso, `grid-cols-[1fr_xpx]` ou `flex-1` estica além do container no
+     mobile por causa do min-content do placeholder/options. */
+  input, select, textarea {
+    min-width: 0;
+  }
   :focus-visible {
     outline: 2px solid var(--teal);
     outline-offset: 2px;

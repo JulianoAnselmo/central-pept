@@ -103,11 +103,11 @@ export default function MixCalculator({ peptides }: Props) {
               const otherSlugs = rows.filter((x) => x.id !== r.id).map((x) => x.slug);
               return (
                 <div key={r.id} className="flex gap-2 items-center">
-                  <div className="flex-1 min-w-0 grid grid-cols-[1fr_120px] gap-2">
+                  <div className="flex-1 min-w-0 grid grid-cols-[minmax(0,1fr)_100px] sm:grid-cols-[minmax(0,1fr)_120px] gap-2">
                     <select
                       value={r.slug}
                       onChange={(e) => updateRow(r.id, { slug: e.target.value })}
-                      className="h-11 px-3 border-[1.5px] border-border-2 rounded-DEFAULT bg-surface text-ink text-sm outline-none focus:border-teal focus:ring-[3px] focus:ring-teal-50"
+                      className="min-w-0 w-full h-11 px-3 border-[1.5px] border-border-2 rounded-DEFAULT bg-surface text-ink text-sm outline-none focus:border-teal focus:ring-[3px] focus:ring-teal-50"
                       aria-label={`Peptídeo ${i + 1}`}
                     >
                       <option value="">— selecionar —</option>
