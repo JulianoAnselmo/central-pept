@@ -47,6 +47,7 @@ export const metadata: Metadata = {
 
 export default function ReconstitucaoPage() {
   const peptides = getPeptides();
+  const ebooks = getEbooks();
 
   return (
     <div className="max-w-6xl mx-auto px-4 md:px-6 py-6 md:py-10">
@@ -66,9 +67,21 @@ export default function ReconstitucaoPage() {
         </p>
       </header>
 
+      {ebooks[0] && (
+        <div className="mb-8 no-print">
+          <EbookCTA ebook={ebooks[0]} variant="banner" source="reconstituicao-top" />
+        </div>
+      )}
+
       <ReconstitutionCalculator peptides={peptides} />
 
       <FAQ items={FAQ_ITEMS} />
+
+      {ebooks[0] && (
+        <div className="mt-8 no-print">
+          <EbookCTA ebook={ebooks[0]} variant="inline" source="reconstituicao-footer" />
+        </div>
+      )}
 
       <MedicalDisclaimer variant="prominent" />
     </div>
