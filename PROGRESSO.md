@@ -386,18 +386,18 @@ Migrado de GitHub Pages para **Vercel** em 16/04/2026.
 ### Pendências — dependem de você
 
 #### Crítico (necessário pro checkout funcionar)
-- [ ] **Upload do PDF Retatrutida na Kiwify** — sem isso o comprador não recebe o ebook
-- [ ] **Criar produto + PDF do ebook GHK-Cu na Kiwify** (R$ 29,99) + confirmar que env `NEXT_PUBLIC_KIWIFY_GHKCU` aponta pra ele
-- [ ] **Criar produto combo na Kiwify** (R$ 44,98, entrega os 2 PDFs) + confirmar `NEXT_PUBLIC_KIWIFY_COMBO_RETA_GHKCU`
-- [ ] **Atualizar preço Retatrutida no Kiwify** de R$ 29,90 → R$ 29,99 (harmoniza com a soma do combo)
-- [ ] **Env `NEXT_PUBLIC_KIWIFY_RETATRUTIDA` na Vercel** — trocar placeholder pela URL real do produto
+- [✅ ] **Upload do PDF Retatrutida na Kiwify** — sem isso o comprador não recebe o ebook
+- [✅ ] **Criar produto + PDF do ebook GHK-Cu na Kiwify** (R$ 29,99) + confirmar que env `NEXT_PUBLIC_KIWIFY_GHKCU` aponta pra ele
+- [✅ ] **Criar produto combo na Kiwify** (R$ 44,98, entrega os 2 PDFs) + confirmar `NEXT_PUBLIC_KIWIFY_COMBO_RETA_GHKCU`
+- [✅ ] **Atualizar preço Retatrutida no Kiwify** de R$ 29,90 → R$ 29,99 (harmoniza com a soma do combo)
+- [✅ ] **Env `NEXT_PUBLIC_KIWIFY_RETATRUTIDA` na Vercel** — trocar placeholder pela URL real do produto
 
 #### DNS / Domínio (em andamento)
-- [ ] **Configurar DNS no registro.br** pros domínios apontarem pra Vercel:
+- [✅ ] **Configurar DNS no registro.br** pros domínios apontarem pra Vercel:
   - Tipo `A` / host `@` (raiz) → `216.198.79.1`
   - Tipo `CNAME` / host `www` → `c6e922a79e792a20.vercel-dns-017.com.`
-- [ ] **Aguardar propagação** (geralmente <1h, até 24h)
-- [ ] **Redeploy na Vercel** após DNS OK — pra que a variável `SITE_URL` + canonical reflitam o domínio final
+- [✅ ] **Aguardar propagação** (geralmente <1h, até 24h)
+- [ ✅] **Redeploy na Vercel** após DNS OK — pra que a variável `SITE_URL` + canonical reflitam o domínio final
 
 #### SEO (depende do domínio funcionando)
 - [ ] **Google Search Console** — adicionar propriedade `centralpeptideos.com.br`, verificar por DNS TXT, submeter `https://centralpeptideos.com.br/sitemap.xml`

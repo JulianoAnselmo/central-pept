@@ -15,8 +15,8 @@ export default function ArticleLayout({ article, children }: Props) {
     '@type': 'Article',
     headline: article.title,
     description: article.excerpt,
-    datePublished: article.publishedAt,
-    dateModified: article.updatedAt || article.publishedAt,
+    datePublished: article.publishedAt.includes('T') ? article.publishedAt : `${article.publishedAt}T00:00:00-03:00`,
+    dateModified: (() => { const d = article.updatedAt || article.publishedAt; return d.includes('T') ? d : `${d}T00:00:00-03:00`; })(),
     author: article.author
       ? {
           '@type': 'Person',
