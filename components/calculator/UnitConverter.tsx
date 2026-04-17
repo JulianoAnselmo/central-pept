@@ -64,7 +64,7 @@ export default function UnitConverter({ peptides }: Props) {
   }, [peptide, mg]);
 
   return (
-    <div className="grid gap-6 lg:grid-cols-[460px_1fr] items-start">
+    <div className="grid grid-cols-1 gap-6 lg:grid-cols-[460px_minmax(0,1fr)] items-start">
       {/* Inputs */}
       <div className="flex flex-col gap-5">
         <section className="card p-6">

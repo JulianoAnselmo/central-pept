@@ -323,7 +323,7 @@ export default function ReconstitutionCalculator({ peptides }: Props) {
   }
 
   return (
-    <div className="grid gap-6 lg:grid-cols-[460px_1fr] items-start">
+    <div className="grid grid-cols-1 gap-6 lg:grid-cols-[460px_minmax(0,1fr)] items-start">
       {/* ── Inputs ── */}
       <div className="flex flex-col gap-5 no-print">
         {/* Peptídeo */}
@@ -716,11 +716,11 @@ export default function ReconstitutionCalculator({ peptides }: Props) {
               {/* Hero */}
               <div className="px-5 pt-5 text-center">
                 <div className="text-xs font-bold uppercase tracking-wider text-ink-3 mb-1.5">Puxe até</div>
-                <div className="flex items-baseline justify-center gap-2.5">
-                  <span className="text-[72px] font-extrabold tracking-tight text-teal leading-none tabular-nums">
+                <div className="flex items-baseline justify-center gap-2 flex-wrap">
+                  <span className="text-[56px] sm:text-[72px] font-extrabold tracking-tight text-teal leading-none tabular-nums">
                     {fmt(result.unitsPerDose, 1)}
                   </span>
-                  <span className="text-[22px] font-semibold text-ink-3 pb-1.5">unidades</span>
+                  <span className="text-[18px] sm:text-[22px] font-semibold text-ink-3 pb-1.5">unidades</span>
                 </div>
                 <div className="text-xs text-ink-3 mt-1.5 min-h-[20px]">
                   em seringa de {syringe} U · equivale a <span className="tabular-nums font-semibold">{fmt(result.unitsPerDose / 100, 2)} ml</span>
