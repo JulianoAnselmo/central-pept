@@ -6,7 +6,7 @@ const SITE = process.env.SITE_URL || 'https://centralpeptideos.com.br';
 
 export default function robots(): MetadataRoute.Robots {
   return {
-    rules: [{ userAgent: '*', allow: '/' }],
+    rules: [{ userAgent: '*', allow: '/', disallow: '/admin/' }],
     sitemap: `${SITE}/sitemap.xml`,
   };
 }
