@@ -1,6 +1,6 @@
 # Central Peptídeos — Registro de Progresso
 
-> Última atualização: 17 de abril de 2026 (sessão mobile/SEO)
+> Última atualização: 17 de abril de 2026 (sessão SEO/indexação)
 > Repositório: https://github.com/JulianoAnselmo/central-pept.git
 
 ---
@@ -400,10 +400,10 @@ Migrado de GitHub Pages para **Vercel** em 16/04/2026.
 - [ ✅] **Redeploy na Vercel** após DNS OK — pra que a variável `SITE_URL` + canonical reflitam o domínio final
 
 #### SEO (depende do domínio funcionando)
-- [ ] **Google Search Console** — adicionar propriedade `centralpeptideos.com.br`, verificar por DNS TXT, submeter `https://centralpeptideos.com.br/sitemap.xml`
-- [ ] **Bing Webmaster Tools** — mesmo processo, traz tráfego residual
-- [ ] **Rich Results Test** ([link](https://search.google.com/test/rich-results)) — validar schemas Product/Article/FAQ nas páginas principais
-- [ ] **Lighthouse mobile** (Chrome DevTools → Lighthouse) — conferir LCP/CLS/INP depois do DNS; esperar verde agora que imagens estão leves
+- [✅] **Google Search Console** — propriedade verificada por DNS TXT, sitemap `https://centralpeptideos.com.br/sitemap.xml` submetido (107 URLs)
+- [✅] **Bing Webmaster Tools** — configurado via importação do Google Search Console
+- [✅] **Rich Results Test** — schemas validados; corrigido fuso horário nas datas do schema `Article` (`fe62980`)
+- [ ] **Lighthouse mobile** (Chrome DevTools → Lighthouse) — conferir LCP/CLS/INP
 
 #### Opcional / polish (pode esperar)
 - [ ] Trocar `logo.png` (121 KB) por WebP otimizado ou redimensionar pra ≤60 KB
@@ -415,6 +415,26 @@ Migrado de GitHub Pages para **Vercel** em 16/04/2026.
 ### Conteúdo (futuro)
 - [ ] Criar mais ebooks para outros peptídeos
 - [ ] Supabase (Fase 2): migrar dados para DB, habilitar edição via Supabase Studio
+
+---
+
+## Sessão 17/04/2026 (tarde) — Indexação e SEO
+
+### Feito
+- ✅ Domínio `centralpeptideos.com.br` aprovado e no ar
+- ✅ Google Search Console: propriedade verificada por DNS TXT, sitemap submetido (107 URLs)
+- ✅ Bing Webmaster Tools: configurado via importação do GSC
+- ✅ Rich Results Test validado — schemas `Article`, `Product`, `MedicalSubstance` OK
+- ✅ Fix: datas do schema `Article` agora incluem fuso horário `-03:00` (`fe62980`)
+
+### Próximas pendências
+- [ ] **Lighthouse mobile** — rodar em `centralpeptideos.com.br` e conferir LCP/CLS/INP
+- [ ] **Aguardar indexação** — checar Search Console em 2–3 dias para ver cobertura
+- [ ] **Página `/obrigado`** — thank-you page pós-checkout (confiança + pixel de conversão futuro)
+- [ ] **Otimizar logo** — trocar `logo.png` (121 KB) por WebP ≤60 KB
+- [ ] **OG dinâmica nos artigos** — hoje usa `/logo.png` como fallback
+- [ ] **Mais ebooks** — BPC-157, CJC+Ipamorelina (artigos já bem posicionados)
+- [ ] **Supabase (Fase 2)** — migrar dados para DB, edição via Supabase Studio
 
 ---
 
