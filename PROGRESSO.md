@@ -1,6 +1,6 @@
 # Central Peptídeos — Registro de Progresso
 
-> Última atualização: 17 de abril de 2026 (sessão SEO/indexação)
+> Última atualização: 17 de abril de 2026 (sessão SEO/acessibilidade)
 > Repositório: https://github.com/JulianoAnselmo/central-pept.git
 
 ---
@@ -425,10 +425,13 @@ Migrado de GitHub Pages para **Vercel** em 16/04/2026.
 - ✅ Google Search Console: propriedade verificada por DNS TXT, sitemap submetido (107 URLs)
 - ✅ Bing Webmaster Tools: configurado via importação do GSC
 - ✅ Rich Results Test validado — schemas `Article`, `Product`, `MedicalSubstance` OK
-- ✅ Fix: datas do schema `Article` agora incluem fuso horário `-03:00` (`fe62980`)
+- ✅ Fix: datas do schema `Article` com fuso horário `-03:00` (`fe62980`)
+- ✅ Lighthouse mobile: Performance **95**, SEO **100**, Accessibility 92, Best Practices 96
+- ✅ Fix contraste WCAG AA: `btn-teal` e `--text-3` (`e85ed02`)
 
 ### Próximas pendências
-- [ ] **Lighthouse mobile** — rodar em `centralpeptideos.com.br` e conferir LCP/CLS/INP
+- [✅] **Lighthouse mobile** — Performance 95, Accessibility 92, Best Practices 96, SEO 100 (score 61 era falso positivo por extensões do Chrome — validado em modo anônimo)
+- [✅] **Contraste WCAG AA corrigido** (`e85ed02`) — `btn-teal` 3.75:1→5.47:1; `--text-3` 2.56:1→4.76:1
 - [ ] **Aguardar indexação** — checar Search Console em 2–3 dias para ver cobertura
 - [ ] **Página `/obrigado`** — thank-you page pós-checkout (confiança + pixel de conversão futuro)
 - [ ] **Otimizar logo** — trocar `logo.png` (121 KB) por WebP ≤60 KB
