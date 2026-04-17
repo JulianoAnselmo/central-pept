@@ -1,11 +1,12 @@
 import { getPeptides, CATEGORY_LABELS } from './peptides';
 import { getArticles } from './articles';
+import { getEbooks } from './ebooks';
 
 export type SearchResult = {
   id: string;
   title: string;
   subtitle?: string;
-  type: 'peptide' | 'article' | 'tool' | 'page';
+  type: 'peptide' | 'article' | 'tool' | 'page' | 'ebook';
   url: string;
   keywords: string;
 };
@@ -41,6 +42,18 @@ export function buildSearchIndex(): SearchResult[] {
       type: 'article',
       url: `/blog/${a.slug}`,
       keywords: [a.title, a.excerpt, ...a.tags].join(' ').toLowerCase(),
+    });
+  }
+
+  // Ebooks
+  for (const e of getEbooks()) {
+    items.push({
+      id: `eb-${e.slug}`,
+      title: e.title,
+      subtitle: e.hook,
+      type: 'ebook',
+      url: `/ebook/${e.slug}`,
+      keywords: [e.title, e.subtitle, e.hook, ...(e.relatedTags ?? [])].join(' ').toLowerCase(),
     });
   }
 

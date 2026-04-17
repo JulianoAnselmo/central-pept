@@ -9,6 +9,7 @@ const TYPE_LABELS: Record<SearchResult['type'], string> = {
   article: 'Artigo',
   tool: 'Ferramenta',
   page: 'Página',
+  ebook: 'Ebook',
 };
 
 const TYPE_COLORS: Record<SearchResult['type'], string> = {
@@ -16,6 +17,7 @@ const TYPE_COLORS: Record<SearchResult['type'], string> = {
   article: 'bg-blue-50 text-blue-700 border-blue-100',
   tool: 'bg-orange-50 text-orange-700 border-orange-100',
   page: 'bg-slate-100 text-slate-600 border-slate-200',
+  ebook: 'bg-purple-50 text-purple-700 border-purple-100',
 };
 
 export default function GlobalSearch() {
