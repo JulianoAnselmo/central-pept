@@ -28,9 +28,9 @@ export type Ebook = {
 };
 
 // URL de checkout vem de env pra facilitar trocar sem rebuild de código.
-// Defina NEXT_PUBLIC_EBOOK_CHECKOUT_RETATRUTIDA=https://pay.kiwify.com.br/XXX
+// Defina NEXT_PUBLIC_KIWIFY_RETATRUTIDA=https://pay.kiwify.com.br/XXX
 const CHECKOUT_RETATRUTIDA =
-  process.env.NEXT_PUBLIC_EBOOK_CHECKOUT_RETATRUTIDA ||
+  process.env.NEXT_PUBLIC_KIWIFY_RETATRUTIDA ||
   'https://pay.kiwify.com.br/PLACEHOLDER';
 
 export const EBOOKS: Ebook[] = [
