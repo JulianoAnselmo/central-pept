@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from 'react';
 import type { Peptide } from '@/lib/peptides';
-import { EbookStickyCTA } from '@/components/ebook/EbookCTA';
+import { EbookSidebarStack } from '@/components/ebook/EbookCTA';
 
 type Props = { peptides: Peptide[] };
 
@@ -197,6 +197,7 @@ export default function ScheduleCalculator({ peptides }: Props) {
                   type="number"
                   min={1}
                   max={30}
+                  inputMode="numeric"
                   value={customDays}
                   onChange={(e) => setCustomDays(e.target.value === '' ? '' : parseInt(e.target.value))}
                   className="h-11 px-3 border-[1.5px] border-border-2 rounded-DEFAULT bg-surface text-sm tabular-nums outline-none focus:border-teal focus:ring-[3px] focus:ring-teal-50"
@@ -229,6 +230,7 @@ export default function ScheduleCalculator({ peptides }: Props) {
                 type="number"
                 min={1}
                 max={52}
+                inputMode="numeric"
                 value={durationWeeks}
                 onChange={(e) => setDurationWeeks(e.target.value === '' ? '' : parseInt(e.target.value))}
                 className="h-11 px-3 border-[1.5px] border-border-2 rounded-DEFAULT bg-surface text-sm tabular-nums outline-none focus:border-teal focus:ring-[3px] focus:ring-teal-50"
@@ -286,7 +288,7 @@ export default function ScheduleCalculator({ peptides }: Props) {
             </ul>
           </div>
         )}
-        <EbookStickyCTA />
+        <EbookSidebarStack source="cronograma-sidebar" />
       </div>
     </div>
   );

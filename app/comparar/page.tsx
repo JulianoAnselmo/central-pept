@@ -7,6 +7,7 @@ import MedicalDisclaimer from '@/components/ui/MedicalDisclaimer';
 export const metadata: Metadata = {
   title: 'Comparador de Peptídeos',
   description: 'Compare até 4 peptídeos lado a lado: mecanismo, dose, meia-vida, efeitos e status regulatório.',
+  alternates: { canonical: '/comparar' },
 };
 
 const POPULAR_COMPARISONS: { slugs: string[]; title: string }[] = [

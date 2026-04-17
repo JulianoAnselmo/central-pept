@@ -4,6 +4,7 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'Metodologia Editorial',
   description: 'Como a Central Peptídeos produz conteúdo: fontes, processo de revisão, atualizações e transparência.',
+  alternates: { canonical: '/metodologia' },
 };
 
 export default function MetodologiaPage() {

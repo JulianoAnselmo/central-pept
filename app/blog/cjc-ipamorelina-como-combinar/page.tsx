@@ -7,6 +7,7 @@ const SLUG = 'cjc-ipamorelina-como-combinar';
 export const metadata: Metadata = {
   title: 'CJC-1295 + Ipamorelina: o combo mais usado, explicado',
   description: 'Por que combinar GHRH (CJC-1295) com GHRP (ipamorelina) potencializa liberação de GH, e limites de segurança.',
+  alternates: { canonical: `/blog/${SLUG}` },
 };
 
 export default function Article() {

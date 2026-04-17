@@ -7,6 +7,7 @@ const SLUG = 'efeito-rebote-apos-parar-semaglutida';
 export const metadata: Metadata = {
   title: 'Efeito rebote após parar semaglutida: o que esperar',
   description: 'Dados do STEP-4 sobre reganho de peso pós-descontinuação e estratégias para minimizar o rebote.',
+  alternates: { canonical: `/blog/${SLUG}` },
 };
 
 export default function Article() {

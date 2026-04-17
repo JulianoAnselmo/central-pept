@@ -7,6 +7,7 @@ const SLUG = 'bpc-157-ciclo-duracao';
 export const metadata: Metadata = {
   title: 'Ciclo de BPC-157: quanto tempo usar e quando pausar',
   description: 'Protocolos típicos de ciclo de BPC-157 baseados em literatura pré-clínica e uso informal, com orientações de segurança.',
+  alternates: { canonical: `/blog/${SLUG}` },
 };
 
 export default function Article() {

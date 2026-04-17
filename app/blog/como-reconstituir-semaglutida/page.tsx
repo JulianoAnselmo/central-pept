@@ -8,6 +8,7 @@ const SLUG = 'como-reconstituir-semaglutida';
 export const metadata: Metadata = {
   title: 'Como reconstituir semaglutida: passo a passo completo',
   description: 'Guia prático e seguro de reconstituição de semaglutida: proporções, cálculo de dose e armazenamento do frasco.',
+  alternates: { canonical: `/blog/${SLUG}` },
 };
 
 export default function Article() {

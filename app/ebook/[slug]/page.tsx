@@ -1,8 +1,10 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { notFound } from 'next/navigation';
-import { getEbookBySlug, getEbookSlugs } from '@/lib/ebooks';
+import { getEbookBySlug, getEbookSlugs, getBundleForEbook } from '@/lib/ebooks';
 import { EbookBuyButton } from '@/components/ebook/EbookCTA';
+import BundleOffer from '@/components/ebook/BundleOffer';
 import FAQ from '@/components/ui/FAQ';
 import MedicalDisclaimer from '@/components/ui/MedicalDisclaimer';
 
@@ -21,10 +23,21 @@ export async function generateMetadata({
   return {
     title: ebook.title,
     description: ebook.hook,
+    alternates: { canonical: `/ebook/${slug}` },
     openGraph: {
       title: ebook.title,
       description: ebook.hook,
       type: 'website',
+      url: `/ebook/${slug}`,
+      ...(ebook.coverImage && {
+        images: [{ url: ebook.coverImage, width: 800, height: 800, alt: ebook.title }],
+      }),
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: ebook.title,
+      description: ebook.hook,
+      ...(ebook.coverImage && { images: [ebook.coverImage] }),
     },
   };
 }
@@ -41,6 +54,8 @@ export default async function EbookLanding({
   const discountPct = ebook.priceFrom
     ? Math.round((1 - ebook.price / ebook.priceFrom) * 100)
     : 0;
+  const bundleInfo = getBundleForEbook(ebook.slug);
+  const coverTitle = ebook.shortTitle ?? ebook.title;
 
   // Schema Product — faz o Google mostrar preço/rating nos resultados
   const productJsonLd = {
@@ -146,7 +161,7 @@ export default async function EbookLanding({
               </div>
             </div>
 
-            {/* Mockup do ebook */}
+            {/* Capa/Mockup do ebook */}
             <div className="flex justify-center lg:justify-end">
               <div className="relative">
                 {/* Glow dourado por trás */}
@@ -156,54 +171,79 @@ export default async function EbookLanding({
                   aria-hidden
                 />
                 {/* Badge flutuante */}
-                <div className="absolute -top-4 -right-4 z-20 w-20 h-20 rounded-full bg-yellow-400 text-ink font-black text-xs flex flex-col items-center justify-center shadow-xl rotate-12 border-4 border-white">
-                  <span className="text-[9px] uppercase tracking-widest">Novo</span>
-                  <span className="text-xl leading-none">52%</span>
-                  <span className="text-[9px] uppercase tracking-widest">OFF</span>
-                </div>
-                {/* Capa */}
-                <div
-                  className="relative w-64 md:w-80 aspect-[3/4] rounded-xl shadow-2xl flex flex-col items-center justify-between text-white p-6 md:p-8 border-2 border-white/30 rotate-[-2deg] hover:rotate-0 transition-transform duration-500"
-                  style={{
-                    background:
-                      'linear-gradient(145deg, #0f172a 0%, #1e293b 45%, #0f172a 100%)',
-                    boxShadow:
-                      '0 25px 50px -12px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.1) inset',
-                  }}
-                >
-                  <div className="w-full flex flex-col items-center">
-                    <div className="text-[10px] font-bold uppercase tracking-[0.3em] text-yellow-300 mb-1">EBOOK</div>
-                    <div
-                      className="h-1 w-20 rounded-full"
-                      style={{ background: 'linear-gradient(90deg, #fbbf24, #f97316)' }}
+                {ebook.priceFrom && (
+                  <div className="absolute -top-4 -right-4 z-20 w-20 h-20 rounded-full bg-yellow-400 text-ink font-black text-xs flex flex-col items-center justify-center shadow-xl rotate-12 border-4 border-white">
+                    <span className="text-[9px] uppercase tracking-widest">Novo</span>
+                    <span className="text-xl leading-none">{discountPct}%</span>
+                    <span className="text-[9px] uppercase tracking-widest">OFF</span>
+                  </div>
+                )}
+                {ebook.coverImage ? (
+                  <div className="relative w-72 md:w-96 rounded-xl overflow-hidden shadow-2xl border-2 border-white/30 rotate-[-2deg] hover:rotate-0 transition-transform duration-500">
+                    <Image
+                      src={ebook.coverImage}
+                      alt={ebook.title}
+                      width={800}
+                      height={800}
+                      className="w-full h-auto object-cover"
+                      priority
                     />
                   </div>
-                  <div className="text-center">
-                    <h2
-                      className="text-3xl md:text-4xl font-black tracking-tight leading-[1.05]"
-                      style={{
-                        background: 'linear-gradient(135deg, #fbbf24 0%, #ffffff 60%, #5eead4 100%)',
-                        WebkitBackgroundClip: 'text',
-                        WebkitTextFillColor: 'transparent',
-                      }}
-                    >
-                      Retatrutida
-                    </h2>
-                    <div className="h-0.5 w-12 bg-white/40 mx-auto my-4" />
-                    <p className="text-xs md:text-sm text-white/85 leading-relaxed font-medium">
-                      Estratégias para<br />Maximizar Resultados
-                    </p>
+                ) : (
+                  /* Capa fallback (mockup CSS) */
+                  <div
+                    className="relative w-64 md:w-80 aspect-[3/4] rounded-xl shadow-2xl flex flex-col items-center justify-between text-white p-6 md:p-8 border-2 border-white/30 rotate-[-2deg] hover:rotate-0 transition-transform duration-500"
+                    style={{
+                      background:
+                        'linear-gradient(145deg, #0f172a 0%, #1e293b 45%, #0f172a 100%)',
+                      boxShadow:
+                        '0 25px 50px -12px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.1) inset',
+                    }}
+                  >
+                    <div className="w-full flex flex-col items-center">
+                      <div className="text-[10px] font-bold uppercase tracking-[0.3em] text-yellow-300 mb-1">EBOOK</div>
+                      <div
+                        className="h-1 w-20 rounded-full"
+                        style={{ background: 'linear-gradient(90deg, #fbbf24, #f97316)' }}
+                      />
+                    </div>
+                    <div className="text-center">
+                      <h2
+                        className="text-3xl md:text-4xl font-black tracking-tight leading-[1.05]"
+                        style={{
+                          background: 'linear-gradient(135deg, #fbbf24 0%, #ffffff 60%, #5eead4 100%)',
+                          WebkitBackgroundClip: 'text',
+                          WebkitTextFillColor: 'transparent',
+                        }}
+                      >
+                        {coverTitle}
+                      </h2>
+                      <div className="h-0.5 w-12 bg-white/40 mx-auto my-4" />
+                      <p className="text-xs md:text-sm text-white/85 leading-relaxed font-medium">
+                        {ebook.subtitle}
+                      </p>
+                    </div>
+                    <div className="w-full flex flex-col items-center gap-1">
+                      <div className="text-[10px] uppercase tracking-widest text-white/60">Central Peptídeos</div>
+                      <div className="text-[10px] font-bold uppercase tracking-widest text-yellow-300">2026</div>
+                    </div>
                   </div>
-                  <div className="w-full flex flex-col items-center gap-1">
-                    <div className="text-[10px] uppercase tracking-widest text-white/60">Central Peptídeos</div>
-                    <div className="text-[10px] font-bold uppercase tracking-widest text-yellow-300">2026</div>
-                  </div>
-                </div>
+                )}
               </div>
             </div>
           </div>
         </div>
       </section>
+
+      {/* ═══ BUNDLE OFFER (pós-hero, super visível) ═══ */}
+      {bundleInfo && (
+        <BundleOffer
+          bundle={bundleInfo.bundle}
+          current={ebook}
+          other={bundleInfo.otherEbook}
+          source={`bundle-${ebook.slug}-hero`}
+        />
+      )}
 
       {/* ═══ VALOR: O que tem dentro ═══ */}
       <section className="max-w-4xl mx-auto px-4 md:px-6 py-14 md:py-20">
@@ -282,6 +322,16 @@ export default async function EbookLanding({
           <TrustItem icon="🔒" title="Seguro" desc="Checkout Kiwify" />
         </div>
       </section>
+
+      {/* ═══ BUNDLE OFFER (pré-FAQ — última chance) ═══ */}
+      {bundleInfo && (
+        <BundleOffer
+          bundle={bundleInfo.bundle}
+          current={ebook}
+          other={bundleInfo.otherEbook}
+          source={`bundle-${ebook.slug}-prefaq`}
+        />
+      )}
 
       {/* ═══ FAQ ═══ */}
       <section className="bg-surface border-y border-border">

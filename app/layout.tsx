@@ -22,7 +22,7 @@ try {
 `.trim();
 
 const PLAUSIBLE = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN;
-const SITE_URL = process.env.SITE_URL || 'https://calcular-peps.example.com';
+const SITE_URL = process.env.SITE_URL || 'https://centralpeptideos.com.br';
 
 // Schemas globais — aparecem em todas as páginas
 const websiteJsonLd = {
@@ -67,7 +67,7 @@ const organizationJsonLd = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://calcular-peps.example.com'),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: 'Central Peptídeos — Calculadoras e enciclopédia',
     template: '%s · Central Peptídeos',
@@ -86,11 +86,11 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/fav.png', type: 'image/png' },
+      { url: '/fav.jpg', type: 'image/jpeg' },
       { url: '/favicon.svg', type: 'image/svg+xml' },
     ],
-    shortcut: '/fav.png',
-    apple: '/fav.png',
+    shortcut: '/fav.jpg',
+    apple: '/fav.jpg',
   },
   robots: { index: true, follow: true },
 };

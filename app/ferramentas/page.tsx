@@ -1,12 +1,15 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
 import EbookCTA from '@/components/ebook/EbookCTA';
-import { getEbooks } from '@/lib/ebooks';
+import { BundleBanner } from '@/components/ebook/BundleOffer';
+import type { Ebook } from '@/lib/ebooks';
+import { getEbooks, BUNDLES, getEbookBySlug } from '@/lib/ebooks';
 
 export const metadata: Metadata = {
   title: 'Ferramentas',
   description:
     'Calculadoras e utilitários para trabalhar com peptídeos: reconstituição, mistura, conversão de unidades.',
+  alternates: { canonical: '/ferramentas' },
 };
 
 type Tool = {
@@ -43,14 +46,18 @@ const TOOLS: Tool[] = [
   },
   {
     slug: 'titulacao',
-    title: 'Titulação GLP-1',
-    desc: 'Monte o plano de subida de doses para semaglutida (Ozempic/Wegovy) e tirzepatida (Mounjaro/Zepbound) com datas.',
+    title: 'Subida de Dose — Ozempic e Mounjaro',
+    desc: 'Calendário semana a semana de escalonamento para semaglutida (Ozempic/Wegovy) e tirzepatida (Mounjaro/Zepbound). Com datas e export .ics.',
     status: 'ativa',
   },
 ];
 
 export default function FerramentasPage() {
-  const ebook = getEbooks()[0];
+  const ebooks = getEbooks();
+  const bundle = BUNDLES[0];
+  const bundleEbooks = bundle
+    ? (bundle.ebookSlugs.map(getEbookBySlug).filter(Boolean) as [Ebook, Ebook])
+    : null;
   return (
     <>
       <section className="bg-gradient-mesh border-b border-border">
@@ -66,9 +73,25 @@ export default function FerramentasPage() {
       </section>
 
       <div className="max-w-6xl mx-auto px-4 md:px-6 py-10 md:py-14">
-        {ebook && (
-          <div className="mb-8">
-            <EbookCTA ebook={ebook} variant="banner" source="ferramentas-hub" />
+        {ebooks.length > 0 && (
+          <div className="mb-8 space-y-3">
+            <div className="grid gap-3 md:grid-cols-2">
+              {ebooks.map((e) => (
+                <EbookCTA
+                  key={e.slug}
+                  ebook={e}
+                  variant="banner"
+                  source={`ferramentas-hub-${e.slug}`}
+                />
+              ))}
+            </div>
+            {bundle && bundleEbooks && (
+              <BundleBanner
+                bundle={bundle}
+                ebooks={bundleEbooks}
+                source="ferramentas-hub-bundle"
+              />
+            )}
           </div>
         )}
 

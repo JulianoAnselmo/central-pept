@@ -6,6 +6,7 @@ import NewsletterSignup from '@/components/ui/NewsletterSignup';
 export const metadata: Metadata = {
   title: 'Blog',
   description: 'Artigos e guias sobre peptídeos: reconstituição, comparações, armazenamento e protocolos.',
+  alternates: { canonical: '/blog' },
 };
 
 export default function BlogPage() {

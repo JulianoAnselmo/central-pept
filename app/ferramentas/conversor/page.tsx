@@ -12,6 +12,7 @@ export const metadata: Metadata = {
     title: 'Conversor mg ↔ mcg ↔ UI',
     description: 'Conversor de unidades para peptídeos.',
   },
+  alternates: { canonical: '/ferramentas/conversor' },
 };
 
 export default function ConversorPage() {

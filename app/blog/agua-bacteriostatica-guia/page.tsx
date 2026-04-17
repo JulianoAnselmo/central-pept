@@ -8,6 +8,7 @@ const SLUG = 'agua-bacteriostatica-guia';
 export const metadata: Metadata = {
   title: 'Água bacteriostática: o que é e quando usar',
   description: 'Entenda o diluente padrão para reconstituição de peptídeos: composição, durabilidade, alternativas e armazenamento correto.',
+  alternates: { canonical: `/blog/${SLUG}` },
 };
 
 export default function Article() {

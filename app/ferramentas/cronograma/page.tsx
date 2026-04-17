@@ -7,6 +7,7 @@ import MedicalDisclaimer from '@/components/ui/MedicalDisclaimer';
 export const metadata: Metadata = {
   title: 'Cronograma de Doses',
   description: 'Monte um cronograma de aplicações e baixe como arquivo .ics para importar no Google Calendar, Apple Calendar ou Outlook.',
+  alternates: { canonical: '/ferramentas/cronograma' },
 };
 
 export default function CronogramaPage() {

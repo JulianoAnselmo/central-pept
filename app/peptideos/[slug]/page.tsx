@@ -10,8 +10,7 @@ import ShareButtons from '@/components/ui/ShareButtons';
 import InjectionSiteGuide from '@/components/peptide/InjectionSiteGuide';
 import FAQ from '@/components/ui/FAQ';
 import { buildPeptideFaq } from '@/lib/peptide-faqs';
-import EbookCTA from '@/components/ebook/EbookCTA';
-import { getEbooksForPeptide } from '@/lib/ebooks';
+import { EbookShowcase } from '@/components/ebook/EbookCTA';
 
 type Params = { slug: string };
 
@@ -43,9 +42,12 @@ export async function generateMetadata({
   return {
     title: p.name,
     description: p.shortDescription,
+    alternates: { canonical: `/peptideos/${slug}` },
     openGraph: {
       title: `${p.name} — Central Peptídeos`,
       description: p.shortDescription,
+      url: `/peptideos/${slug}`,
+      type: 'article',
     },
   };
 }
@@ -64,7 +66,6 @@ export default async function PeptidePage({
     : [];
 
   const faq = buildPeptideFaq(p);
-  const ebooks = getEbooksForPeptide(p.slug);
   const isApprovedDrug = p.regulatoryStatus === 'fda-approved' || p.regulatoryStatus === 'discontinued';
   const substanceJsonLd: Record<string, unknown> = {
     '@context': 'https://schema.org',
@@ -165,12 +166,8 @@ export default async function PeptidePage({
 
       {/* ═══ CONTEÚDO ═══ */}
       <div className="max-w-4xl mx-auto px-4 md:px-6 py-8 md:py-12">
-        {/* Ebook CTA no topo — quando há ebook relevante pra este peptídeo */}
-        {ebooks.length > 0 && (
-          <div className="mb-6">
-            <EbookCTA ebook={ebooks[0]} variant="banner" source={`peptide-${p.slug}-top`} />
-          </div>
-        )}
+        {/* Ebooks + combo — sempre visíveis */}
+        <EbookShowcase source={`peptide-${p.slug}-top`} className="mb-6" />
 
         <QuickCalcWidget peptide={p} />
 
@@ -321,10 +318,8 @@ export default async function PeptidePage({
 
         <FAQ items={faq} title={`Perguntas frequentes sobre ${p.name}`} />
 
-        {/* Ebook CTA pós-FAQ — leitor engajado, alto intent */}
-        {ebooks.length > 0 && (
-          <EbookCTA ebook={ebooks[0]} variant="inline" source={`peptide-${p.slug}-bottom`} />
-        )}
+        {/* Ebooks + combo pós-FAQ — leitor engajado, alto intent */}
+        <EbookShowcase source={`peptide-${p.slug}-bottom`} className="mt-8" />
 
         <div className="mt-10 pt-6 border-t border-border">
           <ShareButtons title={`${p.name} — Central Peptídeos`} url={`/peptideos/${p.slug}`} />

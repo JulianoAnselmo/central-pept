@@ -7,6 +7,7 @@ const SLUG = 'efeitos-colaterais-semaglutida';
 export const metadata: Metadata = {
   title: 'Semaglutida faz mal? Efeitos colaterais documentados',
   description: 'Revisão dos efeitos adversos da semaglutida a partir dos ensaios STEP, SUSTAIN e relatórios pós-comercialização.',
+  alternates: { canonical: `/blog/${SLUG}` },
 };
 
 export default function Article() {

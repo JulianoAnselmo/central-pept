@@ -5,6 +5,7 @@ import MedicalDisclaimer from '@/components/ui/MedicalDisclaimer';
 export const metadata: Metadata = {
   title: 'Sobre',
   description: 'Metodologia editorial, fontes e compromisso com informação médica responsável na Central Peptídeos.',
+  alternates: { canonical: '/sobre' },
 };
 
 export default function SobrePage() {

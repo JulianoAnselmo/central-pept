@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Glossário',
   description: 'Termos técnicos usados na reconstituição, dosagem e administração de peptídeos explicados de forma clara.',
+  alternates: { canonical: '/glossario' },
 };
 
 type Term = { term: string; definition: React.ReactNode; };

@@ -7,6 +7,7 @@ const SLUG = 'tirzepatida-manipulada-seguranca';
 export const metadata: Metadata = {
   title: 'Tirzepatida manipulada é segura? Cuidados ao usar',
   description: 'Diferenças entre Mounjaro industrializado e tirzepatida manipulada: controle de qualidade, sinais de confiabilidade e riscos.',
+  alternates: { canonical: `/blog/${SLUG}` },
 };
 
 export default function Article() {

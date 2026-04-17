@@ -7,6 +7,7 @@ const SLUG = 'ozempic-para-perder-peso-sem-diabetes';
 export const metadata: Metadata = {
   title: 'Ozempic para perder peso sem diabetes: o que a ciência mostra',
   description: 'Dados do programa STEP sobre uso de semaglutida em pessoas sem diabetes, riscos do uso estético e diferença em relação ao Wegovy.',
+  alternates: { canonical: `/blog/${SLUG}` },
 };
 
 export default function Article() {

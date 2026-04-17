@@ -63,7 +63,7 @@ export function buildSearchIndex(): SearchResult[] {
     { slug: 'mistura', title: 'Calculadora de Mistura', desc: '2-4 peptídeos no mesmo frasco' },
     { slug: 'conversor', title: 'Conversor mg ↔ mcg ↔ UI', desc: 'Conversão entre unidades' },
     { slug: 'cronograma', title: 'Cronograma de Doses', desc: 'Agenda + export .ics' },
-    { slug: 'titulacao', title: 'Titulação GLP-1', desc: 'Escada de doses semaglutida / tirzepatida' },
+    { slug: 'titulacao', title: 'Subida de Dose — Ozempic e Mounjaro', desc: 'Escada de doses semaglutida / tirzepatida, com datas' },
   ];
   for (const t of tools) {
     items.push({

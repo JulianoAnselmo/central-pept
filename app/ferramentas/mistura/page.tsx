@@ -12,6 +12,7 @@ export const metadata: Metadata = {
     title: 'Calculadora de Mistura de Peptídeos',
     description: 'Dose correta de cada peptídeo numa seringa combinada.',
   },
+  alternates: { canonical: '/ferramentas/mistura' },
 };
 
 export default function MisturaPage() {

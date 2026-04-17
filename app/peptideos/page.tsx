@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: 'Peptídeos',
   description:
     'Enciclopédia de peptídeos: dose típica, frequência e descrição de 21 compostos. Busca e filtro por categoria.',
+  alternates: { canonical: '/peptideos' },
 };
 
 export default function PeptideosPage() {

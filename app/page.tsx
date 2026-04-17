@@ -3,12 +3,15 @@ import type { Metadata } from 'next';
 import { getPeptides } from '@/lib/peptides';
 import NewsletterSignup from '@/components/ui/NewsletterSignup';
 import EbookCTA from '@/components/ebook/EbookCTA';
-import { getEbooks } from '@/lib/ebooks';
+import { BundleBanner } from '@/components/ebook/BundleOffer';
+import type { Ebook } from '@/lib/ebooks';
+import { getEbooks, BUNDLES, getEbookBySlug } from '@/lib/ebooks';
 
 export const metadata: Metadata = {
-  title: 'Central Peptídeos — Calculadoras e enciclopédia',
+  title: 'Peptídeos: Calculadoras, Enciclopédia e Guias | Central Peptídeos',
   description:
-    'Calculadoras de reconstituição, mistura e conversão, enciclopédia de 21 peptídeos e guias práticos. Gratuito, sem cadastro.',
+    'Calculadoras de reconstituição, mistura, conversão mg/mcg/UI e subida de dose GLP-1. Enciclopédia de 21 peptídeos com doses e protocolos. Grátis, sem cadastro.',
+  alternates: { canonical: '/' },
 };
 
 const TOOLS = [
@@ -39,6 +42,24 @@ const TOOLS = [
       <path d="M7 7h10M7 7l3-3M7 7l3 3M17 17H7M17 17l-3-3M17 17l-3 3" />
     ),
   },
+  {
+    slug: 'titulacao',
+    title: 'Subida de Dose GLP-1',
+    desc: 'Escalonamento semana a semana para Ozempic, Wegovy, Mounjaro e Zepbound.',
+    color: 'orange',
+    icon: (
+      <path d="M3 17l6-6 4 4 8-8M14 7h7v7" />
+    ),
+  },
+  {
+    slug: 'cronograma',
+    title: 'Cronograma',
+    desc: 'Monte o calendário de doses e exporte .ics pro Google Calendar.',
+    color: 'teal',
+    icon: (
+      <path d="M8 2v4M16 2v4M3 10h18M5 6h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z" />
+    ),
+  },
 ];
 
 const STEPS = [
@@ -64,7 +85,10 @@ export default function HomePage() {
   const fdaApproved = peptides.filter((p) => p.regulatoryStatus === 'fda-approved').length;
   const wadaBanned = peptides.filter((p) => p.wadaProhibited).length;
   const ebooks = getEbooks();
-  const featuredEbook = ebooks[0];
+  const bundle = BUNDLES[0];
+  const bundleEbooks = bundle
+    ? (bundle.ebookSlugs.map(getEbookBySlug).filter(Boolean) as [Ebook, Ebook])
+    : null;
 
   return (
     <div>
@@ -296,10 +320,26 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ═══ EBOOK DESTAQUE ═══ */}
-      {featuredEbook && (
-        <section className="max-w-5xl mx-auto px-4 md:px-6 py-8 md:py-12">
-          <EbookCTA ebook={featuredEbook} variant="banner" source="home-featured" />
+      {/* ═══ EBOOKS DESTAQUE ═══ */}
+      {ebooks.length > 0 && (
+        <section className="max-w-5xl mx-auto px-4 md:px-6 py-8 md:py-12 space-y-3">
+          <div className="grid gap-3 md:grid-cols-2">
+            {ebooks.map((e) => (
+              <EbookCTA
+                key={e.slug}
+                ebook={e}
+                variant="banner"
+                source={`home-featured-${e.slug}`}
+              />
+            ))}
+          </div>
+          {bundle && bundleEbooks && (
+            <BundleBanner
+              bundle={bundle}
+              ebooks={bundleEbooks}
+              source="home-bundle"
+            />
+          )}
         </section>
       )}
 

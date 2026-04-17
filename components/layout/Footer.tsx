@@ -28,7 +28,7 @@ export default function Footer() {
             <li><Link href="/ferramentas/mistura" className="hover:text-teal-700">Mistura</Link></li>
             <li><Link href="/ferramentas/conversor" className="hover:text-teal-700">Conversor</Link></li>
             <li><Link href="/ferramentas/cronograma" className="hover:text-teal-700">Cronograma</Link></li>
-            <li><Link href="/ferramentas/titulacao" className="hover:text-teal-700">Titulação GLP-1</Link></li>
+            <li><Link href="/ferramentas/titulacao" className="hover:text-teal-700">Subida de Dose GLP-1</Link></li>
           </ul>
         </div>
 
@@ -40,8 +40,13 @@ export default function Footer() {
             <li><Link href="/blog" className="hover:text-teal-700">Blog</Link></li>
             <li><Link href="/glossario" className="hover:text-teal-700">Glossário</Link></li>
             <li>
-              <Link href="/ebook/retatrutida-estrategias" className="hover:text-teal-700 inline-flex items-center gap-1">
+              <Link href="/ebook/retatrutida-estrategias" className="hover:text-teal-700">
                 Ebook Retatrutida
+              </Link>
+            </li>
+            <li>
+              <Link href="/ebook/ghk-cu-pele" className="hover:text-teal-700 inline-flex items-center gap-1">
+                Ebook GHK-Cu
                 <span className="text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded bg-orange-100 text-orange-700">novo</span>
               </Link>
             </li>

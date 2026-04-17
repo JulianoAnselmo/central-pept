@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Contato',
   description: 'Canais de contato com a Central Peptídeos para correções, sugestões e questões editoriais.',
+  alternates: { canonical: '/contato' },
 };
 
 export default function ContatoPage() {

@@ -43,6 +43,7 @@ export const metadata: Metadata = {
     description:
       'Calcule concentração, unidades por dose e doses por frasco em tempo real.',
   },
+  alternates: { canonical: '/ferramentas/reconstituicao' },
 };
 
 export default function ReconstitucaoPage() {
@@ -66,12 +67,6 @@ export default function ReconstitucaoPage() {
           mostra quantas unidades puxar na seringa em tempo real.
         </p>
       </header>
-
-      {ebooks[0] && (
-        <div className="mb-8 no-print">
-          <EbookCTA ebook={ebooks[0]} variant="banner" source="reconstituicao-top" />
-        </div>
-      )}
 
       <ReconstitutionCalculator peptides={peptides} />
 

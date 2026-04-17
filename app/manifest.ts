@@ -15,9 +15,9 @@ export default function manifest(): MetadataRoute.Manifest {
     lang: 'pt-BR',
     categories: ['health', 'medical', 'education', 'utilities'],
     icons: [
-      { src: '/fav.png', sizes: '192x192', type: 'image/png', purpose: 'any' },
-      { src: '/fav.png', sizes: '512x512', type: 'image/png', purpose: 'any' },
-      { src: '/fav.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' },
+      { src: '/fav.jpg', sizes: '192x192', type: 'image/jpeg', purpose: 'any' },
+      { src: '/fav.jpg', sizes: '512x512', type: 'image/jpeg', purpose: 'any' },
+      { src: '/fav.jpg', sizes: '512x512', type: 'image/jpeg', purpose: 'maskable' },
     ],
     shortcuts: [
       {

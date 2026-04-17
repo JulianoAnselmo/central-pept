@@ -6,6 +6,7 @@ const SLUG = 'ozempic-falso-como-identificar';
 export const metadata: Metadata = {
   title: 'Ozempic falso: como identificar e o que fazer',
   description: 'Sinais de falsificação em embalagens Ozempic, alertas da ANVISA e passos para verificar procedência.',
+  alternates: { canonical: `/blog/${SLUG}` },
 };
 
 export default function Article() {

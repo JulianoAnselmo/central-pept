@@ -6,6 +6,7 @@ const SLUG = 'nausea-ozempic-como-lidar';
 export const metadata: Metadata = {
   title: 'Náusea no Ozempic: como minimizar e quando procurar médico',
   description: 'Estratégias práticas para reduzir náusea durante titulação de semaglutida, quando persistir é sinal de alerta.',
+  alternates: { canonical: `/blog/${SLUG}` },
 };
 
 export default function Article() {

@@ -7,6 +7,7 @@ const SLUG = 'quanto-tempo-ozempic-faz-efeito';
 export const metadata: Metadata = {
   title: 'Quanto tempo Ozempic leva para começar a fazer efeito?',
   description: 'Linha do tempo: controle glicêmico em dias, saciedade em semanas, perda de peso em meses.',
+  alternates: { canonical: `/blog/${SLUG}` },
 };
 
 export default function Article() {

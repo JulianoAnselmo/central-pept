@@ -1,7 +1,7 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import { EbookStickyCTA } from '@/components/ebook/EbookCTA';
+import { EbookSidebarStack } from '@/components/ebook/EbookCTA';
 
 type Scheme = {
   id: string;
@@ -65,6 +65,20 @@ const SCHEMES: Scheme[] = [
       { week: 21, dose: 15 },
     ],
     notes: 'Mesmo esquema do Mounjaro; marca Zepbound aprovada em 2023 para obesidade.',
+  },
+  {
+    id: 'retatrutida',
+    name: 'Retatrutida (tri-agonista — experimental, fase 3)',
+    unit: 'mg/semana',
+    steps: [
+      { week: 1, dose: 2 },
+      { week: 5, dose: 4 },
+      { week: 9, dose: 6 },
+      { week: 13, dose: 8 },
+      { week: 17, dose: 10 },
+      { week: 21, dose: 12 },
+    ],
+    notes: 'Retatrutida (LY3437943, tri-agonista GLP-1/GIP/glucagon). Ainda em fase 3 (TRIUMPH) — ainda sem aprovação FDA/ANVISA. Protocolo baseado nos trials: incrementos de 2 mg a cada 4 semanas até 12 mg/semana.',
   },
 ];
 
@@ -279,7 +293,7 @@ export default function TitrationCalculator() {
               💡 Se aparecerem efeitos intensos (náusea, vômito), não avance para a próxima dose — repita a etapa atual por mais algumas semanas antes de subir.
             </p>
           </div>
-          <EbookStickyCTA />
+          <EbookSidebarStack source="titulacao-sidebar" />
         </div>
       </div>
     </div>

@@ -2,7 +2,7 @@
 
 import { useMemo, useState, useEffect, useRef } from 'react';
 import type { Peptide, DoseUnit } from '@/lib/peptides';
-import { EbookStickyCTA } from '@/components/ebook/EbookCTA';
+import { EbookSidebarStack } from '@/components/ebook/EbookCTA';
 import {
   doseToMg,
   calcByVolume,
@@ -486,6 +486,7 @@ export default function ReconstitutionCalculator({ peptides }: Props) {
                       type="number"
                       min="0"
                       step="any"
+                      inputMode="decimal"
                       value={customDose}
                       onChange={(e) => setCustomDose(e.target.value)}
                       onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); submitCustom(); } }}
@@ -782,7 +783,7 @@ export default function ReconstitutionCalculator({ peptides }: Props) {
               )}
             </div>
           )}
-          <EbookStickyCTA />
+          <EbookSidebarStack source="reconstituicao-sidebar" />
         </div>
       </div>
 

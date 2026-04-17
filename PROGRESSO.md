@@ -1,6 +1,6 @@
 # Central Peptídeos — Registro de Progresso
 
-> Última atualização: 17 de abril de 2026
+> Última atualização: 17 de abril de 2026 (sessão mobile/SEO)
 > Repositório: https://github.com/JulianoAnselmo/central-pept.git
 
 ---
@@ -371,18 +371,46 @@ Migrado de GitHub Pages para **Vercel** em 16/04/2026.
 
 ---
 
-## Pendências
+## Sessão 17/04 — Mobile + SEO + compressão de imagens
 
-### Crítico
-- [ ] **Upload do PDF na Kiwify** — área de membros → adicionar `Retatrutida-Estrategias-para-Maximizar-Resultados.pdf` para entrega automática após pagamento
+### Feito (código — já subiu no commit)
+- ✅ `inputMode="decimal"` / `"numeric"` nos inputs das calculadoras (teclado numérico no mobile)
+- ✅ `alternates: { canonical }` em **todas** as páginas principais — home, ferramentas (5), peptídeos, comparar, blog, 13 artigos, glossário, metodologia, sobre, contato, termos, privacidade, ebook landing, página de cada peptídeo
+- ✅ OpenGraph + Twitter card completos nas landings de ebook (usam a cover.jpg)
+- ✅ OG em cada peptídeo aponta URL do slug
+- ✅ Home: title mais rico em palavra-chave ("Peptídeos: Calculadoras, Enciclopédia e Guias"), description melhorada
+- ✅ SITE_URL padrão = `https://centralpeptideos.com.br` (afeta canonical, JSON-LD, OG)
+- ✅ Imagens comprimidas PNG→JPG (fav 2MB→22KB, ebooks ~2MB→~150KB cada). Refs atualizadas em `lib/ebooks.ts`, `app/manifest.ts`, `app/layout.tsx`
+- ✅ Build estático passa limpo (`npm run build` OK)
 
-### SEO
-- [ ] **Google Search Console** — submeter `https://central-pept.vercel.app/sitemap.xml` para indexação
+### Pendências — dependem de você
 
-### Técnico (futuro)
-- [ ] **Domínio customizado** — comprar e apontar na Vercel (Settings → Domains)
-- [ ] **Analytics** — adicionar Vercel Analytics ou Google Analytics
-- [ ] **Página /obrigado** — redirecionar comprador após checkout Kiwify
+#### Crítico (necessário pro checkout funcionar)
+- [ ] **Upload do PDF Retatrutida na Kiwify** — sem isso o comprador não recebe o ebook
+- [ ] **Criar produto + PDF do ebook GHK-Cu na Kiwify** (R$ 29,99) + confirmar que env `NEXT_PUBLIC_KIWIFY_GHKCU` aponta pra ele
+- [ ] **Criar produto combo na Kiwify** (R$ 44,98, entrega os 2 PDFs) + confirmar `NEXT_PUBLIC_KIWIFY_COMBO_RETA_GHKCU`
+- [ ] **Atualizar preço Retatrutida no Kiwify** de R$ 29,90 → R$ 29,99 (harmoniza com a soma do combo)
+- [ ] **Env `NEXT_PUBLIC_KIWIFY_RETATRUTIDA` na Vercel** — trocar placeholder pela URL real do produto
+
+#### DNS / Domínio (em andamento)
+- [ ] **Configurar DNS no registro.br** pros domínios apontarem pra Vercel:
+  - Tipo `A` / host `@` (raiz) → `216.198.79.1`
+  - Tipo `CNAME` / host `www` → `c6e922a79e792a20.vercel-dns-017.com.`
+- [ ] **Aguardar propagação** (geralmente <1h, até 24h)
+- [ ] **Redeploy na Vercel** após DNS OK — pra que a variável `SITE_URL` + canonical reflitam o domínio final
+
+#### SEO (depende do domínio funcionando)
+- [ ] **Google Search Console** — adicionar propriedade `centralpeptideos.com.br`, verificar por DNS TXT, submeter `https://centralpeptideos.com.br/sitemap.xml`
+- [ ] **Bing Webmaster Tools** — mesmo processo, traz tráfego residual
+- [ ] **Rich Results Test** ([link](https://search.google.com/test/rich-results)) — validar schemas Product/Article/FAQ nas páginas principais
+- [ ] **Lighthouse mobile** (Chrome DevTools → Lighthouse) — conferir LCP/CLS/INP depois do DNS; esperar verde agora que imagens estão leves
+
+#### Opcional / polish (pode esperar)
+- [ ] Trocar `logo.png` (121 KB) por WebP otimizado ou redimensionar pra ≤60 KB
+- [ ] Criar `/obrigado` — thank-you page para redirecionar após checkout Kiwify (aumenta confiança + permite pixel de conversão)
+- [ ] **Vercel Analytics** — ativar (grátis até 2.5k visitas/mês, mostra Core Web Vitals reais)
+- [ ] OG dinâmica também pros artigos do blog (hoje usa só `/logo.png` como fallback)
+- [ ] Alt text mais descritivo nas capas de ebook (`"Capa do ebook Retatrutida..."` em vez de só o título)
 
 ### Conteúdo (futuro)
 - [ ] Criar mais ebooks para outros peptídeos

@@ -6,6 +6,7 @@ const SLUG = 'como-guardar-ozempic-wegovy';
 export const metadata: Metadata = {
   title: 'Como guardar Ozempic e Wegovy corretamente',
   description: 'Orientações de armazenamento conforme bula: temperatura, proteção da luz, tempo pós-abertura e dicas de viagem.',
+  alternates: { canonical: `/blog/${SLUG}` },
 };
 
 export default function Article() {
