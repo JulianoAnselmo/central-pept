@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
+import EbookCTA from '@/components/ebook/EbookCTA';
+import { getEbooks } from '@/lib/ebooks';
 
 export const metadata: Metadata = {
   title: 'Ferramentas',
@@ -48,6 +50,7 @@ const TOOLS: Tool[] = [
 ];
 
 export default function FerramentasPage() {
+  const ebook = getEbooks()[0];
   return (
     <>
       <section className="bg-gradient-mesh border-b border-border">
@@ -63,6 +66,12 @@ export default function FerramentasPage() {
       </section>
 
       <div className="max-w-6xl mx-auto px-4 md:px-6 py-10 md:py-14">
+        {ebook && (
+          <div className="mb-8">
+            <EbookCTA ebook={ebook} variant="banner" source="ferramentas-hub" />
+          </div>
+        )}
+
         <div className="grid gap-4 md:gap-6 sm:grid-cols-2">
           {TOOLS.map((t) => {
             const active = t.status === 'ativa';

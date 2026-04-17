@@ -2,6 +2,8 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { getPeptides } from '@/lib/peptides';
 import NewsletterSignup from '@/components/ui/NewsletterSignup';
+import EbookCTA from '@/components/ebook/EbookCTA';
+import { getEbooks } from '@/lib/ebooks';
 
 export const metadata: Metadata = {
   title: 'Central Peptídeos — Calculadoras e enciclopédia',
@@ -61,6 +63,8 @@ export default function HomePage() {
   const peptides = getPeptides();
   const fdaApproved = peptides.filter((p) => p.regulatoryStatus === 'fda-approved').length;
   const wadaBanned = peptides.filter((p) => p.wadaProhibited).length;
+  const ebooks = getEbooks();
+  const featuredEbook = ebooks[0];
 
   return (
     <div>
@@ -291,6 +295,13 @@ export default function HomePage() {
           ))}
         </div>
       </section>
+
+      {/* ═══ EBOOK DESTAQUE ═══ */}
+      {featuredEbook && (
+        <section className="max-w-5xl mx-auto px-4 md:px-6 py-8 md:py-12">
+          <EbookCTA ebook={featuredEbook} variant="banner" source="home-featured" />
+        </section>
+      )}
 
       {/* ═══ NEWSLETTER ═══ */}
       <section className="max-w-4xl mx-auto px-4 md:px-6 py-8 md:py-12">

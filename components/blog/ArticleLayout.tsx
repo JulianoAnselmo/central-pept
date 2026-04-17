@@ -2,6 +2,8 @@ import Link from 'next/link';
 import type { Article } from '@/lib/articles';
 import MedicalDisclaimer from '@/components/ui/MedicalDisclaimer';
 import ShareButtons from '@/components/ui/ShareButtons';
+import EbookCTA from '@/components/ebook/EbookCTA';
+import { getEbooksForTags } from '@/lib/ebooks';
 
 type Props = {
   article: Article;
@@ -117,6 +119,12 @@ export default function ArticleLayout({ article, children }: Props) {
 
       {/* Corpo */}
       <article className="max-w-3xl mx-auto px-4 md:px-6 py-10 md:py-12 prose-article">
+        {(() => {
+          const relevantEbooks = getEbooksForTags(article.tags);
+          return relevantEbooks.length > 0 ? (
+            <EbookCTA ebook={relevantEbooks[0]} variant="inline" source={`article-${article.slug}`} />
+          ) : null;
+        })()}
         {article.tldr && (
           <aside className="not-prose mb-8 p-5 rounded-xl bg-teal-50 border-l-4 border-teal" aria-label="Resumo">
             <div className="flex items-center gap-2 mb-1.5">

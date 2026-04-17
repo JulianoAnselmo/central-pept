@@ -4,6 +4,8 @@ import ReconstitutionCalculator from '@/components/calculator/ReconstitutionCalc
 import { getPeptides } from '@/lib/peptides';
 import MedicalDisclaimer from '@/components/ui/MedicalDisclaimer';
 import FAQ, { type FAQItem } from '@/components/ui/FAQ';
+import EbookCTA from '@/components/ebook/EbookCTA';
+import { getEbooks } from '@/lib/ebooks';
 
 const FAQ_ITEMS: FAQItem[] = [
   {

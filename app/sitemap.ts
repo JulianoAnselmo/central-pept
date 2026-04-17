@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { getPeptideSlugs } from '@/lib/peptides';
 import { getArticleSlugs, getArticleBySlug, getArticles } from '@/lib/articles';
+import { getEbookSlugs } from '@/lib/ebooks';
 
 export const dynamic = 'force-static';
 
@@ -65,6 +66,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: 'weekly' as const,
       priority: 0.5,
+    })),
+    ...getEbookSlugs().map((slug) => ({
+      url: url(`/ebook/${slug}/`),
+      lastModified: now,
+      changeFrequency: 'monthly' as const,
+      priority: 0.9, // alta — são páginas de conversão
     })),
   ];
 }
