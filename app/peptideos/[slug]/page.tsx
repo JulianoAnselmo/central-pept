@@ -10,6 +10,7 @@ import ShareButtons from '@/components/ui/ShareButtons';
 import InjectionSiteGuide from '@/components/peptide/InjectionSiteGuide';
 import FAQ from '@/components/ui/FAQ';
 import { buildPeptideFaq } from '@/lib/peptide-faqs';
+import AffiliateBox from '@/components/affiliate/AffiliateBox';
 
 type Params = { slug: string };
 
@@ -166,6 +167,17 @@ export default async function PeptidePage({
       {/* ═══ CONTEÚDO ═══ */}
       <div className="max-w-4xl mx-auto px-4 md:px-6 py-8 md:py-12">
         <QuickCalcWidget peptide={p} />
+
+        {(p.category === 'glp-1' || p.category === 'weight-loss') && (
+          <section className="mt-6 mb-2">
+            <AffiliateBox
+              productId="natflix_fitness_hotmart"
+              slot={`peptide-${p.slug}`}
+              title={`${p.name} + treino: combo que entrega resultado`}
+              blurb={`Medicação reduz fome, mas sem treino você perde músculo junto com gordura. Natflix tem 1000+ aulas pra fazer em casa — protocolo pronto pra quem usa ${p.name}.`}
+            />
+          </section>
+        )}
 
         {/* Info cards — grid de 4 com ícones */}
         <section className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">

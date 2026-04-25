@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import ArticleLayout from '@/components/blog/ArticleLayout';
 import { getArticleBySlug } from '@/lib/articles';
+import AffiliateBox from '@/components/affiliate/AffiliateBox';
 
 const SLUG = 'como-reconstituir-semaglutida';
 
@@ -133,6 +134,15 @@ export default function Article() {
         referências da FDA — acesse a{' '}
         <Link href="/peptideos/semaglutida">ficha técnica da semaglutida</Link>.
       </p>
+
+      <div className="my-8 not-prose">
+        <AffiliateBox
+          productId="natflix_fitness_hotmart"
+          slot="blog-reconstituir-sema"
+          title="Reconstituiu a dose? Faltou o treino"
+          blurb="Semaglutida + treino = perda de gordura preservando massa magra. Natflix tem plano completo pra fazer em casa — combina com qualquer subida de dose."
+        />
+      </div>
     </ArticleLayout>
   );
 }

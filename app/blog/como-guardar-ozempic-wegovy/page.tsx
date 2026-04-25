@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import ArticleLayout from '@/components/blog/ArticleLayout';
 import { getArticleBySlug } from '@/lib/articles';
+import AffiliateBox from '@/components/affiliate/AffiliateBox';
 
 const SLUG = 'como-guardar-ozempic-wegovy';
 export const metadata: Metadata = {
@@ -48,6 +49,15 @@ export default function Article() {
       <p>
         Pens e seringas usadas vão em <strong>recipiente perfurocortante</strong> (Descarpack ou similar). Nunca no lixo comum. Farmácias e UBS aceitam entregas de material de descarte.
       </p>
+
+      <div className="my-8 not-prose">
+        <AffiliateBox
+          productId="natflix_fitness_hotmart"
+          slot="blog-como-guardar"
+          title="Guardou bem? Próximo passo é treinar"
+          blurb="Frasco preservado mantém a medicação. Treino preserva o seu músculo durante a perda de peso. Natflix tem 1000+ aulas pra fazer em casa, sem academia."
+        />
+      </div>
     </ArticleLayout>
   );
 }

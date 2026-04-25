@@ -4,6 +4,7 @@ import { getPeptides } from '@/lib/peptides';
 import NewsletterSignup from '@/components/ui/NewsletterSignup';
 import EbookCTA from '@/components/ebook/EbookCTA';
 import { BundleBanner } from '@/components/ebook/BundleOffer';
+import AffiliateBox from '@/components/affiliate/AffiliateBox';
 import type { Ebook } from '@/lib/ebooks';
 import { getEbooks, BUNDLES, getEbookBySlug } from '@/lib/ebooks';
 
@@ -342,6 +343,14 @@ export default function HomePage() {
           )}
         </section>
       )}
+
+      {/* ═══ AFILIADO NATFLIX ═══ */}
+      <section className="max-w-5xl mx-auto px-4 md:px-6 py-8 md:py-12">
+        <AffiliateBox
+          productId="natflix_fitness_hotmart"
+          slot="home-featured"
+        />
+      </section>
 
       {/* ═══ NEWSLETTER ═══ */}
       <section className="max-w-4xl mx-auto px-4 md:px-6 py-8 md:py-12">

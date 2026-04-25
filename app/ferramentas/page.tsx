@@ -2,6 +2,7 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import EbookCTA from '@/components/ebook/EbookCTA';
 import { BundleBanner } from '@/components/ebook/BundleOffer';
+import AffiliateBox from '@/components/affiliate/AffiliateBox';
 import type { Ebook } from '@/lib/ebooks';
 import { getEbooks, BUNDLES, getEbookBySlug } from '@/lib/ebooks';
 
@@ -133,6 +134,13 @@ export default function FerramentasPage() {
             )}
           </div>
         )}
+
+        <div className="mt-10">
+          <AffiliateBox
+            productId="natflix_fitness_hotmart"
+            slot="ferramentas-hub"
+          />
+        </div>
       </div>
     </>
   );
