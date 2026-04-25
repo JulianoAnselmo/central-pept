@@ -69,7 +69,7 @@ export const AFFILIATES: Record<string, AffiliateProduct> = {
   planilha_peptideo_hotmart: {
     id: 'planilha_peptideo_hotmart',
     network: 'hotmart',
-    url: 'https://go.hotmart.com/T105551445E',
+    url: 'https://go.hotmart.com/T105551445E?src=central-peptideos',
     title: 'Planilha de protocolo de peptídeos',
     blurb: 'Planilha pronta: cronograma de aplicações, doses, controle de frasco e registro de efeitos. Ideal pra acompanhar o protocolo semana a semana.',
     cta: 'Ver planilha',
