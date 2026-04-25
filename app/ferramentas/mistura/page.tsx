@@ -3,6 +3,7 @@ import Link from 'next/link';
 import MixCalculator from '@/components/calculator/MixCalculator';
 import { getPeptides } from '@/lib/peptides';
 import MedicalDisclaimer from '@/components/ui/MedicalDisclaimer';
+import AffiliateBox from '@/components/affiliate/AffiliateBox';
 
 export const metadata: Metadata = {
   title: 'Calculadora de Mistura',
@@ -37,6 +38,13 @@ export default function MisturaPage() {
       </header>
 
       <MixCalculator peptides={peptides} />
+
+      <div className="mt-8">
+        <AffiliateBox
+          productId="natflix_fitness_hotmart"
+          slot="mistura-bottom"
+        />
+      </div>
 
       <MedicalDisclaimer variant="prominent" />
     </div>

@@ -4,6 +4,7 @@ import ReconstitutionCalculator from '@/components/calculator/ReconstitutionCalc
 import { getPeptides } from '@/lib/peptides';
 import MedicalDisclaimer from '@/components/ui/MedicalDisclaimer';
 import FAQ, { type FAQItem } from '@/components/ui/FAQ';
+import AffiliateBox from '@/components/affiliate/AffiliateBox';
 
 const FAQ_ITEMS: FAQItem[] = [
   {
@@ -66,6 +67,13 @@ export default function ReconstitucaoPage() {
       </header>
 
       <ReconstitutionCalculator peptides={peptides} />
+
+      <div className="mt-8">
+        <AffiliateBox
+          productId="natflix_fitness_hotmart"
+          slot="reconstituicao-bottom"
+        />
+      </div>
 
       <FAQ items={FAQ_ITEMS} />
 

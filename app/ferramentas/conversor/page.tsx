@@ -3,6 +3,7 @@ import Link from 'next/link';
 import UnitConverter from '@/components/calculator/UnitConverter';
 import { getPeptides } from '@/lib/peptides';
 import MedicalDisclaimer from '@/components/ui/MedicalDisclaimer';
+import AffiliateBox from '@/components/affiliate/AffiliateBox';
 
 export const metadata: Metadata = {
   title: 'Conversor de Unidades',
@@ -37,6 +38,13 @@ export default function ConversorPage() {
       </header>
 
       <UnitConverter peptides={peptides} />
+
+      <div className="mt-8">
+        <AffiliateBox
+          productId="natflix_fitness_hotmart"
+          slot="conversor-bottom"
+        />
+      </div>
 
       <MedicalDisclaimer variant="prominent" />
     </div>
