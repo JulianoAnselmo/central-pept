@@ -2,8 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import TitrationCalculator from '@/components/calculator/TitrationCalculator';
 import MedicalDisclaimer from '@/components/ui/MedicalDisclaimer';
-import EbookCTA from '@/components/ebook/EbookCTA';
-import { getEbooks } from '@/lib/ebooks';
+import AffiliateBox from '@/components/affiliate/AffiliateBox';
 
 export const metadata: Metadata = {
   title: 'Plano de Subida de Dose — Ozempic, Wegovy e Mounjaro',
@@ -16,8 +15,6 @@ export const metadata: Metadata = {
 };
 
 export default function TitulacaoPage() {
-  const ebooks = getEbooks();
-  const featuredEbook = ebooks[0];
   return (
     <div className="max-w-6xl mx-auto px-4 md:px-6 py-6 md:py-10">
       <nav className="text-sm text-ink-3 mb-4 flex items-center gap-1.5">
@@ -39,11 +36,9 @@ export default function TitulacaoPage() {
 
       <TitrationCalculator />
 
-      {featuredEbook && (
-        <div className="mt-10">
-          <EbookCTA ebook={featuredEbook} variant="inline" source="titulacao-bottom" />
-        </div>
-      )}
+      <div className="mt-8">
+        <AffiliateBox productId="planilha_peptideo_hotmart" slot="titulacao-bottom" />
+      </div>
 
       <MedicalDisclaimer variant="prominent" />
     </div>

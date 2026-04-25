@@ -1,0 +1,40 @@
+export const KEYWORDS = [
+  'reconstituição',
+  'reconstituir',
+  'reconstituicao',
+  'quantas unidades',
+  'seringa',
+  'insulina',
+  'titulação',
+  'titulacao',
+  'protocolo',
+  'semaglutida',
+  'sema',
+  'tirzepatida',
+  'tirze',
+  'reta',
+  'retatrutida',
+  'mounjaro',
+  'wegovy',
+  'ozempic',
+  'bpc',
+  'bpc-157',
+  'tb-500',
+  'peptídeo',
+  'peptideo',
+  'peptide',
+  'glp-1',
+  'glp1',
+  'dose',
+  'dosagem',
+  'frasco',
+  'ml',
+  'mg',
+  'água bacteriostática',
+  'agua bacteriostatica',
+];
+
+export function matchKeywords(text: string): string[] {
+  const lower = text.toLowerCase();
+  return KEYWORDS.filter((kw) => lower.includes(kw));
+}

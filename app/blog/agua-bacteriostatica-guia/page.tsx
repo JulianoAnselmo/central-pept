@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import ArticleLayout from '@/components/blog/ArticleLayout';
 import { getArticleBySlug } from '@/lib/articles';
+import AffiliateBox from '@/components/affiliate/AffiliateBox';
 
 const SLUG = 'agua-bacteriostatica-guia';
 
@@ -105,6 +106,10 @@ export default function Article() {
         qualquer água não-estéril. Mesmo fervida, ela contém partículas e
         potencialmente endotoxinas que não devem ser injetadas.
       </p>
+
+      <div className="my-8 not-prose">
+        <AffiliateBox productId="agua_bact_amazon" slot="blog-agua-bact" />
+      </div>
 
       <h2>Armazenamento antes da abertura</h2>
       <p>

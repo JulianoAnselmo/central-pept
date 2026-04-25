@@ -10,7 +10,7 @@ import ShareButtons from '@/components/ui/ShareButtons';
 import InjectionSiteGuide from '@/components/peptide/InjectionSiteGuide';
 import FAQ from '@/components/ui/FAQ';
 import { buildPeptideFaq } from '@/lib/peptide-faqs';
-import { EbookShowcase } from '@/components/ebook/EbookCTA';
+import AffiliateBox from '@/components/affiliate/AffiliateBox';
 
 type Params = { slug: string };
 
@@ -166,10 +166,18 @@ export default async function PeptidePage({
 
       {/* ═══ CONTEÚDO ═══ */}
       <div className="max-w-4xl mx-auto px-4 md:px-6 py-8 md:py-12">
-        {/* Ebooks + combo — sempre visíveis */}
-        <EbookShowcase source={`peptide-${p.slug}-top`} className="mb-6" />
-
         <QuickCalcWidget peptide={p} />
+
+        <section className="mt-6 mb-2">
+          <AffiliateBox
+            productId={
+              p.category === 'glp-1' || p.category === 'weight-loss'
+                ? 'ebook_glp1_hotmart'
+                : 'ebook_peptideos_hotmart'
+            }
+            slot={`peptide-${p.slug}`}
+          />
+        </section>
 
         {/* Info cards — grid de 4 com ícones */}
         <section className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
@@ -317,9 +325,6 @@ export default async function PeptidePage({
         </div>
 
         <FAQ items={faq} title={`Perguntas frequentes sobre ${p.name}`} />
-
-        {/* Ebooks + combo pós-FAQ — leitor engajado, alto intent */}
-        <EbookShowcase source={`peptide-${p.slug}-bottom`} className="mt-8" />
 
         <div className="mt-10 pt-6 border-t border-border">
           <ShareButtons title={`${p.name} — Central Peptídeos`} url={`/peptideos/${p.slug}`} />

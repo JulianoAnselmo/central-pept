@@ -1,0 +1,8 @@
+{
+  "crons": [
+    {
+      "path": "/api/assistente/cron/fetch-duvidas",
+      "schedule": "0 */2 * * *"
+    }
+  ]
+}

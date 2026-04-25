@@ -4,8 +4,7 @@ import ReconstitutionCalculator from '@/components/calculator/ReconstitutionCalc
 import { getPeptides } from '@/lib/peptides';
 import MedicalDisclaimer from '@/components/ui/MedicalDisclaimer';
 import FAQ, { type FAQItem } from '@/components/ui/FAQ';
-import EbookCTA from '@/components/ebook/EbookCTA';
-import { getEbooks } from '@/lib/ebooks';
+import AffiliateBox from '@/components/affiliate/AffiliateBox';
 
 const FAQ_ITEMS: FAQItem[] = [
   {
@@ -48,7 +47,6 @@ export const metadata: Metadata = {
 
 export default function ReconstitucaoPage() {
   const peptides = getPeptides();
-  const ebooks = getEbooks();
 
   return (
     <div className="max-w-6xl mx-auto px-4 md:px-6 py-6 md:py-10">
@@ -70,13 +68,12 @@ export default function ReconstitucaoPage() {
 
       <ReconstitutionCalculator peptides={peptides} />
 
-      <FAQ items={FAQ_ITEMS} />
+      <section className="mt-8 grid md:grid-cols-2 gap-4 no-print">
+        <AffiliateBox productId="agua_bact_amazon" slot="reconstituicao-tools" />
+        <AffiliateBox productId="seringa_insulina_amazon" slot="reconstituicao-tools" />
+      </section>
 
-      {ebooks[0] && (
-        <div className="mt-8 no-print">
-          <EbookCTA ebook={ebooks[0]} variant="inline" source="reconstituicao-footer" />
-        </div>
-      )}
+      <FAQ items={FAQ_ITEMS} />
 
       <MedicalDisclaimer variant="prominent" />
     </div>

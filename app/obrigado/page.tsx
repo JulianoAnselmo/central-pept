@@ -1,10 +1,9 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import EbookCTA from '@/components/ebook/EbookCTA';
-import { BundleBanner } from '@/components/ebook/BundleOffer';
 import MedicalDisclaimer from '@/components/ui/MedicalDisclaimer';
-import { EBOOKS, BUNDLES, getEbookBySlug, type Ebook } from '@/lib/ebooks';
+import { getEbookBySlug, type Ebook } from '@/lib/ebooks';
+import AffiliateBox from '@/components/affiliate/AffiliateBox';
 
 export const metadata: Metadata = {
   title: 'Compra confirmada — Obrigado!',
@@ -29,17 +28,6 @@ export default async function ObrigadoPage({
   const purchasedEbook: Ebook | undefined = params.ebook_slug
     ? getEbookBySlug(params.ebook_slug)
     : undefined;
-
-  const bundle = BUNDLES[0];
-  const bundleEbooks = bundle
-    ? (bundle.ebookSlugs
-        .map((s) => getEbookBySlug(s))
-        .filter(Boolean) as [Ebook, Ebook])
-    : null;
-
-  const upsellEbooks: Ebook[] = purchasedBundle
-    ? []
-    : EBOOKS.filter((e) => e.slug !== purchasedEbook?.slug);
 
   const productName = purchasedBundle
     ? 'seu combo'
@@ -89,20 +77,6 @@ export default async function ObrigadoPage({
               alt={purchasedEbook.title}
               width={400}
               height={400}
-              className="w-full h-auto"
-              priority
-            />
-          </div>
-        </div>
-      )}
-      {purchasedBundle && bundle?.coverImage && (
-        <div className="flex justify-center mb-10">
-          <div className="w-48 md:w-56 rounded-lg overflow-hidden shadow-lg">
-            <Image
-              src={bundle.coverImage}
-              alt="Combo de ebooks"
-              width={480}
-              height={480}
               className="w-full h-auto"
               priority
             />
@@ -159,51 +133,6 @@ export default async function ObrigadoPage({
         </ol>
       </section>
 
-      {/* Upsell: o(s) ebook(s) que não comprou */}
-      {upsellEbooks.length > 0 && (
-        <section className="mb-8">
-          <h2 className="text-xl md:text-2xl font-extrabold text-ink mb-2">
-            Complete sua jornada
-          </h2>
-          <p className="text-sm text-ink-2 mb-5">
-            Aproveite o momento — os outros materiais da Central Peptídeos com desconto
-            exclusivo pra quem já é leitor.
-          </p>
-
-          <div className="space-y-3">
-            {upsellEbooks.map((e) => (
-              <EbookCTA
-                key={e.slug}
-                ebook={e}
-                variant="inline"
-                source={`obrigado-${e.slug}`}
-              />
-            ))}
-          </div>
-
-          {bundle && bundleEbooks && !purchasedEbook && (
-            <div className="mt-4">
-              <BundleBanner
-                bundle={bundle}
-                ebooks={bundleEbooks}
-                source="obrigado-bundle"
-              />
-            </div>
-          )}
-        </section>
-      )}
-
-      {purchasedBundle && (
-        <section className="card p-6 mb-8 border-teal-200 bg-teal-50/40">
-          <h2 className="text-lg font-extrabold text-ink mb-2">
-            Você já tem o pacote completo 🎉
-          </h2>
-          <p className="text-sm text-ink-2">
-            Com os dois ebooks, você tem o melhor da Central Peptídeos em mãos. Obrigado
-            por apostar no conteúdo completo.
-          </p>
-        </section>
-      )}
 
       {/* Retenção: explore o site */}
       <section className="card p-6 mb-8">
@@ -248,6 +177,16 @@ export default async function ObrigadoPage({
             {' '}— guias práticos, protocolos e comparações atualizadas.
           </li>
         </ul>
+      </section>
+
+      <section className="mb-8">
+        <h2 className="text-sm font-bold uppercase tracking-wider text-ink-3 mb-3">
+          Insumos recomendados
+        </h2>
+        <div className="grid md:grid-cols-2 gap-3">
+          <AffiliateBox productId="agua_bact_amazon" slot="obrigado" variant="compact" />
+          <AffiliateBox productId="seringa_insulina_amazon" slot="obrigado" variant="compact" />
+        </div>
       </section>
 
       <MedicalDisclaimer variant="prominent" />

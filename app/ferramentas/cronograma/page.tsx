@@ -3,6 +3,7 @@ import Link from 'next/link';
 import ScheduleCalculator from '@/components/calculator/ScheduleCalculator';
 import { getPeptides } from '@/lib/peptides';
 import MedicalDisclaimer from '@/components/ui/MedicalDisclaimer';
+import AffiliateBox from '@/components/affiliate/AffiliateBox';
 
 export const metadata: Metadata = {
   title: 'Cronograma de Doses',
@@ -33,6 +34,10 @@ export default function CronogramaPage() {
       </header>
 
       <ScheduleCalculator peptides={peptides} />
+
+      <div className="mt-8">
+        <AffiliateBox productId="planilha_peptideo_hotmart" slot="cronograma-bottom" />
+      </div>
 
       <MedicalDisclaimer variant="prominent" />
     </div>
