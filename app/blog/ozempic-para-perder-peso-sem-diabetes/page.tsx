@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import ArticleLayout from '@/components/blog/ArticleLayout';
 import { getArticleBySlug } from '@/lib/articles';
+import AffiliateBox from '@/components/affiliate/AffiliateBox';
 
 const SLUG = 'ozempic-para-perder-peso-sem-diabetes';
 export const metadata: Metadata = {
@@ -56,6 +57,16 @@ export default function Article() {
       <p>
         Se considerar uso: <strong>procure endocrinologista ou bariatra</strong>, não compre em marketplace, e use a <Link href="/ferramentas/titulacao">calculadora de titulação</Link> para entender o esquema de subida de dose.
       </p>
+
+      <div className="my-8 not-prose">
+        <AffiliateBox
+          productId="planilha_peptideo_hotmart"
+          slot="blog-ozempic-sem-diabetes"
+          title="Cronograma pronto pra emagrecimento off-label"
+          blurb="Planilha de protocolo: subida de dose, peso semanal, medidas, efeitos. Tudo num lugar pra levar pro endócrino e ajustar com base em dados."
+          cta="Ver planilha"
+        />
+      </div>
     </ArticleLayout>
   );
 }

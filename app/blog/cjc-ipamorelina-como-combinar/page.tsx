@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import ArticleLayout from '@/components/blog/ArticleLayout';
 import { getArticleBySlug } from '@/lib/articles';
+import AffiliateBox from '@/components/affiliate/AffiliateBox';
 
 const SLUG = 'cjc-ipamorelina-como-combinar';
 export const metadata: Metadata = {
@@ -67,6 +68,16 @@ export default function Article() {
       <p>
         Use a <Link href="/ferramentas/mistura">calculadora de mistura</Link> para combinar os dois no mesmo frasco e descobrir quantas unidades puxar em cada aplicação.
       </p>
+
+      <div className="my-8 not-prose">
+        <AffiliateBox
+          productId="planilha_peptideo_hotmart"
+          slot="blog-cjc-ipa"
+          title="Combine CJC + Ipamorelina com cronograma"
+          blurb="Planilha controla 2 peptídeos no mesmo frasco: aplicações, intervalos, ciclos de pausa. Evita confusão de dose quando combina compostos."
+          cta="Ver planilha"
+        />
+      </div>
     </ArticleLayout>
   );
 }

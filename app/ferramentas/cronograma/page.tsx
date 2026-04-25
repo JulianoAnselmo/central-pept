@@ -36,7 +36,13 @@ export default function CronogramaPage() {
       <ScheduleCalculator peptides={peptides} />
 
       <div className="mt-8">
-        <AffiliateBox productId="planilha_peptideo_hotmart" slot="cronograma-bottom" />
+        <AffiliateBox
+          productId="planilha_peptideo_hotmart"
+          slot="cronograma-bottom"
+          title="Acompanhe seu cronograma na planilha"
+          blurb="Calculou as datas? A planilha guarda histórico, controla quantas doses sobraram no frasco e registra efeitos colaterais. Mantém tudo num lugar só."
+          cta="Ver planilha"
+        />
       </div>
 
       <MedicalDisclaimer variant="prominent" />

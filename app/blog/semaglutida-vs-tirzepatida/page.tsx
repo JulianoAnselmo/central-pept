@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import ArticleLayout from '@/components/blog/ArticleLayout';
 import { getArticleBySlug } from '@/lib/articles';
+import AffiliateBox from '@/components/affiliate/AffiliateBox';
 
 const SLUG = 'semaglutida-vs-tirzepatida';
 
@@ -177,6 +178,16 @@ export default function Article() {
         <Link href="/ferramentas/reconstituicao">calculadora de reconstituição</Link>
         {' '}com os dados corretos do rótulo.
       </p>
+
+      <div className="my-8 not-prose">
+        <AffiliateBox
+          productId="planilha_peptideo_hotmart"
+          slot="blog-sema-vs-tirze"
+          title="Planilha pronta pra Sema e Tirze"
+          blurb="Mesma planilha cobre semaglutida e tirzepatida — esquema de dose, conversão de unidade e controle de frasco pros dois GLP-1s."
+          cta="Ver planilha"
+        />
+      </div>
     </ArticleLayout>
   );
 }

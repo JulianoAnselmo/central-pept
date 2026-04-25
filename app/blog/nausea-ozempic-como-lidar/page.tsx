@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import ArticleLayout from '@/components/blog/ArticleLayout';
 import { getArticleBySlug } from '@/lib/articles';
+import AffiliateBox from '@/components/affiliate/AffiliateBox';
 
 const SLUG = 'nausea-ozempic-como-lidar';
 export const metadata: Metadata = {
@@ -65,6 +66,16 @@ export default function Article() {
         <li>Perda de peso muito rápida (&gt;4 kg/semana)</li>
         <li>Febre, icterícia, dor nas costas alta</li>
       </ul>
+
+      <div className="my-8 not-prose">
+        <AffiliateBox
+          productId="planilha_peptideo_hotmart"
+          slot="blog-nausea-ozempic"
+          title="Marque cada náusea + dose pra ajustar titulação"
+          blurb="Planilha de protocolo registra dia, dose, intensidade da náusea e gatilho. Padrão visível em 2-3 semanas — você e seu médico decidem se sobe, pausa ou volta."
+          cta="Ver planilha"
+        />
+      </div>
     </ArticleLayout>
   );
 }

@@ -4,7 +4,6 @@ import ReconstitutionCalculator from '@/components/calculator/ReconstitutionCalc
 import { getPeptides } from '@/lib/peptides';
 import MedicalDisclaimer from '@/components/ui/MedicalDisclaimer';
 import FAQ, { type FAQItem } from '@/components/ui/FAQ';
-import AffiliateBox from '@/components/affiliate/AffiliateBox';
 
 const FAQ_ITEMS: FAQItem[] = [
   {
@@ -67,11 +66,6 @@ export default function ReconstitucaoPage() {
       </header>
 
       <ReconstitutionCalculator peptides={peptides} />
-
-      <section className="mt-8 grid md:grid-cols-2 gap-4 no-print">
-        <AffiliateBox productId="agua_bact_amazon" slot="reconstituicao-tools" />
-        <AffiliateBox productId="seringa_insulina_amazon" slot="reconstituicao-tools" />
-      </section>
 
       <FAQ items={FAQ_ITEMS} />
 

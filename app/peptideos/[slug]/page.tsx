@@ -170,12 +170,11 @@ export default async function PeptidePage({
 
         <section className="mt-6 mb-2">
           <AffiliateBox
-            productId={
-              p.category === 'glp-1' || p.category === 'weight-loss'
-                ? 'ebook_glp1_hotmart'
-                : 'ebook_peptideos_hotmart'
-            }
+            productId="planilha_peptideo_hotmart"
             slot={`peptide-${p.slug}`}
+            title={`Planilha de protocolo pronta pra ${p.name}`}
+            blurb={`Cronograma de aplicações, controle de doses por frasco e registro de efeitos. Compatível com ${p.name} e os demais peptídeos do catálogo.`}
+            cta="Ver planilha"
           />
         </section>
 

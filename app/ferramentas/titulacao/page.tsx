@@ -37,7 +37,13 @@ export default function TitulacaoPage() {
       <TitrationCalculator />
 
       <div className="mt-8">
-        <AffiliateBox productId="planilha_peptideo_hotmart" slot="titulacao-bottom" />
+        <AffiliateBox
+          productId="planilha_peptideo_hotmart"
+          slot="titulacao-bottom"
+          title="Planilha de titulação semana a semana"
+          blurb="Acompanhe a subida de dose, pausa por efeito colateral e progressão de peso na mesma planilha. Pronta pra Sema, Tirze e Reta."
+          cta="Ver planilha"
+        />
       </div>
 
       <MedicalDisclaimer variant="prominent" />

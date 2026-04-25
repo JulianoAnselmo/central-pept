@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import ArticleLayout from '@/components/blog/ArticleLayout';
 import { getArticleBySlug } from '@/lib/articles';
+import AffiliateBox from '@/components/affiliate/AffiliateBox';
 
 const SLUG = 'efeitos-colaterais-semaglutida';
 export const metadata: Metadata = {
@@ -72,6 +73,16 @@ export default function Article() {
         <li>STEP-1 NEJM 2021</li>
         <li>FAERS — FDA Adverse Event Reporting System</li>
       </ul>
+
+      <div className="my-8 not-prose">
+        <AffiliateBox
+          productId="planilha_peptideo_hotmart"
+          slot="blog-efeitos-colaterais"
+          title="Diário de efeitos colaterais por dose"
+          blurb="Registra qual sintoma apareceu em qual dose — você e seu médico decidem com dados, não com 'achismo' se sobe, pausa ou troca de medicamento."
+          cta="Ver planilha"
+        />
+      </div>
     </ArticleLayout>
   );
 }

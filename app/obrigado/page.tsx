@@ -3,7 +3,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import MedicalDisclaimer from '@/components/ui/MedicalDisclaimer';
 import { getEbookBySlug, type Ebook } from '@/lib/ebooks';
-import AffiliateBox from '@/components/affiliate/AffiliateBox';
 
 export const metadata: Metadata = {
   title: 'Compra confirmada — Obrigado!',
@@ -177,16 +176,6 @@ export default async function ObrigadoPage({
             {' '}— guias práticos, protocolos e comparações atualizadas.
           </li>
         </ul>
-      </section>
-
-      <section className="mb-8">
-        <h2 className="text-sm font-bold uppercase tracking-wider text-ink-3 mb-3">
-          Insumos recomendados
-        </h2>
-        <div className="grid md:grid-cols-2 gap-3">
-          <AffiliateBox productId="agua_bact_amazon" slot="obrigado" variant="compact" />
-          <AffiliateBox productId="seringa_insulina_amazon" slot="obrigado" variant="compact" />
-        </div>
       </section>
 
       <MedicalDisclaimer variant="prominent" />

@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import ArticleLayout from '@/components/blog/ArticleLayout';
 import { getArticleBySlug } from '@/lib/articles';
+import AffiliateBox from '@/components/affiliate/AffiliateBox';
 
 const SLUG = 'efeito-rebote-apos-parar-semaglutida';
 export const metadata: Metadata = {
@@ -56,6 +57,16 @@ export default function Article() {
       <p>
         Parar semaglutida sem estratégia de substituição leva a rebote previsível. Continuar indefinidamente é opção clínica válida. Decisão deve ser tomada com médico considerando resposta ao medicamento, efeitos adversos tolerados, custo de longo prazo e alternativas (cirurgia bariátrica, mudança de estilo de vida, outros medicamentos).
       </p>
+
+      <div className="my-8 not-prose">
+        <AffiliateBox
+          productId="planilha_peptideo_hotmart"
+          slot="blog-efeito-rebote"
+          title="Plano de manutenção pós-semaglutida"
+          blurb="Planilha pra mapear desmame, peso semanal e gatilhos de fome — detecta rebote antes dele virar 5 kg perdidos do progresso."
+          cta="Ver planilha"
+        />
+      </div>
     </ArticleLayout>
   );
 }

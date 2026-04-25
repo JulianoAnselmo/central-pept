@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import ArticleLayout from '@/components/blog/ArticleLayout';
 import { getArticleBySlug } from '@/lib/articles';
+import AffiliateBox from '@/components/affiliate/AffiliateBox';
 
 const SLUG = 'tirzepatida-manipulada-seguranca';
 export const metadata: Metadata = {
@@ -57,6 +58,16 @@ export default function Article() {
       <p>
         Se o orçamento permite, industrializado é sempre mais seguro. Se o preço é barreira, manipulada pode ser opção <em>com farmácia validada</em> e acompanhamento médico — não como escolha &quot;de primeira&quot;.
       </p>
+
+      <div className="my-8 not-prose">
+        <AffiliateBox
+          productId="planilha_peptideo_hotmart"
+          slot="blog-tirze-manipulada"
+          title="Controle lote + farmácia da tirzepatida manipulada"
+          blurb="Planilha registra origem do frasco, lote, validade e resposta clínica. Se um lote vier ruim, você identifica rápido e troca farmácia."
+          cta="Ver planilha"
+        />
+      </div>
     </ArticleLayout>
   );
 }

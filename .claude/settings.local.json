@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node -e ':*)",
+      "mcp__Claude_in_Chrome__tabs_context_mcp",
+      "Bash(npm --version)",
+      "Bash(npm install:*)",
+      "Bash(npm run:*)",
+      "Bash(node --input-type=module -e ':*)",
+      "Bash(curl -s http://localhost:3000/ferramentas/reconstituicao/)",
+      "Bash(curl -s http://localhost:3000/)",
+      "Bash(curl -s http://localhost:3000/peptideos/bpc-157/)",
+      "WebSearch",
+      "WebFetch(domain:www.accessdata.fda.gov)",
+      "WebFetch(domain:www.ncbi.nlm.nih.gov)",
+      "WebFetch(domain:en.wikipedia.org)",
+      "Bash(grep -iE '\\\\.\\(png|jpg|jpeg|svg|ico|webp\\)$')",
+      "Bash(git -c user.name=Juliano -c user.email=juliano@centralpeptideos.com.br commit -m ':*)",
+      "Bash(git push:*)",
+      "Bash(node -e \"const p=require\\('./package.json'\\); const deps=Object.keys\\({...p.dependencies,...p.devDependencies}\\); console.log\\(deps.join\\(', '\\)\\)\")",
+      "Skill(update-config)",
+      "Skill(update-config:*)",
+      "Bash(git add *)"
+    ]
+  }
+}
