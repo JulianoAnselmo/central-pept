@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import ArticleLayout from '@/components/blog/ArticleLayout';
 import { getArticleBySlug } from '@/lib/articles';
+import AffiliateBox from '@/components/affiliate/AffiliateBox';
 
 const SLUG = 'tirzepatida-manipulada-seguranca';
 export const metadata: Metadata = {
@@ -58,6 +59,14 @@ export default function Article() {
         Se o orçamento permite, industrializado é sempre mais seguro. Se o preço é barreira, manipulada pode ser opção <em>com farmácia validada</em> e acompanhamento médico — não como escolha &quot;de primeira&quot;.
       </p>
 
+      <div className="my-8 not-prose">
+        <AffiliateBox
+          productId="natflix_fitness_hotmart"
+          slot="blog-tirze-manipulada"
+          title="Tirze + treino preserva massa magra"
+          blurb="Manipulada ou Mounjaro, sem treino você perde músculo junto com gordura. Natflix tem 1000+ aulas pra fazer em casa — protocolo que segura o corpo durante a perda de peso."
+        />
+      </div>
     </ArticleLayout>
   );
 }

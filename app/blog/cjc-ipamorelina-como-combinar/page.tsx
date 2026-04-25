@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import ArticleLayout from '@/components/blog/ArticleLayout';
 import { getArticleBySlug } from '@/lib/articles';
+import AffiliateBox from '@/components/affiliate/AffiliateBox';
 
 const SLUG = 'cjc-ipamorelina-como-combinar';
 export const metadata: Metadata = {
@@ -68,6 +69,14 @@ export default function Article() {
         Use a <Link href="/ferramentas/mistura">calculadora de mistura</Link> para combinar os dois no mesmo frasco e descobrir quantas unidades puxar em cada aplicação.
       </p>
 
+      <div className="my-8 not-prose">
+        <AffiliateBox
+          productId="natflix_fitness_hotmart"
+          slot="blog-cjc-ipa"
+          title="GH só funciona com treino + sono"
+          blurb="Liberação de GH responde a estímulo de treino e sono profundo. Natflix tem 1000+ aulas guiadas pra fazer em casa — periodização que respeita janela hormonal."
+        />
+      </div>
     </ArticleLayout>
   );
 }

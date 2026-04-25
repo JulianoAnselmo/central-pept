@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import ArticleLayout from '@/components/blog/ArticleLayout';
 import { getArticleBySlug } from '@/lib/articles';
+import AffiliateBox from '@/components/affiliate/AffiliateBox';
 
 const SLUG = 'ozempic-falso-como-identificar';
 export const metadata: Metadata = {
@@ -62,6 +63,14 @@ export default function Article() {
         Compre em farmácia física com CNPJ visível e nota fiscal. O &quot;desconto imperdível&quot; no Instagram é quase sempre produto falsificado. A conta de economizar R$ 500 e tomar um produto adulterado pode ser alta.
       </p>
 
+      <div className="my-8 not-prose">
+        <AffiliateBox
+          productId="natflix_fitness_hotmart"
+          slot="blog-ozempic-falso"
+          title="Sem Ozempic? Tem treino que entrega resultado"
+          blurb="Quem não pode pagar Ozempic original ou tem medo de falsificado: treino estruturado entrega perda de peso real. Natflix tem 1000+ aulas pra fazer em casa, sem mensalidade de farmácia."
+        />
+      </div>
     </ArticleLayout>
   );
 }
