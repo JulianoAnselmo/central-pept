@@ -32,10 +32,10 @@ export async function GET(req: NextRequest) {
     req.headers.get('x-real-ip') ??
     null;
 
-  // Fire-and-forget: redirect rápido, não bloqueia em DB.
-  const insertPromise = db
-    .insert(affiliateClicks)
-    .values({
+  // Aguarda insert completar — serverless suspende função após return,
+  // background promise não sobrevive.
+  try {
+    await db.insert(affiliateClicks).values({
       productId: product.id,
       network: product.network,
       slot,
@@ -46,14 +46,11 @@ export async function GET(req: NextRequest) {
       referer: req.headers.get('referer'),
       ipHash: hashIp(ip),
       userAgent: req.headers.get('user-agent'),
-    })
-    .catch((err) => {
-      console.error('[affiliate click] insert failed', err);
     });
-
-  // Aguarda em background no Edge runtime — em Node, deixa promise pendente.
-  // Vercel mantém função viva até resolver.
-  await Promise.race([insertPromise, new Promise((r) => setTimeout(r, 500))]);
+  } catch (err) {
+    console.error('[affiliate click] insert failed', err);
+    // Continua redirect mesmo se DB falhar — não bloqueia conversão.
+  }
 
   return NextResponse.redirect(product.url, { status: 302 });
 }
