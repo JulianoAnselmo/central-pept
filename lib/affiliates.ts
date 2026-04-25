@@ -19,6 +19,7 @@ export type AffiliateProduct = {
   blurb: string;
   cta: string;
   priceHint?: string;
+  image?: { src: string; width: number; height: number; alt: string };
 };
 
 export const AFFILIATES: Record<string, AffiliateProduct> = {
@@ -66,14 +67,19 @@ export const AFFILIATES: Record<string, AffiliateProduct> = {
     cta: 'Ver guia',
     priceHint: 'R$ 97',
   },
-  planilha_peptideo_hotmart: {
-    id: 'planilha_peptideo_hotmart',
+  natflix_fitness_hotmart: {
+    id: 'natflix_fitness_hotmart',
     network: 'hotmart',
     url: 'https://go.hotmart.com/T105551445E?src=central-peptideos',
-    title: 'Planilha de protocolo de peptídeos',
-    blurb: 'Planilha pronta: cronograma de aplicações, doses, controle de frasco e registro de efeitos. Ideal pra acompanhar o protocolo semana a semana.',
-    cta: 'Ver planilha',
-    // priceHint: 'R$ XX', // preencha após pegar valor real da página de vendas
+    title: 'Transforme seu corpo com a Natflix',
+    blurb: 'Mais de 1000 aulas online · Treine onde e quando quiser · Resultados rápidos e visíveis · Orientação profissional. Comunidade de mulheres focada em resultado.',
+    cta: 'Quero conhecer',
+    image: {
+      src: '/affiliates/natflix-feed.png',
+      width: 1080,
+      height: 1080,
+      alt: 'Transforme seu corpo com a Natflix — 1000+ aulas online',
+    },
   },
 };
 

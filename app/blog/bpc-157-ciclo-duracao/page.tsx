@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import ArticleLayout from '@/components/blog/ArticleLayout';
 import { getArticleBySlug } from '@/lib/articles';
-import AffiliateBox from '@/components/affiliate/AffiliateBox';
 
 const SLUG = 'bpc-157-ciclo-duracao';
 export const metadata: Metadata = {
@@ -61,15 +60,6 @@ export default function Article() {
         <li>Antes de iniciar qualquer protocolo, especialmente com comorbidades ou medicamentos em uso</li>
       </ul>
 
-      <div className="my-8 not-prose">
-        <AffiliateBox
-          productId="planilha_peptideo_hotmart"
-          slot="blog-bpc157-ciclo"
-          title="Cronograma de ciclo BPC-157 pronto"
-          blurb="Planilha marca dia 1 ao 30, dose por aplicação, controle de frasco e janela de pausa. Acompanha resposta da lesão semana a semana."
-          cta="Ver planilha"
-        />
-      </div>
     </ArticleLayout>
   );
 }

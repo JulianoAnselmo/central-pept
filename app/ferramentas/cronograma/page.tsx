@@ -37,11 +37,11 @@ export default function CronogramaPage() {
 
       <div className="mt-8">
         <AffiliateBox
-          productId="planilha_peptideo_hotmart"
+          productId="natflix_fitness_hotmart"
           slot="cronograma-bottom"
-          title="Acompanhe seu cronograma na planilha"
-          blurb="Calculou as datas? A planilha guarda histórico, controla quantas doses sobraram no frasco e registra efeitos colaterais. Mantém tudo num lugar só."
-          cta="Ver planilha"
+          title="Pare de adiar — treine em casa com Natflix"
+          blurb="Cronograma de doses + treino guiado todo dia. Plataforma da Natasha Villaschi: você abre o app, segue o vídeo, treina sem academia. Acelera resultado de qualquer protocolo de emagrecimento."
+          cta="Quero conhecer"
         />
       </div>
 

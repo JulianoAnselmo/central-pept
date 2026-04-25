@@ -76,11 +76,11 @@ export default function Article() {
 
       <div className="my-8 not-prose">
         <AffiliateBox
-          productId="planilha_peptideo_hotmart"
+          productId="natflix_fitness_hotmart"
           slot="blog-efeitos-colaterais"
-          title="Diário de efeitos colaterais por dose"
-          blurb="Registra qual sintoma apareceu em qual dose — você e seu médico decidem com dados, não com 'achismo' se sobe, pausa ou troca de medicamento."
-          cta="Ver planilha"
+          title="Treino leve reduz efeito colateral GI"
+          blurb="Caminhada e exercício de baixa intensidade aliviam náusea e constipação do GLP-1. Natflix tem treinos curtos pra fazer em casa, ideais pra quem tá em ajuste de dose."
+          cta="Quero conhecer"
         />
       </div>
     </ArticleLayout>

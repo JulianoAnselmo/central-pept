@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { getAffiliate } from '@/lib/affiliates';
 
 type Props = {
@@ -63,18 +64,33 @@ export default function AffiliateBox({
       href={href}
       target="_blank"
       rel="nofollow sponsored noopener"
-      className="block card p-5 hover:border-teal-300 transition-colors no-print"
+      className="block card overflow-hidden hover:border-teal-300 transition-colors no-print"
     >
-      <p className="text-xs font-bold uppercase tracking-wider text-ink-3 mb-2">
-        Parceria comercial
-      </p>
-      <h3 className="text-lg font-extrabold text-ink mb-1">{displayTitle}</h3>
-      <p className="text-sm text-ink-2 leading-relaxed">{displayBlurb}</p>
-      <div className="mt-4 flex items-center justify-between gap-3">
-        {product.priceHint && (
-          <span className="text-sm font-semibold text-ink-2">{product.priceHint}</span>
+      <div className="md:flex">
+        {product.image && (
+          <div className="md:w-1/3 md:flex-shrink-0 bg-neutral-100">
+            <Image
+              src={product.image.src}
+              alt={product.image.alt}
+              width={product.image.width}
+              height={product.image.height}
+              className="w-full h-48 md:h-full object-cover"
+            />
+          </div>
         )}
-        <span className="btn-primary text-sm">{displayCta} →</span>
+        <div className="p-5 md:flex-1">
+          <p className="text-xs font-bold uppercase tracking-wider text-ink-3 mb-2">
+            Parceria comercial
+          </p>
+          <h3 className="text-lg font-extrabold text-ink mb-1">{displayTitle}</h3>
+          <p className="text-sm text-ink-2 leading-relaxed">{displayBlurb}</p>
+          <div className="mt-4 flex items-center justify-between gap-3">
+            {product.priceHint && (
+              <span className="text-sm font-semibold text-ink-2">{product.priceHint}</span>
+            )}
+            <span className="btn-primary text-sm">{displayCta} →</span>
+          </div>
+        </div>
       </div>
     </a>
   );

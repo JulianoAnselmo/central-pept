@@ -60,11 +60,11 @@ export default function Article() {
 
       <div className="my-8 not-prose">
         <AffiliateBox
-          productId="planilha_peptideo_hotmart"
+          productId="natflix_fitness_hotmart"
           slot="blog-efeito-rebote"
-          title="Plano de manutenção pós-semaglutida"
-          blurb="Planilha pra mapear desmame, peso semanal e gatilhos de fome — detecta rebote antes dele virar 5 kg perdidos do progresso."
-          cta="Ver planilha"
+          title="Treino é o que segura o peso pós-GLP-1"
+          blurb="Quem mantém atividade física pós-desmame tem rebote muito menor. Natflix entrega plano de treinos pra fazer em casa — começa leve, evolui no seu ritmo, sem academia."
+          cta="Quero conhecer"
         />
       </div>
     </ArticleLayout>

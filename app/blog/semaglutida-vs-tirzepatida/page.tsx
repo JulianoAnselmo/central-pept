@@ -181,11 +181,11 @@ export default function Article() {
 
       <div className="my-8 not-prose">
         <AffiliateBox
-          productId="planilha_peptideo_hotmart"
+          productId="natflix_fitness_hotmart"
           slot="blog-sema-vs-tirze"
-          title="Planilha pronta pra Sema e Tirze"
-          blurb="Mesma planilha cobre semaglutida e tirzepatida — esquema de dose, conversão de unidade e controle de frasco pros dois GLP-1s."
-          cta="Ver planilha"
+          title="Transforme seu corpo: GLP-1 + treino"
+          blurb="Sema ou Tirze sem treino = perde músculo junto com gordura. Natflix entrega plano de treinos pra fazer em casa que preserva massa magra e acelera o resultado da medicação."
+          cta="Quero conhecer"
         />
       </div>
     </ArticleLayout>

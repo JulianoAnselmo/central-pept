@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import ArticleLayout from '@/components/blog/ArticleLayout';
 import { getArticleBySlug } from '@/lib/articles';
-import AffiliateBox from '@/components/affiliate/AffiliateBox';
 
 const SLUG = 'ozempic-falso-como-identificar';
 export const metadata: Metadata = {
@@ -63,15 +62,6 @@ export default function Article() {
         Compre em farmácia física com CNPJ visível e nota fiscal. O &quot;desconto imperdível&quot; no Instagram é quase sempre produto falsificado. A conta de economizar R$ 500 e tomar um produto adulterado pode ser alta.
       </p>
 
-      <div className="my-8 not-prose">
-        <AffiliateBox
-          productId="planilha_peptideo_hotmart"
-          slot="blog-ozempic-falso"
-          title="Registre lote + farmácia de cada frasco"
-          blurb="Planilha tem campo pra lote, farmácia e validade — se notar resposta diferente, você sabe exatamente qual frasco veio de onde."
-          cta="Ver planilha"
-        />
-      </div>
     </ArticleLayout>
   );
 }

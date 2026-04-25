@@ -69,11 +69,11 @@ export default function Article() {
 
       <div className="my-8 not-prose">
         <AffiliateBox
-          productId="planilha_peptideo_hotmart"
+          productId="natflix_fitness_hotmart"
           slot="blog-nausea-ozempic"
-          title="Marque cada náusea + dose pra ajustar titulação"
-          blurb="Planilha de protocolo registra dia, dose, intensidade da náusea e gatilho. Padrão visível em 2-3 semanas — você e seu médico decidem se sobe, pausa ou volta."
-          cta="Ver planilha"
+          title="Treino leve ajuda no manejo da náusea"
+          blurb="Caminhada e treino de baixa intensidade reduzem desconforto GI do GLP-1. Natflix tem treinos curtos guiados pra fazer em casa, sem sobrecarregar quem tá em ajuste de dose."
+          cta="Quero conhecer"
         />
       </div>
     </ArticleLayout>

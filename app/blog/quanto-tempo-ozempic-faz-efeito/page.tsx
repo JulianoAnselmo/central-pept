@@ -68,11 +68,11 @@ export default function Article() {
 
       <div className="my-8 not-prose">
         <AffiliateBox
-          productId="planilha_peptideo_hotmart"
+          productId="natflix_fitness_hotmart"
           slot="blog-quanto-tempo-ozempic"
-          title="Acompanhe semana a semana o efeito do Ozempic"
-          blurb="Planilha registra peso, fome, dose e efeitos colaterais por semana. Mostra o progresso real ao invés de você ficar 'achando' que tá fazendo efeito."
-          cta="Ver planilha"
+          title="Acelere o resultado com treinos em casa"
+          blurb="Ozempic reduz fome, mas exercício acelera perda de gordura e preserva massa magra. Natflix tem treinos guiados pra fazer em casa — funciona junto com qualquer GLP-1."
+          cta="Quero conhecer"
         />
       </div>
     </ArticleLayout>

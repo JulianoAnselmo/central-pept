@@ -60,11 +60,11 @@ export default function Article() {
 
       <div className="my-8 not-prose">
         <AffiliateBox
-          productId="planilha_peptideo_hotmart"
+          productId="natflix_fitness_hotmart"
           slot="blog-ozempic-sem-diabetes"
-          title="Cronograma pronto pra emagrecimento off-label"
-          blurb="Planilha de protocolo: subida de dose, peso semanal, medidas, efeitos. Tudo num lugar pra levar pro endócrino e ajustar com base em dados."
-          cta="Ver planilha"
+          title="Descubra a Revolução Fitness: Natflix"
+          blurb="Sem treino, GLP-1 vira só perda de peso na balança — não no espelho. Natflix entrega plano completo pra fazer em casa com a Natasha Villaschi. Resultado real, sem academia."
+          cta="Quero conhecer"
         />
       </div>
     </ArticleLayout>

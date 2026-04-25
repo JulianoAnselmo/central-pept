@@ -38,11 +38,11 @@ export default function TitulacaoPage() {
 
       <div className="mt-8">
         <AffiliateBox
-          productId="planilha_peptideo_hotmart"
+          productId="natflix_fitness_hotmart"
           slot="titulacao-bottom"
-          title="Planilha de titulação semana a semana"
-          blurb="Acompanhe a subida de dose, pausa por efeito colateral e progressão de peso na mesma planilha. Pronta pra Sema, Tirze e Reta."
-          cta="Ver planilha"
+          title="Transforme seu corpo: GLP-1 + treinos guiados"
+          blurb="GLP-1 reduz fome, mas perda de massa magra é risco real. Natflix tem treinos pra fazer em casa que preservam músculo durante a subida de dose. App + plano semana a semana."
+          cta="Quero conhecer"
         />
       </div>
 
