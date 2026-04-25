@@ -45,9 +45,6 @@ export default function AffiliateBox({
       >
         <div className="flex items-center justify-between gap-3">
           <div className="min-w-0">
-            <p className="text-xs font-bold uppercase tracking-wider text-ink-3 mb-1">
-              Parceria comercial
-            </p>
             <p className="font-semibold text-ink truncate">{displayTitle}</p>
             {product.priceHint && (
               <p className="text-sm text-ink-2 mt-0.5">{product.priceHint}</p>
@@ -79,9 +76,6 @@ export default function AffiliateBox({
           </div>
         )}
         <div className="p-5 md:flex-1">
-          <p className="text-xs font-bold uppercase tracking-wider text-ink-3 mb-2">
-            Parceria comercial
-          </p>
           <h3 className="text-lg font-extrabold text-ink mb-1">{displayTitle}</h3>
           <p className="text-sm text-ink-2 leading-relaxed">{displayBlurb}</p>
           <div className="mt-4 flex items-center justify-between gap-3">
