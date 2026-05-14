@@ -181,11 +181,8 @@ export default function Article() {
 
       <div className="my-8 not-prose">
         <AffiliateBox
-          productId="natflix_fitness_hotmart"
+          productId="fornecedor_oficial"
           slot="blog-sema-vs-tirze"
-          title="Transforme seu corpo: GLP-1 + treino"
-          blurb="Sema ou Tirze sem treino = perde músculo junto com gordura. Natflix entrega plano de treinos pra fazer em casa que preserva massa magra e acelera o resultado da medicação."
-          cta="Quero conhecer"
         />
       </div>
     </ArticleLayout>

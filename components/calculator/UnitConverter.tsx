@@ -2,7 +2,6 @@
 
 import { useMemo, useState, useEffect } from 'react';
 import type { Peptide, DoseUnit } from '@/lib/peptides';
-import { EbookSidebarStack } from '@/components/ebook/EbookCTA';
 
 type Props = { peptides: Peptide[] };
 
@@ -166,7 +165,6 @@ export default function UnitConverter({ peptides }: Props) {
               </div>
             </div>
           )}
-          <EbookSidebarStack source="conversor-sidebar" />
         </div>
       </div>
     </div>

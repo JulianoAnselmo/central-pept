@@ -137,10 +137,8 @@ export default function Article() {
 
       <div className="my-8 not-prose">
         <AffiliateBox
-          productId="natflix_fitness_hotmart"
+          productId="fornecedor_oficial"
           slot="blog-reconstituir-sema"
-          title="Reconstituiu a dose? Faltou o treino"
-          blurb="Semaglutida + treino = perda de gordura preservando massa magra. Natflix tem plano completo pra fazer em casa — combina com qualquer subida de dose."
         />
       </div>
     </ArticleLayout>

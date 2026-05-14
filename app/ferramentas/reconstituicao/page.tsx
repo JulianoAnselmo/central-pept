@@ -70,7 +70,7 @@ export default function ReconstitucaoPage() {
 
       <div className="mt-8">
         <AffiliateBox
-          productId="natflix_fitness_hotmart"
+          productId="fornecedor_oficial"
           slot="reconstituicao-bottom"
         />
       </div>

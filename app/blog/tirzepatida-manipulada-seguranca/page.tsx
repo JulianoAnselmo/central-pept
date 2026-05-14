@@ -61,10 +61,8 @@ export default function Article() {
 
       <div className="my-8 not-prose">
         <AffiliateBox
-          productId="natflix_fitness_hotmart"
+          productId="fornecedor_oficial"
           slot="blog-tirze-manipulada"
-          title="Tirze + treino preserva massa magra"
-          blurb="Manipulada ou Mounjaro, sem treino você perde músculo junto com gordura. Natflix tem 1000+ aulas pra fazer em casa — protocolo que segura o corpo durante a perda de peso."
         />
       </div>
     </ArticleLayout>

@@ -60,11 +60,8 @@ export default function Article() {
 
       <div className="my-8 not-prose">
         <AffiliateBox
-          productId="natflix_fitness_hotmart"
+          productId="fornecedor_oficial"
           slot="blog-ozempic-sem-diabetes"
-          title="Descubra a Revolução Fitness: Natflix"
-          blurb="Sem treino, GLP-1 vira só perda de peso na balança — não no espelho. Natflix entrega plano completo pra fazer em casa com a Natasha Villaschi. Resultado real, sem academia."
-          cta="Quero conhecer"
         />
       </div>
     </ArticleLayout>

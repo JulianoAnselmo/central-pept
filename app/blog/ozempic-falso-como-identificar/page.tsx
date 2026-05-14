@@ -65,10 +65,8 @@ export default function Article() {
 
       <div className="my-8 not-prose">
         <AffiliateBox
-          productId="natflix_fitness_hotmart"
+          productId="fornecedor_oficial"
           slot="blog-ozempic-falso"
-          title="Sem Ozempic? Tem treino que entrega resultado"
-          blurb="Quem não pode pagar Ozempic original ou tem medo de falsificado: treino estruturado entrega perda de peso real. Natflix tem 1000+ aulas pra fazer em casa, sem mensalidade de farmácia."
         />
       </div>
     </ArticleLayout>

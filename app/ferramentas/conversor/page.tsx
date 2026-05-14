@@ -41,7 +41,7 @@ export default function ConversorPage() {
 
       <div className="mt-8">
         <AffiliateBox
-          productId="natflix_fitness_hotmart"
+          productId="fornecedor_oficial"
           slot="conversor-bottom"
         />
       </div>

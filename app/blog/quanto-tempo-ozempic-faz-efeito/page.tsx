@@ -68,11 +68,8 @@ export default function Article() {
 
       <div className="my-8 not-prose">
         <AffiliateBox
-          productId="natflix_fitness_hotmart"
+          productId="fornecedor_oficial"
           slot="blog-quanto-tempo-ozempic"
-          title="Acelere o resultado com treinos em casa"
-          blurb="Ozempic reduz fome, mas exercício acelera perda de gordura e preserva massa magra. Natflix tem treinos guiados pra fazer em casa — funciona junto com qualquer GLP-1."
-          cta="Quero conhecer"
         />
       </div>
     </ArticleLayout>

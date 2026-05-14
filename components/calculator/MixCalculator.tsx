@@ -2,7 +2,6 @@
 
 import { useMemo, useState } from 'react';
 import type { Peptide } from '@/lib/peptides';
-import { EbookSidebarStack } from '@/components/ebook/EbookCTA';
 
 type Row = {
   id: string;
@@ -341,7 +340,6 @@ export default function MixCalculator({ peptides }: Props) {
               </div>
             </div>
           )}
-          <EbookSidebarStack source="mistura-sidebar" />
         </div>
       </div>
     </div>

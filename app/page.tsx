@@ -2,11 +2,7 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { getPeptides } from '@/lib/peptides';
 import NewsletterSignup from '@/components/ui/NewsletterSignup';
-import EbookCTA from '@/components/ebook/EbookCTA';
-import { BundleBanner } from '@/components/ebook/BundleOffer';
 import AffiliateBox from '@/components/affiliate/AffiliateBox';
-import type { Ebook } from '@/lib/ebooks';
-import { getEbooks, BUNDLES, getEbookBySlug } from '@/lib/ebooks';
 
 export const metadata: Metadata = {
   title: 'Peptídeos: Calculadoras, Enciclopédia e Guias | Central Peptídeos',
@@ -85,12 +81,6 @@ export default function HomePage() {
   const peptides = getPeptides();
   const fdaApproved = peptides.filter((p) => p.regulatoryStatus === 'fda-approved').length;
   const wadaBanned = peptides.filter((p) => p.wadaProhibited).length;
-  const ebooks = getEbooks();
-  const bundle = BUNDLES[0];
-  const bundleEbooks = bundle
-    ? (bundle.ebookSlugs.map(getEbookBySlug).filter(Boolean) as [Ebook, Ebook])
-    : null;
-
   return (
     <div>
       {/* ═══ HERO ═══ */}
@@ -213,6 +203,11 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ═══ FORNECEDOR OFICIAL ═══ */}
+      <section className="max-w-5xl mx-auto px-4 md:px-6 pt-10">
+        <AffiliateBox productId="fornecedor_oficial" slot="home-pre-ferramentas" />
+      </section>
+
       {/* ═══ FERRAMENTAS ═══ */}
       <section className="max-w-6xl mx-auto px-4 md:px-6 py-16 md:py-20">
         <div className="text-center mb-10">
@@ -321,33 +316,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ═══ EBOOKS DESTAQUE ═══ */}
-      {ebooks.length > 0 && (
-        <section className="max-w-5xl mx-auto px-4 md:px-6 py-8 md:py-12 space-y-3">
-          <div className="grid gap-3 md:grid-cols-2">
-            {ebooks.map((e) => (
-              <EbookCTA
-                key={e.slug}
-                ebook={e}
-                variant="banner"
-                source={`home-featured-${e.slug}`}
-              />
-            ))}
-          </div>
-          {bundle && bundleEbooks && (
-            <BundleBanner
-              bundle={bundle}
-              ebooks={bundleEbooks}
-              source="home-bundle"
-            />
-          )}
-        </section>
-      )}
-
-      {/* ═══ AFILIADO NATFLIX ═══ */}
+      {/* ═══ FORNECEDOR OFICIAL ═══ */}
       <section className="max-w-5xl mx-auto px-4 md:px-6 py-8 md:py-12">
         <AffiliateBox
-          productId="natflix_fitness_hotmart"
+          productId="fornecedor_oficial"
           slot="home-featured"
         />
       </section>

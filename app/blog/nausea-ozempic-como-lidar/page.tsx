@@ -69,11 +69,8 @@ export default function Article() {
 
       <div className="my-8 not-prose">
         <AffiliateBox
-          productId="natflix_fitness_hotmart"
+          productId="fornecedor_oficial"
           slot="blog-nausea-ozempic"
-          title="Treino leve ajuda no manejo da náusea"
-          blurb="Caminhada e treino de baixa intensidade reduzem desconforto GI do GLP-1. Natflix tem treinos curtos guiados pra fazer em casa, sem sobrecarregar quem tá em ajuste de dose."
-          cta="Quero conhecer"
         />
       </div>
     </ArticleLayout>

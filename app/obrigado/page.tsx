@@ -181,7 +181,7 @@ export default async function ObrigadoPage({
 
       <section className="mb-8">
         <AffiliateBox
-          productId="natflix_fitness_hotmart"
+          productId="fornecedor_oficial"
           slot="obrigado"
         />
       </section>

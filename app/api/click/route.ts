@@ -1,7 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createHash } from 'crypto';
-import { db } from '@/lib/db';
-import { affiliateClicks } from '@/drizzle/schema';
 import { getAffiliate } from '@/lib/affiliates';
 
 export const runtime = 'nodejs';
@@ -32,24 +30,25 @@ export async function GET(req: NextRequest) {
     req.headers.get('x-real-ip') ??
     null;
 
-  // Aguarda insert completar — serverless suspende função após return,
-  // background promise não sobrevive.
-  try {
-    await db.insert(affiliateClicks).values({
-      productId: product.id,
-      network: product.network,
-      slot,
-      utmSource: searchParams.get('utm_source'),
-      utmMedium: searchParams.get('utm_medium'),
-      utmCampaign: searchParams.get('utm_campaign'),
-      utmContent: searchParams.get('utm_content'),
-      referer: req.headers.get('referer'),
-      ipHash: hashIp(ip),
-      userAgent: req.headers.get('user-agent'),
-    });
-  } catch (err) {
-    console.error('[affiliate click] insert failed', err);
-    // Continua redirect mesmo se DB falhar — não bloqueia conversão.
+  if (process.env.DATABASE_URL) {
+    try {
+      const { db } = await import('@/lib/db');
+      const { affiliateClicks } = await import('@/drizzle/schema');
+      await db.insert(affiliateClicks).values({
+        productId: product.id,
+        network: product.network,
+        slot,
+        utmSource: searchParams.get('utm_source'),
+        utmMedium: searchParams.get('utm_medium'),
+        utmCampaign: searchParams.get('utm_campaign'),
+        utmContent: searchParams.get('utm_content'),
+        referer: req.headers.get('referer'),
+        ipHash: hashIp(ip),
+        userAgent: req.headers.get('user-agent'),
+      });
+    } catch (err) {
+      console.error('[affiliate click] insert failed', err);
+    }
   }
 
   return NextResponse.redirect(product.url, { status: 302 });

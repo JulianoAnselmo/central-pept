@@ -2,7 +2,6 @@
 
 import { useMemo, useState, useEffect, useRef } from 'react';
 import type { Peptide, DoseUnit } from '@/lib/peptides';
-import { EbookSidebarStack } from '@/components/ebook/EbookCTA';
 import {
   doseToMg,
   calcByVolume,
@@ -783,7 +782,6 @@ export default function ReconstitutionCalculator({ peptides }: Props) {
               )}
             </div>
           )}
-          <EbookSidebarStack source="reconstituicao-sidebar" />
         </div>
       </div>
 

@@ -170,10 +170,8 @@ export default async function PeptidePage({
 
         <section className="mt-6 mb-2">
           <AffiliateBox
-            productId="natflix_fitness_hotmart"
+            productId="fornecedor_oficial"
             slot={`peptide-${p.slug}`}
-            title={`${p.name} + treino: resultado que se vê`}
-            blurb={`Composto faz parte. Treino faz o resto. Natflix tem 1000+ aulas guiadas pra fazer em casa, sem academia — comunidade focada em quem busca transformação real.`}
           />
         </section>
 

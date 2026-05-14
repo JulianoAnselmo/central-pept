@@ -63,10 +63,8 @@ export default function Article() {
 
       <div className="my-8 not-prose">
         <AffiliateBox
-          productId="natflix_fitness_hotmart"
+          productId="fornecedor_oficial"
           slot="blog-bpc157-ciclo"
-          title="Recuperou a lesão? Volte a treinar com método"
-          blurb="BPC-157 ajuda na cicatrização. Treino guiado evita nova lesão. Natflix tem 1000+ aulas pra fazer em casa, com progressão controlada — ideal pra retorno pós-recuperação."
         />
       </div>
     </ArticleLayout>

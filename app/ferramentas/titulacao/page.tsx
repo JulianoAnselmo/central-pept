@@ -38,11 +38,8 @@ export default function TitulacaoPage() {
 
       <div className="mt-8">
         <AffiliateBox
-          productId="natflix_fitness_hotmart"
+          productId="fornecedor_oficial"
           slot="titulacao-bottom"
-          title="Transforme seu corpo: GLP-1 + treinos guiados"
-          blurb="GLP-1 reduz fome, mas perda de massa magra é risco real. Natflix tem treinos pra fazer em casa que preservam músculo durante a subida de dose. App + plano semana a semana."
-          cta="Quero conhecer"
         />
       </div>
 

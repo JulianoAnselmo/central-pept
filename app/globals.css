@@ -96,6 +96,9 @@ html.dark {
   .btn-teal:active {
     transform: translateY(0);
   }
+  .btn-primary {
+    @apply btn bg-teal-700 text-white hover:bg-teal-600;
+  }
   .btn-ghost {
     @apply btn bg-transparent text-ink-2 hover:bg-bg hover:text-ink;
   }

@@ -1,10 +1,6 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
-import EbookCTA from '@/components/ebook/EbookCTA';
-import { BundleBanner } from '@/components/ebook/BundleOffer';
 import AffiliateBox from '@/components/affiliate/AffiliateBox';
-import type { Ebook } from '@/lib/ebooks';
-import { getEbooks, BUNDLES, getEbookBySlug } from '@/lib/ebooks';
 
 export const metadata: Metadata = {
   title: 'Ferramentas',
@@ -54,11 +50,6 @@ const TOOLS: Tool[] = [
 ];
 
 export default function FerramentasPage() {
-  const ebooks = getEbooks();
-  const bundle = BUNDLES[0];
-  const bundleEbooks = bundle
-    ? (bundle.ebookSlugs.map(getEbookBySlug).filter(Boolean) as [Ebook, Ebook])
-    : null;
   return (
     <>
       <section className="bg-gradient-mesh border-b border-border">
@@ -113,31 +104,9 @@ export default function FerramentasPage() {
           })}
         </div>
 
-        {ebooks.length > 0 && (
-          <div className="mt-10 md:mt-14 space-y-3">
-            <div className="grid gap-3 md:grid-cols-2">
-              {ebooks.map((e) => (
-                <EbookCTA
-                  key={e.slug}
-                  ebook={e}
-                  variant="banner"
-                  source={`ferramentas-hub-${e.slug}`}
-                />
-              ))}
-            </div>
-            {bundle && bundleEbooks && (
-              <BundleBanner
-                bundle={bundle}
-                ebooks={bundleEbooks}
-                source="ferramentas-hub-bundle"
-              />
-            )}
-          </div>
-        )}
-
         <div className="mt-10">
           <AffiliateBox
-            productId="natflix_fitness_hotmart"
+            productId="fornecedor_oficial"
             slot="ferramentas-hub"
           />
         </div>

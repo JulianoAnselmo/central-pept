@@ -60,11 +60,8 @@ export default function Article() {
 
       <div className="my-8 not-prose">
         <AffiliateBox
-          productId="natflix_fitness_hotmart"
+          productId="fornecedor_oficial"
           slot="blog-efeito-rebote"
-          title="Treino é o que segura o peso pós-GLP-1"
-          blurb="Quem mantém atividade física pós-desmame tem rebote muito menor. Natflix entrega plano de treinos pra fazer em casa — começa leve, evolui no seu ritmo, sem academia."
-          cta="Quero conhecer"
         />
       </div>
     </ArticleLayout>

@@ -52,10 +52,8 @@ export default function Article() {
 
       <div className="my-8 not-prose">
         <AffiliateBox
-          productId="natflix_fitness_hotmart"
+          productId="fornecedor_oficial"
           slot="blog-como-guardar"
-          title="Guardou bem? Próximo passo é treinar"
-          blurb="Frasco preservado mantém a medicação. Treino preserva o seu músculo durante a perda de peso. Natflix tem 1000+ aulas pra fazer em casa, sem academia."
         />
       </div>
     </ArticleLayout>

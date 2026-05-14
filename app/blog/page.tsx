@@ -35,7 +35,7 @@ export default function BlogPage() {
 
         <div className="mb-10">
           <AffiliateBox
-            productId="natflix_fitness_hotmart"
+            productId="fornecedor_oficial"
             slot="blog-index"
           />
         </div>

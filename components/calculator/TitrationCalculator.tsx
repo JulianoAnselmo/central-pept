@@ -1,7 +1,6 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import { EbookSidebarStack } from '@/components/ebook/EbookCTA';
 
 type Scheme = {
   id: string;
@@ -293,7 +292,6 @@ export default function TitrationCalculator() {
               💡 Se aparecerem efeitos intensos (náusea, vômito), não avance para a próxima dose — repita a etapa atual por mais algumas semanas antes de subir.
             </p>
           </div>
-          <EbookSidebarStack source="titulacao-sidebar" />
         </div>
       </div>
     </div>

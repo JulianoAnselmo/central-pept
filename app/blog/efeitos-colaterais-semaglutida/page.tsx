@@ -76,11 +76,8 @@ export default function Article() {
 
       <div className="my-8 not-prose">
         <AffiliateBox
-          productId="natflix_fitness_hotmart"
+          productId="fornecedor_oficial"
           slot="blog-efeitos-colaterais"
-          title="Treino leve reduz efeito colateral GI"
-          blurb="Caminhada e exercício de baixa intensidade aliviam náusea e constipação do GLP-1. Natflix tem treinos curtos pra fazer em casa, ideais pra quem tá em ajuste de dose."
-          cta="Quero conhecer"
         />
       </div>
     </ArticleLayout>

@@ -71,10 +71,8 @@ export default function Article() {
 
       <div className="my-8 not-prose">
         <AffiliateBox
-          productId="natflix_fitness_hotmart"
+          productId="fornecedor_oficial"
           slot="blog-cjc-ipa"
-          title="GH só funciona com treino + sono"
-          blurb="Liberação de GH responde a estímulo de treino e sono profundo. Natflix tem 1000+ aulas guiadas pra fazer em casa — periodização que respeita janela hormonal."
         />
       </div>
     </ArticleLayout>
