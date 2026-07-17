@@ -51,5 +51,11 @@ export async function GET(req: NextRequest) {
     }
   }
 
-  return NextResponse.redirect(product.url, { status: 302 });
+  let redirectUrl = product.url;
+  if (product.message) {
+    const sep = redirectUrl.includes('?') ? '&' : '?';
+    redirectUrl += `${sep}text=${encodeURIComponent(product.message)}`;
+  }
+
+  return NextResponse.redirect(redirectUrl, { status: 302 });
 }

@@ -9,6 +9,8 @@ export type AffiliateProduct = {
   cta: string;
   priceHint?: string;
   image?: { src: string; width: number; height: number; alt: string };
+  /** Mensagem pré-preenchida no WhatsApp (anexada como ?text= no redirect). */
+  message?: string;
 };
 
 export const AFFILIATES: Record<string, AffiliateProduct> = {
@@ -19,6 +21,8 @@ export const AFFILIATES: Record<string, AffiliateProduct> = {
     title: 'Fornecedor Oficial',
     blurb: 'Peptídeos com procedência. Fale direto no WhatsApp.',
     cta: 'Falar no WhatsApp',
+    message:
+      'Olá! Vim do site Central Peptídeos e gostaria de mais informações.',
   },
 };
 
