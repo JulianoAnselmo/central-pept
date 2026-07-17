@@ -2,6 +2,7 @@ import type { MetadataRoute } from 'next';
 import { getPeptideSlugs } from '@/lib/peptides';
 import { getArticles } from '@/lib/articles';
 import { getEbookSlugs } from '@/lib/ebooks';
+import { getComparisonSlugs } from '@/lib/comparisons';
 
 export const dynamic = 'force-static';
 
@@ -65,6 +66,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: 'weekly' as const,
       priority: 0.5,
+    })),
+    ...getComparisonSlugs().map((slug) => ({
+      url: url(`/comparar/${slug}`),
+      lastModified: now,
+      changeFrequency: 'monthly' as const,
+      priority: 0.75,
     })),
     ...getEbookSlugs().map((slug) => ({
       url: url(`/ebook/${slug}`),

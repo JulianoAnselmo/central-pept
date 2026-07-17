@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Comparator from '@/components/peptide/Comparator';
 import { getPeptides } from '@/lib/peptides';
+import { COMPARISONS } from '@/lib/comparisons';
 import MedicalDisclaimer from '@/components/ui/MedicalDisclaimer';
 import AffiliateBox from '@/components/affiliate/AffiliateBox';
 
@@ -10,14 +11,6 @@ export const metadata: Metadata = {
   description: 'Compare até 4 peptídeos lado a lado: mecanismo, dose, meia-vida, efeitos e status regulatório.',
   alternates: { canonical: '/comparar' },
 };
-
-const POPULAR_COMPARISONS: { slugs: string[]; title: string }[] = [
-  { slugs: ['semaglutida', 'tirzepatida'], title: 'Semaglutida vs Tirzepatida' },
-  { slugs: ['semaglutida', 'tirzepatida', 'retatrutide'], title: 'GLP-1: Semaglutida, Tirzepatida, Retatrutide' },
-  { slugs: ['bpc-157', 'tb-500'], title: 'BPC-157 vs TB-500' },
-  { slugs: ['cjc-1295', 'ipamorelina'], title: 'CJC-1295 vs Ipamorelina' },
-  { slugs: ['ghrp-2', 'ghrp-6', 'hexarelina'], title: 'GHRPs: GHRP-2, GHRP-6, Hexarelina' },
-];
 
 export default function CompararPage() {
   const peptides = getPeptides();
@@ -43,10 +36,10 @@ export default function CompararPage() {
             Comparações populares
           </h2>
           <div className="flex flex-wrap gap-2">
-            {POPULAR_COMPARISONS.map((c) => (
+            {COMPARISONS.map((c) => (
               <Link
-                key={c.slugs.join('-')}
-                href={`/comparar?p=${c.slugs.join(',')}`}
+                key={c.slug}
+                href={`/comparar/${c.slug}`}
                 className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-semibold rounded-full border border-border bg-surface text-ink-2 hover:border-teal hover:text-teal-700 hover:bg-teal-50 transition-colors"
               >
                 {c.title}
