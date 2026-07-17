@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import Breadcrumb from '@/components/ui/Breadcrumb';
+import RelatedLinks, { type RelatedLink } from '@/components/ui/RelatedLinks';
+import { SITE_URL } from '@/lib/site';
 import MixCalculator from '@/components/calculator/MixCalculator';
 import { getPeptides } from '@/lib/peptides';
 import MedicalDisclaimer from '@/components/ui/MedicalDisclaimer';
@@ -30,6 +32,13 @@ const FAQ_ITEMS: FAQItem[] = [
   },
 ];
 
+const RELATED_LINKS: RelatedLink[] = [
+  { href: '/blog/cjc-ipamorelina-como-combinar', label: 'CJC-1295 + Ipamorelina', desc: 'O combo mais usado para GH, explicado.' },
+  { href: '/peptideos/cjc-1295', label: 'Ficha do CJC-1295', desc: 'Dose, meia-vida e mecanismo.' },
+  { href: '/peptideos/ipamorelina', label: 'Ficha da ipamorelina', desc: 'Dose, efeitos e status regulatório.' },
+  { href: '/ferramentas/reconstituicao', label: 'Calculadora de reconstituição', desc: 'Concentração e unidades por dose.' },
+];
+
 export const metadata: Metadata = {
   title: 'Calculadora de Mistura',
   description:
@@ -51,11 +60,9 @@ export default function MisturaPage() {
         description="Combine 2 a 4 peptídeos em um frasco e descubra a dose exata de cada um entregue em uma única aplicação."
         path="/ferramentas/mistura"
       />
-      <nav className="text-sm text-ink-3 mb-4 flex items-center gap-1.5">
-        <Link href="/ferramentas" className="hover:text-teal-700">Ferramentas</Link>
-        <span>/</span>
-        <span className="text-ink-2">Mistura</span>
-      </nav>
+      <div className="mb-4">
+        <Breadcrumb items={[{ label: 'Ferramentas', href: '/ferramentas' }, { label: 'Mistura' }]} siteUrl={SITE_URL} />
+      </div>
 
       <header className="mb-8">
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight">
@@ -75,6 +82,8 @@ export default function MisturaPage() {
           slot="mistura-bottom"
         />
       </div>
+
+      <RelatedLinks links={RELATED_LINKS} />
 
       <FAQ items={FAQ_ITEMS} />
 

@@ -1,7 +1,9 @@
 import Link from 'next/link';
-import { articleOgImageUrl, type Article } from '@/lib/articles';
+import { articleOgImageUrl, getRelatedArticles, type Article } from '@/lib/articles';
 import MedicalDisclaimer from '@/components/ui/MedicalDisclaimer';
 import ShareButtons from '@/components/ui/ShareButtons';
+import RelatedPosts from '@/components/blog/RelatedPosts';
+import Breadcrumb from '@/components/ui/Breadcrumb';
 
 const SITE = process.env.SITE_URL || 'https://centralpeptideos.com.br';
 
@@ -44,6 +46,8 @@ export default function ArticleLayout({ article, children }: Props) {
     keywords: article.tags.join(', '),
   };
 
+  const related = getRelatedArticles(article);
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
@@ -51,11 +55,12 @@ export default function ArticleLayout({ article, children }: Props) {
       {/* Hero */}
       <header className={`bg-gradient-to-br ${article.coverColor || 'from-teal-500/20 to-teal-500/0'} border-b border-border`}>
         <div className="max-w-3xl mx-auto px-4 md:px-6 pt-8 pb-10 md:pt-12 md:pb-14">
-          <nav className="text-sm text-ink-3 mb-5 flex items-center gap-1.5">
-            <Link href="/blog" className="hover:text-teal-700">Blog</Link>
-            <span>/</span>
-            <span className="text-ink-2 truncate">{article.title}</span>
-          </nav>
+          <div className="mb-5">
+            <Breadcrumb
+              items={[{ label: 'Blog', href: '/blog' }, { label: article.title }]}
+              siteUrl={SITE}
+            />
+          </div>
 
           <div className="flex flex-wrap items-center gap-2 mb-4">
             {article.tags.slice(0, 3).map((tag) => {
@@ -158,6 +163,8 @@ export default function ArticleLayout({ article, children }: Props) {
             </div>
           </section>
         )}
+
+        <RelatedPosts posts={related} />
 
         <MedicalDisclaimer variant="prominent" />
       </article>

@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import Breadcrumb from '@/components/ui/Breadcrumb';
+import RelatedLinks, { type RelatedLink } from '@/components/ui/RelatedLinks';
+import { SITE_URL } from '@/lib/site';
 import ReconstitutionCalculator from '@/components/calculator/ReconstitutionCalculator';
 import { getPeptides } from '@/lib/peptides';
 import MedicalDisclaimer from '@/components/ui/MedicalDisclaimer';
@@ -34,6 +36,13 @@ const FAQ_ITEMS: FAQItem[] = [
   },
 ];
 
+const RELATED_LINKS: RelatedLink[] = [
+  { href: '/blog/como-reconstituir-semaglutida', label: 'Como reconstituir semaglutida', desc: 'Passo a passo completo com seringa de insulina.' },
+  { href: '/blog/agua-bacteriostatica-guia', label: 'Água bacteriostática: guia', desc: 'Qual diluente usar e como armazenar o frasco.' },
+  { href: '/peptideos/semaglutida', label: 'Ficha da semaglutida', desc: 'Dose, meia-vida, efeitos e referências.' },
+  { href: '/ferramentas/mistura', label: 'Calculadora de mistura', desc: 'Combine peptídeos e veja a dose de cada um.' },
+];
+
 export const metadata: Metadata = {
   title: 'Calculadora de Reconstituição',
   description:
@@ -56,11 +65,9 @@ export default function ReconstitucaoPage() {
         description="Calcule concentração, unidades por dose e doses por frasco em tempo real, com 21 peptídeos catalogados."
         path="/ferramentas/reconstituicao"
       />
-      <nav className="text-sm text-ink-3 mb-4 flex items-center gap-1.5 no-print">
-        <Link href="/ferramentas" className="hover:text-teal-700">Ferramentas</Link>
-        <span>/</span>
-        <span className="text-ink-2">Reconstituição</span>
-      </nav>
+      <div className="mb-4 no-print">
+        <Breadcrumb items={[{ label: 'Ferramentas', href: '/ferramentas' }, { label: 'Reconstituição' }]} siteUrl={SITE_URL} />
+      </div>
 
       <header className="mb-8 no-print">
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight">
@@ -80,6 +87,8 @@ export default function ReconstitucaoPage() {
           slot="reconstituicao-bottom"
         />
       </div>
+
+      <RelatedLinks links={RELATED_LINKS} />
 
       <FAQ items={FAQ_ITEMS} />
 

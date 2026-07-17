@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import Breadcrumb from '@/components/ui/Breadcrumb';
+import RelatedLinks, { type RelatedLink } from '@/components/ui/RelatedLinks';
+import { SITE_URL } from '@/lib/site';
 import UnitConverter from '@/components/calculator/UnitConverter';
 import { getPeptides } from '@/lib/peptides';
 import MedicalDisclaimer from '@/components/ui/MedicalDisclaimer';
@@ -30,6 +32,12 @@ const FAQ_ITEMS: FAQItem[] = [
   },
 ];
 
+const RELATED_LINKS: RelatedLink[] = [
+  { href: '/ferramentas/reconstituicao', label: 'Calculadora de reconstituição', desc: 'Quantas unidades puxar na seringa.' },
+  { href: '/peptideos', label: 'Enciclopédia de peptídeos', desc: 'Dose típica e unidade de cada peptídeo.' },
+  { href: '/blog/agua-bacteriostatica-guia', label: 'Água bacteriostática: guia', desc: 'O diluente correto para reconstituir.' },
+];
+
 export const metadata: Metadata = {
   title: 'Conversor de Unidades',
   description:
@@ -51,11 +59,9 @@ export default function ConversorPage() {
         description="Conversão entre mg, mcg e UI considerando o peptídeo específico, com a quantidade como múltiplo da dose típica."
         path="/ferramentas/conversor"
       />
-      <nav className="text-sm text-ink-3 mb-4 flex items-center gap-1.5">
-        <Link href="/ferramentas" className="hover:text-teal-700">Ferramentas</Link>
-        <span>/</span>
-        <span className="text-ink-2">Conversor</span>
-      </nav>
+      <div className="mb-4">
+        <Breadcrumb items={[{ label: 'Ferramentas', href: '/ferramentas' }, { label: 'Conversor' }]} siteUrl={SITE_URL} />
+      </div>
 
       <header className="mb-8">
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight">
@@ -75,6 +81,8 @@ export default function ConversorPage() {
           slot="conversor-bottom"
         />
       </div>
+
+      <RelatedLinks links={RELATED_LINKS} />
 
       <FAQ items={FAQ_ITEMS} />
 

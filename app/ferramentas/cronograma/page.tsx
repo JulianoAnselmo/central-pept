@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import Breadcrumb from '@/components/ui/Breadcrumb';
+import RelatedLinks, { type RelatedLink } from '@/components/ui/RelatedLinks';
+import { SITE_URL } from '@/lib/site';
 import ScheduleCalculator from '@/components/calculator/ScheduleCalculator';
 import { getPeptides } from '@/lib/peptides';
 import MedicalDisclaimer from '@/components/ui/MedicalDisclaimer';
@@ -30,6 +32,12 @@ const FAQ_ITEMS: FAQItem[] = [
   },
 ];
 
+const RELATED_LINKS: RelatedLink[] = [
+  { href: '/ferramentas/titulacao', label: 'Plano de subida de dose GLP-1', desc: 'Escalonamento semana a semana.' },
+  { href: '/ferramentas/reconstituicao', label: 'Calculadora de reconstituição', desc: 'Concentração e unidades por dose.' },
+  { href: '/peptideos', label: 'Enciclopédia de peptídeos', desc: 'Frequência e dose de cada peptídeo.' },
+];
+
 export const metadata: Metadata = {
   title: 'Cronograma de Doses',
   description: 'Monte um cronograma de aplicações e baixe como arquivo .ics para importar no Google Calendar, Apple Calendar ou Outlook.',
@@ -46,11 +54,9 @@ export default function CronogramaPage() {
         description="Monte um cronograma de aplicações e baixe como arquivo .ics para importar no Google Calendar, Apple Calendar ou Outlook."
         path="/ferramentas/cronograma"
       />
-      <nav className="text-sm text-ink-3 mb-4 flex items-center gap-1.5">
-        <Link href="/ferramentas" className="hover:text-teal-700">Ferramentas</Link>
-        <span>/</span>
-        <span className="text-ink-2">Cronograma</span>
-      </nav>
+      <div className="mb-4">
+        <Breadcrumb items={[{ label: 'Ferramentas', href: '/ferramentas' }, { label: 'Cronograma' }]} siteUrl={SITE_URL} />
+      </div>
 
       <header className="mb-8">
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight">
@@ -71,6 +77,8 @@ export default function CronogramaPage() {
           slot="cronograma-bottom"
         />
       </div>
+
+      <RelatedLinks links={RELATED_LINKS} />
 
       <FAQ items={FAQ_ITEMS} />
 

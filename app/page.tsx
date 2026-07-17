@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
 import { getPeptides } from '@/lib/peptides';
+import { getArticles } from '@/lib/articles';
 import NewsletterSignup from '@/components/ui/NewsletterSignup';
 import AffiliateBox from '@/components/affiliate/AffiliateBox';
 
@@ -83,6 +84,7 @@ export default function HomePage() {
   const peptides = getPeptides();
   const fdaApproved = peptides.filter((p) => p.regulatoryStatus === 'fda-approved').length;
   const wadaBanned = peptides.filter((p) => p.wadaProhibited).length;
+  const recentPosts = getArticles().slice(0, 3);
   return (
     <div>
       {/* ═══ HERO ═══ */}
@@ -315,6 +317,49 @@ export default function HomePage() {
               </p>
             </Link>
           ))}
+        </div>
+      </section>
+
+      {/* ═══ DO BLOG ═══ */}
+      <section className="bg-surface border-y border-border">
+        <div className="max-w-6xl mx-auto px-4 md:px-6 py-16 md:py-20">
+          <div className="grid lg:grid-cols-[1fr_auto] gap-6 items-end mb-8">
+            <div>
+              <span className="text-xs font-bold uppercase tracking-widest text-teal-700">Do blog</span>
+              <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight mt-2">
+                Guias e comparativos
+              </h2>
+              <p className="text-ink-2 mt-2 max-w-2xl">
+                Reconstituição, titulação, efeitos e comparativos — explicados com
+                fontes primárias, em português.
+              </p>
+            </div>
+            <Link href="/blog" className="btn-outline">
+              Ver o blog
+              <svg viewBox="0 0 20 20" width={14} height={14} fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 10h10M10 5l5 5-5 5" /></svg>
+            </Link>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-3">
+            {recentPosts.map((a) => (
+              <Link
+                key={a.slug}
+                href={`/blog/${a.slug}`}
+                className="group card-hover block overflow-hidden"
+              >
+                <div className={`h-28 bg-gradient-to-br ${a.coverColor || 'from-teal-500/20 to-teal-500/0'} relative`}>
+                  <div className="absolute inset-0 bg-dots opacity-30" aria-hidden />
+                </div>
+                <div className="p-5">
+                  <h3 className="font-bold leading-tight text-ink group-hover:text-teal-700 transition-colors line-clamp-2">
+                    {a.title}
+                  </h3>
+                  <p className="mt-2 text-sm text-ink-2 line-clamp-2 leading-relaxed">{a.excerpt}</p>
+                  <div className="mt-3 text-xs text-ink-3">{a.readMinutes} min de leitura</div>
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 

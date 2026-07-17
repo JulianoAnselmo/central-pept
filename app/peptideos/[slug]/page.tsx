@@ -10,7 +10,10 @@ import ShareButtons from '@/components/ui/ShareButtons';
 import InjectionSiteGuide from '@/components/peptide/InjectionSiteGuide';
 import FAQ from '@/components/ui/FAQ';
 import { buildPeptideFaq } from '@/lib/peptide-faqs';
+import { getArticlesByPeptide } from '@/lib/articles';
 import AffiliateBox from '@/components/affiliate/AffiliateBox';
+
+const SITE = process.env.SITE_URL || 'https://centralpeptideos.com.br';
 
 type Params = { slug: string };
 
@@ -65,6 +68,8 @@ export default async function PeptidePage({
     ? getPeptides().filter((x) => x.category === p.category && x.slug !== p.slug).slice(0, 3)
     : [];
 
+  const guides = getArticlesByPeptide(p.slug);
+
   const faq = buildPeptideFaq(p);
   const isApprovedDrug = p.regulatoryStatus === 'fda-approved' || p.regulatoryStatus === 'discontinued';
   const substanceJsonLd: Record<string, unknown> = {
@@ -113,7 +118,7 @@ export default async function PeptidePage({
             <Breadcrumb items={[
               { label: 'Peptídeos', href: '/peptideos' },
               { label: p.name },
-            ]} />
+            ]} siteUrl={SITE} />
           </div>
 
           <div className="flex flex-wrap items-center gap-2 mb-4">
@@ -326,6 +331,27 @@ export default async function PeptidePage({
         <div className="mt-10 pt-6 border-t border-border">
           <ShareButtons title={`${p.name} — Central Peptídeos`} url={`/peptideos/${p.slug}`} />
         </div>
+
+        {guides.length > 0 && (
+          <section className="mt-12">
+            <h2 className="text-xl font-bold mb-4">Guias sobre {p.name}</h2>
+            <div className="grid gap-3 sm:grid-cols-2">
+              {guides.map((a) => (
+                <Link
+                  key={a.slug}
+                  href={`/blog/${a.slug}`}
+                  className="card-hover p-4 block group"
+                >
+                  <h3 className="font-semibold text-sm leading-snug text-ink group-hover:text-teal-700 transition-colors">
+                    {a.title}
+                  </h3>
+                  <p className="mt-1.5 text-xs text-ink-2 line-clamp-2 leading-relaxed">{a.excerpt}</p>
+                  <div className="mt-2 text-xs text-ink-3">{a.readMinutes} min de leitura</div>
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
 
         {related.length > 0 && (
           <section className="mt-12">

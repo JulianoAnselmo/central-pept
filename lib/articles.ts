@@ -189,6 +189,23 @@ export function getArticlesByPeptide(peptideSlug: string): Article[] {
   );
 }
 
+// Posts relacionados por tags/peptídeos em comum (bloco "Leia também")
+export function getRelatedArticles(article: Article, limit = 3): Article[] {
+  const tags = new Set(article.tags);
+  const peps = new Set(article.relatedPeptides ?? []);
+  return getArticles()
+    .filter((a) => !a.draft && a.slug !== article.slug)
+    .map((a) => {
+      const tagOverlap = a.tags.filter((t) => tags.has(t)).length;
+      const pepOverlap = (a.relatedPeptides ?? []).filter((p) => peps.has(p)).length;
+      return { a, score: tagOverlap + pepOverlap * 2 };
+    })
+    .filter((x) => x.score > 0)
+    .sort((x, y) => y.score - x.score)
+    .slice(0, limit)
+    .map((x) => x.a);
+}
+
 const iso = (d: string): string => (d.includes('T') ? d : `${d}T00:00:00-03:00`);
 
 // URL da imagem OG dinâmica do artigo (gerada em /api/og). Relativa —

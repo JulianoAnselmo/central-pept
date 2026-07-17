@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import Breadcrumb from '@/components/ui/Breadcrumb';
+import RelatedLinks, { type RelatedLink } from '@/components/ui/RelatedLinks';
+import { SITE_URL } from '@/lib/site';
 import TitrationCalculator from '@/components/calculator/TitrationCalculator';
 import MedicalDisclaimer from '@/components/ui/MedicalDisclaimer';
 import FAQ, { type FAQItem } from '@/components/ui/FAQ';
@@ -33,6 +35,14 @@ const FAQ_ITEMS: FAQItem[] = [
   },
 ];
 
+const RELATED_LINKS: RelatedLink[] = [
+  { href: '/blog/quanto-tempo-ozempic-faz-efeito', label: 'Quanto tempo o Ozempic leva pra fazer efeito', desc: 'Linha do tempo de saciedade e perda de peso.' },
+  { href: '/blog/nausea-ozempic-como-lidar', label: 'Náusea no Ozempic: como lidar', desc: 'Estratégias para tolerar a subida de dose.' },
+  { href: '/blog/efeito-rebote-apos-parar-semaglutida', label: 'Efeito rebote após parar', desc: 'O que esperar ao descontinuar.' },
+  { href: '/peptideos/semaglutida', label: 'Ficha da semaglutida', desc: 'Dados de Ozempic e Wegovy.' },
+  { href: '/peptideos/tirzepatida', label: 'Ficha da tirzepatida', desc: 'Dados de Mounjaro e Zepbound.' },
+];
+
 export const metadata: Metadata = {
   title: 'Plano de Subida de Dose — Ozempic, Wegovy e Mounjaro',
   description: 'Calendário de subida de dose para semaglutida (Ozempic/Wegovy) e tirzepatida (Mounjaro/Zepbound). Semana a semana, com datas automáticas e export para o Google Calendar.',
@@ -51,11 +61,9 @@ export default function TitulacaoPage() {
         description="Calendário de subida de dose para semaglutida e tirzepatida, semana a semana, com datas automáticas e export para o Google Calendar."
         path="/ferramentas/titulacao"
       />
-      <nav className="text-sm text-ink-3 mb-4 flex items-center gap-1.5">
-        <Link href="/ferramentas" className="hover:text-teal-700">Ferramentas</Link>
-        <span>/</span>
-        <span className="text-ink-2">Subida de Dose GLP-1</span>
-      </nav>
+      <div className="mb-4">
+        <Breadcrumb items={[{ label: 'Ferramentas', href: '/ferramentas' }, { label: 'Subida de Dose GLP-1' }]} siteUrl={SITE_URL} />
+      </div>
 
       <header className="mb-8">
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight">
@@ -76,6 +84,8 @@ export default function TitulacaoPage() {
           slot="titulacao-bottom"
         />
       </div>
+
+      <RelatedLinks links={RELATED_LINKS} />
 
       <FAQ items={FAQ_ITEMS} />
 
