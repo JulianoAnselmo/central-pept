@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import ArticleLayout from '@/components/blog/ArticleLayout';
-import { getArticleBySlug } from '@/lib/articles';
+import { getArticleBySlug, articleOpenGraph } from '@/lib/articles';
 import AffiliateBox from '@/components/affiliate/AffiliateBox';
 
 const SLUG = 'como-guardar-ozempic-wegovy';
@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: 'Como guardar Ozempic e Wegovy corretamente',
   description: 'Orientações de armazenamento conforme bula: temperatura, proteção da luz, tempo pós-abertura e dicas de viagem.',
   alternates: { canonical: `/blog/${SLUG}` },
+  ...articleOpenGraph(getArticleBySlug(SLUG)!),
 };
 
 export default function Article() {

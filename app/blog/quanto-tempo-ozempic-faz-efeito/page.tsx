@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import ArticleLayout from '@/components/blog/ArticleLayout';
-import { getArticleBySlug } from '@/lib/articles';
+import { getArticleBySlug, articleOpenGraph } from '@/lib/articles';
 import AffiliateBox from '@/components/affiliate/AffiliateBox';
 
 const SLUG = 'quanto-tempo-ozempic-faz-efeito';
@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   title: 'Quanto tempo Ozempic leva para começar a fazer efeito?',
   description: 'Linha do tempo: controle glicêmico em dias, saciedade em semanas, perda de peso em meses.',
   alternates: { canonical: `/blog/${SLUG}` },
+  ...articleOpenGraph(getArticleBySlug(SLUG)!),
 };
 
 export default function Article() {

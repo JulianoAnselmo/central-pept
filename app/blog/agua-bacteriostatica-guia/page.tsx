@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import ArticleLayout from '@/components/blog/ArticleLayout';
-import { getArticleBySlug } from '@/lib/articles';
+import { getArticleBySlug, articleOpenGraph } from '@/lib/articles';
 import AffiliateBox from '@/components/affiliate/AffiliateBox';
 
 const SLUG = 'agua-bacteriostatica-guia';
@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   title: 'Água bacteriostática: o que é e quando usar',
   description: 'Entenda o diluente padrão para reconstituição de peptídeos: composição, durabilidade, alternativas e armazenamento correto.',
   alternates: { canonical: `/blog/${SLUG}` },
+  ...articleOpenGraph(getArticleBySlug(SLUG)!),
 };
 
 export default function Article() {

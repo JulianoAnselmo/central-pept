@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import ArticleLayout from '@/components/blog/ArticleLayout';
-import { getArticleBySlug } from '@/lib/articles';
+import { getArticleBySlug, articleOpenGraph } from '@/lib/articles';
 import AffiliateBox from '@/components/affiliate/AffiliateBox';
 
 const SLUG = 'efeito-rebote-apos-parar-semaglutida';
@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   title: 'Efeito rebote após parar semaglutida: o que esperar',
   description: 'Dados do STEP-4 sobre reganho de peso pós-descontinuação e estratégias para minimizar o rebote.',
   alternates: { canonical: `/blog/${SLUG}` },
+  ...articleOpenGraph(getArticleBySlug(SLUG)!),
 };
 
 export default function Article() {

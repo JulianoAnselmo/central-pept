@@ -5,7 +5,9 @@ import NewsletterSignup from '@/components/ui/NewsletterSignup';
 import AffiliateBox from '@/components/affiliate/AffiliateBox';
 
 export const metadata: Metadata = {
-  title: 'Peptídeos: Calculadoras, Enciclopédia e Guias | Central Peptídeos',
+  title: {
+    absolute: 'Peptídeos: Calculadoras, Enciclopédia e Guias | Central Peptídeos',
+  },
   description:
     'Calculadoras de reconstituição, mistura, conversão mg/mcg/UI e subida de dose GLP-1. Enciclopédia de 21 peptídeos com doses e protocolos. Grátis, sem cadastro.',
   alternates: { canonical: '/' },

@@ -4,6 +4,7 @@ import ReconstitutionCalculator from '@/components/calculator/ReconstitutionCalc
 import { getPeptides } from '@/lib/peptides';
 import MedicalDisclaimer from '@/components/ui/MedicalDisclaimer';
 import FAQ, { type FAQItem } from '@/components/ui/FAQ';
+import ToolSchema from '@/components/ui/ToolSchema';
 import AffiliateBox from '@/components/affiliate/AffiliateBox';
 
 const FAQ_ITEMS: FAQItem[] = [
@@ -50,6 +51,11 @@ export default function ReconstitucaoPage() {
 
   return (
     <div className="max-w-6xl mx-auto px-4 md:px-6 py-6 md:py-10">
+      <ToolSchema
+        name="Calculadora de Reconstituição de Peptídeos"
+        description="Calcule concentração, unidades por dose e doses por frasco em tempo real, com 21 peptídeos catalogados."
+        path="/ferramentas/reconstituicao"
+      />
       <nav className="text-sm text-ink-3 mb-4 flex items-center gap-1.5 no-print">
         <Link href="/ferramentas" className="hover:text-teal-700">Ferramentas</Link>
         <span>/</span>

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import ArticleLayout from '@/components/blog/ArticleLayout';
-import { getArticleBySlug } from '@/lib/articles';
+import { getArticleBySlug, articleOpenGraph } from '@/lib/articles';
 import AffiliateBox from '@/components/affiliate/AffiliateBox';
 
 const SLUG = 'ozempic-falso-como-identificar';
@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: 'Ozempic falso: como identificar e o que fazer',
   description: 'Sinais de falsificação em embalagens Ozempic, alertas da ANVISA e passos para verificar procedência.',
   alternates: { canonical: `/blog/${SLUG}` },
+  ...articleOpenGraph(getArticleBySlug(SLUG)!),
 };
 
 export default function Article() {

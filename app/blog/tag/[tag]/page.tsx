@@ -37,10 +37,11 @@ export async function generateStaticParams(): Promise<Params[]> {
 export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
   const { tag: tagSlug } = await params;
   const { tag, articles } = articlesForTagSlug(tagSlug);
-  if (!tag) return { title: 'Tag não encontrada' };
+  if (!tag) return { title: 'Tag não encontrada', robots: { index: false, follow: true } };
   return {
     title: `${tag} — ${articles.length} artigo${articles.length > 1 ? 's' : ''}`,
     description: `Artigos e guias da Central Peptídeos com a tag "${tag}".`,
+    alternates: { canonical: `/blog/tag/${tagSlug}` },
   };
 }
 

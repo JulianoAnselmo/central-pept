@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import ArticleLayout from '@/components/blog/ArticleLayout';
-import { getArticleBySlug } from '@/lib/articles';
+import { getArticleBySlug, articleOpenGraph } from '@/lib/articles';
 import AffiliateBox from '@/components/affiliate/AffiliateBox';
 
 const SLUG = 'efeitos-colaterais-semaglutida';
@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   title: 'Semaglutida faz mal? Efeitos colaterais documentados',
   description: 'Revisão dos efeitos adversos da semaglutida a partir dos ensaios STEP, SUSTAIN e relatórios pós-comercialização.',
   alternates: { canonical: `/blog/${SLUG}` },
+  ...articleOpenGraph(getArticleBySlug(SLUG)!),
 };
 
 export default function Article() {

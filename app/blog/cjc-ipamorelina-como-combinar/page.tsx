@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import ArticleLayout from '@/components/blog/ArticleLayout';
-import { getArticleBySlug } from '@/lib/articles';
+import { getArticleBySlug, articleOpenGraph } from '@/lib/articles';
 import AffiliateBox from '@/components/affiliate/AffiliateBox';
 
 const SLUG = 'cjc-ipamorelina-como-combinar';
@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   title: 'CJC-1295 + Ipamorelina: o combo mais usado, explicado',
   description: 'Por que combinar GHRH (CJC-1295) com GHRP (ipamorelina) potencializa liberação de GH, e limites de segurança.',
   alternates: { canonical: `/blog/${SLUG}` },
+  ...articleOpenGraph(getArticleBySlug(SLUG)!),
 };
 
 export default function Article() {

@@ -1,3 +1,5 @@
+import type { Metadata } from 'next';
+
 export type Author = {
   name: string;
   credentials?: string;
@@ -178,4 +180,53 @@ export function getArticleBySlug(slug: string): Article | undefined {
 
 export function getArticleSlugs(): string[] {
   return ARTICLES.map((a) => a.slug);
+}
+
+// Artigos que citam um peptídeo específico (para linkar ficha → guias)
+export function getArticlesByPeptide(peptideSlug: string): Article[] {
+  return getArticles().filter(
+    (a) => !a.draft && (a.relatedPeptides?.includes(peptideSlug) ?? false)
+  );
+}
+
+const iso = (d: string): string => (d.includes('T') ? d : `${d}T00:00:00-03:00`);
+
+// URL da imagem OG dinâmica do artigo (gerada em /api/og). Relativa —
+// resolvida por metadataBase.
+export function articleOgImageUrl(article: Article): string {
+  const eyebrow = article.tags[0] ?? 'Blog';
+  return `/api/og?title=${encodeURIComponent(article.title)}&eyebrow=${encodeURIComponent(eyebrow)}`;
+}
+
+// Bloco openGraph/twitter de artigo — para plugar em posts já existentes
+// sem sobrescrever title/description curados manualmente.
+export function articleOpenGraph(article: Article): Pick<Metadata, 'openGraph' | 'twitter'> {
+  const img = articleOgImageUrl(article);
+  return {
+    openGraph: {
+      type: 'article',
+      title: article.title,
+      description: article.excerpt,
+      url: `/blog/${article.slug}`,
+      publishedTime: iso(article.publishedAt),
+      ...(article.updatedAt ? { modifiedTime: iso(article.updatedAt) } : {}),
+      images: [{ url: img, width: 1200, height: 630, alt: article.title }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: article.title,
+      description: article.excerpt,
+      images: [img],
+    },
+  };
+}
+
+// Metadata completo a partir do artigo — usado pelos posts novos (Fase D).
+export function buildArticleMetadata(article: Article): Metadata {
+  return {
+    title: article.title,
+    description: article.excerpt,
+    alternates: { canonical: `/blog/${article.slug}` },
+    ...articleOpenGraph(article),
+  };
 }

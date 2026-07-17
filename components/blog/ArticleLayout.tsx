@@ -1,7 +1,9 @@
 import Link from 'next/link';
-import type { Article } from '@/lib/articles';
+import { articleOgImageUrl, type Article } from '@/lib/articles';
 import MedicalDisclaimer from '@/components/ui/MedicalDisclaimer';
 import ShareButtons from '@/components/ui/ShareButtons';
+
+const SITE = process.env.SITE_URL || 'https://centralpeptideos.com.br';
 
 type Props = {
   article: Article;
@@ -14,6 +16,7 @@ export default function ArticleLayout({ article, children }: Props) {
     '@type': 'Article',
     headline: article.title,
     description: article.excerpt,
+    image: [`${SITE}${articleOgImageUrl(article)}`],
     datePublished: article.publishedAt.includes('T') ? article.publishedAt : `${article.publishedAt}T00:00:00-03:00`,
     dateModified: (() => { const d = article.updatedAt || article.publishedAt; return d.includes('T') ? d : `${d}T00:00:00-03:00`; })(),
     author: article.author
@@ -35,9 +38,9 @@ export default function ArticleLayout({ article, children }: Props) {
     publisher: {
       '@type': 'Organization',
       name: 'Central Peptídeos',
-      logo: { '@type': 'ImageObject', url: '/logo.png' },
+      logo: { '@type': 'ImageObject', url: `${SITE}/logo.png` },
     },
-    mainEntityOfPage: { '@type': 'WebPage', '@id': `/blog/${article.slug}` },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE}/blog/${article.slug}` },
     keywords: article.tags.join(', '),
   };
 

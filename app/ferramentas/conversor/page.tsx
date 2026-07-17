@@ -3,7 +3,32 @@ import Link from 'next/link';
 import UnitConverter from '@/components/calculator/UnitConverter';
 import { getPeptides } from '@/lib/peptides';
 import MedicalDisclaimer from '@/components/ui/MedicalDisclaimer';
+import FAQ, { type FAQItem } from '@/components/ui/FAQ';
+import ToolSchema from '@/components/ui/ToolSchema';
 import AffiliateBox from '@/components/affiliate/AffiliateBox';
+
+const FAQ_ITEMS: FAQItem[] = [
+  {
+    q: 'Qual a diferença entre mg, mcg e UI?',
+    a: 'mg (miligrama) e mcg (micrograma) são unidades de massa: 1 mg = 1.000 mcg. UI (unidade internacional) mede atividade biológica, não massa — e sua conversão para mg depende do peptídeo específico. Já as "unidades" da seringa de insulina são volume: numa seringa U-100, 100 U = 1 ml.',
+  },
+  {
+    q: 'Quantos mcg tem 1 mg?',
+    a: '1 mg equivale a 1.000 mcg. Assim, 0,25 mg = 250 mcg e 5 mg = 5.000 mcg. Peptídeos de baixa dose (BPC-157, ipamorelina) costumam ser dosados em mcg; GLP-1 e alguns outros, em mg.',
+  },
+  {
+    q: 'Por que a conversão de UI muda conforme o peptídeo?',
+    a: 'UI mede potência biológica, e cada substância tem um fator próprio entre UI e massa. Por isso o conversor pede que você escolha o peptídeo — sem ele não há como converter UI ↔ mg corretamente. Para HGH, por exemplo, ~3 UI ≈ 1 mg, mas esse fator não vale para outros compostos.',
+  },
+  {
+    q: 'Como converter as unidades da seringa (U) para mg?',
+    a: 'As unidades da seringa de insulina são volume: 100 U = 1 ml. Para saber quantos mg há em X unidades, você precisa da concentração do frasco (mg/ml), que vem da reconstituição. Use a calculadora de reconstituição para isso; o conversor cuida das conversões de massa (mg/mcg/UI).',
+  },
+  {
+    q: '100 unidades numa seringa de insulina são quanto em ml?',
+    a: 'Numa seringa de insulina padrão U-100, 100 unidades = 1 ml, 50 U = 0,5 ml e 10 U = 0,1 ml. Essa é a escala de volume; quantos mg isso representa depende da concentração do peptídeo no frasco.',
+  },
+];
 
 export const metadata: Metadata = {
   title: 'Conversor de Unidades',
@@ -21,6 +46,11 @@ export default function ConversorPage() {
 
   return (
     <div className="max-w-6xl mx-auto px-4 md:px-6 py-6 md:py-10">
+      <ToolSchema
+        name="Conversor de Unidades de Peptídeos"
+        description="Conversão entre mg, mcg e UI considerando o peptídeo específico, com a quantidade como múltiplo da dose típica."
+        path="/ferramentas/conversor"
+      />
       <nav className="text-sm text-ink-3 mb-4 flex items-center gap-1.5">
         <Link href="/ferramentas" className="hover:text-teal-700">Ferramentas</Link>
         <span>/</span>
@@ -45,6 +75,8 @@ export default function ConversorPage() {
           slot="conversor-bottom"
         />
       </div>
+
+      <FAQ items={FAQ_ITEMS} />
 
       <MedicalDisclaimer variant="prominent" />
     </div>

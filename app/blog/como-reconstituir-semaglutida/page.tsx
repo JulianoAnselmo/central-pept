@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import ArticleLayout from '@/components/blog/ArticleLayout';
-import { getArticleBySlug } from '@/lib/articles';
+import { getArticleBySlug, articleOpenGraph } from '@/lib/articles';
 import AffiliateBox from '@/components/affiliate/AffiliateBox';
 
 const SLUG = 'como-reconstituir-semaglutida';
@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   title: 'Como reconstituir semaglutida: passo a passo completo',
   description: 'Guia prático e seguro de reconstituição de semaglutida: proporções, cálculo de dose e armazenamento do frasco.',
   alternates: { canonical: `/blog/${SLUG}` },
+  ...articleOpenGraph(getArticleBySlug(SLUG)!),
 };
 
 export default function Article() {

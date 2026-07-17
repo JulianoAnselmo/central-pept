@@ -3,7 +3,32 @@ import Link from 'next/link';
 import MixCalculator from '@/components/calculator/MixCalculator';
 import { getPeptides } from '@/lib/peptides';
 import MedicalDisclaimer from '@/components/ui/MedicalDisclaimer';
+import FAQ, { type FAQItem } from '@/components/ui/FAQ';
+import ToolSchema from '@/components/ui/ToolSchema';
 import AffiliateBox from '@/components/affiliate/AffiliateBox';
+
+const FAQ_ITEMS: FAQItem[] = [
+  {
+    q: 'Posso misturar dois peptídeos na mesma seringa?',
+    a: 'Em muitos casos sim, desde que sejam compatíveis e reconstituídos com o mesmo tipo de diluente. A combinação mais comum é CJC-1295 + ipamorelina (ambos voltados a GH). A calculadora não decide compatibilidade — ela assume que os peptídeos estão no mesmo frasco ou aspirados na mesma seringa e mostra a dose entregue de cada um. Não combine GLP-1 (semaglutida/tirzepatida) com outros peptídeos: diluições e frequências são diferentes.',
+  },
+  {
+    q: 'Como a calculadora determina a dose de cada peptídeo?',
+    a: 'Você informa a concentração de cada peptídeo no frasco (mg/ml, que vem da reconstituição) e o volume total puxado na seringa. A calculadora multiplica concentração × volume para cada peptídeo e mostra quantos mg/mcg de cada um são entregues naquela aplicação.',
+  },
+  {
+    q: 'Misturar reduz a eficácia dos peptídeos?',
+    a: 'Se são quimicamente compatíveis e usados logo após a mistura, a eficácia costuma ser preservada. O risco maior é de estabilidade — alguns peptídeos degradam mais rápido em conjunto. Na dúvida, mantenha os frascos separados e combine só no momento da aplicação, aspirando um depois do outro na mesma seringa.',
+  },
+  {
+    q: 'Quantos peptídeos posso combinar de uma vez?',
+    a: 'A calculadora suporta de 2 a 4 peptídeos simultaneamente. Na prática, combinações de 2 são as mais usadas (ex.: um GHRH + um GHRP). Quanto mais peptídeos, maior a chance de incompatibilidade e mais difícil o ajuste fino de dose.',
+  },
+  {
+    q: 'A ordem de aspiração na seringa importa?',
+    a: 'Para o cálculo de dose, não — o que importa é o volume de cada peptídeo. Para a técnica, aspire primeiro o mais concentrado e evite introduzir ar entre um e outro. Se estiver combinando a partir de frascos separados, troque ou limpe a agulha entre as aspirações.',
+  },
+];
 
 export const metadata: Metadata = {
   title: 'Calculadora de Mistura',
@@ -21,6 +46,11 @@ export default function MisturaPage() {
 
   return (
     <div className="max-w-6xl mx-auto px-4 md:px-6 py-6 md:py-10">
+      <ToolSchema
+        name="Calculadora de Mistura de Peptídeos"
+        description="Combine 2 a 4 peptídeos em um frasco e descubra a dose exata de cada um entregue em uma única aplicação."
+        path="/ferramentas/mistura"
+      />
       <nav className="text-sm text-ink-3 mb-4 flex items-center gap-1.5">
         <Link href="/ferramentas" className="hover:text-teal-700">Ferramentas</Link>
         <span>/</span>
@@ -45,6 +75,8 @@ export default function MisturaPage() {
           slot="mistura-bottom"
         />
       </div>
+
+      <FAQ items={FAQ_ITEMS} />
 
       <MedicalDisclaimer variant="prominent" />
     </div>

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import ArticleLayout from '@/components/blog/ArticleLayout';
-import { getArticleBySlug } from '@/lib/articles';
+import { getArticleBySlug, articleOpenGraph } from '@/lib/articles';
 import AffiliateBox from '@/components/affiliate/AffiliateBox';
 
 const SLUG = 'bpc-157-ciclo-duracao';
@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   title: 'Ciclo de BPC-157: quanto tempo usar e quando pausar',
   description: 'Protocolos típicos de ciclo de BPC-157 baseados em literatura pré-clínica e uso informal, com orientações de segurança.',
   alternates: { canonical: `/blog/${SLUG}` },
+  ...articleOpenGraph(getArticleBySlug(SLUG)!),
 };
 
 export default function Article() {

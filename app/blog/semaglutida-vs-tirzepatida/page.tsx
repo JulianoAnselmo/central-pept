@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import ArticleLayout from '@/components/blog/ArticleLayout';
-import { getArticleBySlug } from '@/lib/articles';
+import { getArticleBySlug, articleOpenGraph } from '@/lib/articles';
 import AffiliateBox from '@/components/affiliate/AffiliateBox';
 
 const SLUG = 'semaglutida-vs-tirzepatida';
@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   title: 'Semaglutida vs Tirzepatida: qual escolher em 2026',
   description: 'Comparação detalhada entre Ozempic/Wegovy e Mounjaro/Zepbound: mecanismo, eficácia clínica, efeitos colaterais e custos.',
   alternates: { canonical: `/blog/${SLUG}` },
+  ...articleOpenGraph(getArticleBySlug(SLUG)!),
 };
 
 export default function Article() {

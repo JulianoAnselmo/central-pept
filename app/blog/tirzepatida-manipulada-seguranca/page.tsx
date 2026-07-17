@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import ArticleLayout from '@/components/blog/ArticleLayout';
-import { getArticleBySlug } from '@/lib/articles';
+import { getArticleBySlug, articleOpenGraph } from '@/lib/articles';
 import AffiliateBox from '@/components/affiliate/AffiliateBox';
 
 const SLUG = 'tirzepatida-manipulada-seguranca';
@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   title: 'Tirzepatida manipulada é segura? Cuidados ao usar',
   description: 'Diferenças entre Mounjaro industrializado e tirzepatida manipulada: controle de qualidade, sinais de confiabilidade e riscos.',
   alternates: { canonical: `/blog/${SLUG}` },
+  ...articleOpenGraph(getArticleBySlug(SLUG)!),
 };
 
 export default function Article() {
