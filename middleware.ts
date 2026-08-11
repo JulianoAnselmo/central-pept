@@ -2,9 +2,24 @@ import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
 
 const PROTECTED = ['/admin/assistente', '/api/assistente'];
+const BLOCKED_CRAWLERS = [
+  'mj12bot',
+  'ahrefsbot',
+  'semrushbot',
+  'dotbot',
+  'bytespider',
+  'dataforseobot',
+  'blexbot',
+];
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
+  const userAgent = request.headers.get('user-agent')?.toLowerCase() ?? '';
+
+  if (BLOCKED_CRAWLERS.some((crawler) => userAgent.includes(crawler))) {
+    return new NextResponse('Rastreador bloqueado', { status: 403 });
+  }
+
   const isProtected = PROTECTED.some((prefix) => pathname.startsWith(prefix));
   if (!isProtected) return NextResponse.next();
 
@@ -33,5 +48,5 @@ function unauthorized() {
 }
 
 export const config = {
-  matcher: ['/admin/assistente/:path*', '/api/assistente/:path*'],
+  matcher: '/:path*',
 };
